@@ -300,6 +300,20 @@ def build_app(a):
               f'        <p class="note stores"><a class="btn" href="{st["url"]}" rel="noopener">View on the App Store {icon(p, "arrow-right")}</a>{play_button(a, p)}</p>\n'
               '        <p class="note">Downloads, impressions and conversion are not public, so they are not shown here.</p>\n'
               '      </section>\n')
+    shots = (st or {}).get("screenshots", {})
+    if shots.get("ios") or shots.get("android"):
+        s += '      <section class="block">\n        <h2>Store screenshots</h2>\n        <p class="sub">As shown on the store listings.</p>\n'
+        for label, key in (("App Store", "ios"), ("Google Play", "android")):
+            urls = shots.get(key) or []
+            if urls:
+                s += f'        <h3 class="shots-title">{label}</h3>\n        <div class="gallery" tabindex="0" aria-label="{a["name"]} {label} screenshots, scroll sideways">\n'
+                for i, u in enumerate(urls, 1):
+                    s += (f'          <figure class="shot"><img class="store" src="{u}" alt="{a["name"]} {label} screenshot {i}" '
+                          'loading="lazy" referrerpolicy="no-referrer" width="360" height="640"></figure>\n')
+                s += "        </div>\n"
+            elif key == "android" and a.get("android"):
+                s += f'        <h3 class="shots-title">{label}</h3>\n        <p class="note">Android version {a["android"].lower()}.</p>\n'
+        s += "      </section>\n"
     if a["metrics"]:
         s += '      <section class="block">\n        <h2>Delivery highlights</h2>\n        <p class="sub">From the Q3 2026 review.</p>\n        <div class="grid stats">\n'
         for b, l in a["metrics"]:

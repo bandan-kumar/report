@@ -22,7 +22,25 @@
         "DE",
         "IT",
         "ES"
-      ]
+      ],
+      "screenshots": {
+        "ios": [
+          "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/bf/af/42/bfaf4206-bd55-bd05-1de5-0ca87e3684b6/9039de91-f839-49bc-b07a-6255938d39ca_iphone_8_plus_1.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/9e/5c/d9/9e5cd912-fb1a-813e-2bd6-abf85e9405a0/bda165bd-113d-4309-aa74-8a267b1aeafe_iphone_8_plus_2.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/94/02/23/94022338-f215-00c0-c634-82386330b5a5/0a3ba95b-b803-4ce9-9f48-21b78049c4a3_iphone_8_plus_3.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/e6/e8/66/e6e866dc-b866-8248-f1c9-57dea4a27014/0cb1f902-c60a-4ff7-b709-059eb0d59aa3_iphone_8_plus_4.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/Purple116/v4/c8/bd/98/c8bd98be-3c31-b703-98a6-8f2a8f5f013f/ba1783b5-fa85-4627-b72f-170cd2c14f9e_iphone_8_plus_5.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/Purple126/v4/d5/69/91/d56991d8-23f7-b7bc-39e5-97f4d719d371/498e7c39-f7ed-4816-a4ba-0af8ae0e2790_iphone_8_plus_6.jpg/392x696bb.jpg"
+        ],
+        "android": [
+          "https://play-lh.googleusercontent.com/oVv0cTY0fIV3W-LfqAKaoW4Cslv_QmBBPt945T9_th0QSP5-P4xonwB2eQr2_GSUafbo9z5nut_iIFYIF8GcxA=w360-h640",
+          "https://play-lh.googleusercontent.com/Vf5h6SA8MKpwWC2hmN2N3tpEUYCjj6J06iBpChsiWfoP0kDk3IH1TqZBJ24Ng1uF_-WT6SyfNx3LEmAzbYrEOpE=w360-h640",
+          "https://play-lh.googleusercontent.com/JqimOHb9pLHu_-qiEirsKfMejl6qJ6_MGBSsT85oXRypdRVH9Ao-y1DrM9oiWfMwMqS7_igBubCZtEahu4yD8Q=w360-h640",
+          "https://play-lh.googleusercontent.com/IZ4zmY4Ahyc0jFoVgLCo_whBKHy75xMUQal9hOssKgb9yyy2t5jNIoT-af06p8SrHnXc8sCnValR5YMTsgbV=w360-h640",
+          "https://play-lh.googleusercontent.com/1uwoD26R-MErqD5TRNLN6IORyxoxBUUAfmVw3qmfNJqvQJMLjxM5FRQ4OAaOjSLu8m2aG95NsUBH4UlfM81qqQ=w360-h640",
+          "https://play-lh.googleusercontent.com/PfvA_5u-8kANHRMso_F8ZwyvG0x-2MPVIUKTwLMIPCt_hUCF_pbdt1rMnLSF7lZw3eGUJ9grjrBZks3kRZNuKQ=w360-h640"
+        ]
+      }
     },
     "upkee": {
       "id": 6757587275,
@@ -47,7 +65,19 @@
         "JA",
         "ES",
         "TR"
-      ]
+      ],
+      "screenshots": {
+        "ios": [
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/9b/bd/2a/9bbd2aac-b1d8-797f-6e87-03ea91e9f9bc/iPhone_1.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/45/7e/19/457e19d3-eb65-d0f8-67e8-35acd2a28ce9/iPhone_2.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ea/1a/3c/ea1a3c1a-c7fe-9b70-91db-40b2a6e5d31b/iPhone_3.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/2e/aa/41/2eaa410d-8b4d-7e5c-edaa-fb9613f31aef/iPhone_4.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/f2/c9/b7/f2c9b7ba-f065-5a02-8fdb-5ee2445abd87/iPhone_5.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/0c/f8/d2/0cf8d261-909d-bc30-839a-78fb81ba4ce7/iPhone_6.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/6d/ac/b0/6dacb09d-e3ad-252c-dee4-477aff96326d/iPhone_7.jpg/392x696bb.jpg"
+        ],
+        "android": []
+      }
     },
     "caloric": {
       "id": 6499521146,
@@ -65,7 +95,28 @@
       "ageRating": "4+",
       "languages": [
         "EN"
-      ]
+      ],
+      "screenshots": {
+        "ios": [
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/84/8e/f5/848ef520-48f5-097a-6793-919d2ae0aa54/7f348145-e9ea-482b-8c35-66ac25e2a412_iPhone_14_-_01.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a4/d1/70/a4d17069-8c98-45ee-8290-29b061c09ab2/c145d9ca-7a9e-4586-9a86-244d6fbb7610_iPhone_14_-_02.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/21/a0/84/21a0843c-40ee-5caf-b89b-c6d4a3e3d4d9/3.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/9f/59/1e/9f591ec3-e8ca-cf6c-1b78-46f6d134d2b8/4.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/2e/a9/a0/2ea9a083-2251-7126-e5ee-22b3e0e45c43/729084ef-dba9-4098-9efe-69422322bd82_iPhone_14_-_03.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/ff/2c/3a/ff2c3a25-a52b-fd77-c737-72851e970744/53a7f4ee-8aa0-4ca4-8fee-88c5d34f2b65_iPhone_14_-_04.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/7a/44/d3/7a44d389-fc9a-9f86-3a78-6276f342af34/7.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/a0/32/e4/a032e4d2-dc34-de95-28ec-cfa8b90e807f/214e5c75-e12d-47db-84a0-0e61fc885c94_iPhone_14_-_06.jpg/392x696bb.jpg"
+        ],
+        "android": [
+          "https://play-lh.googleusercontent.com/9krhObarL4ZEBLkrByU8ijhY3aDN-cHj9A3bwgPMK599tJznyiytTIG69koxnUR93fOTiyrmc6TVlmGEL7h2lQc=w360-h640",
+          "https://play-lh.googleusercontent.com/VZXBd2kVSHqzTto_Y7A2mSi0NwyO5EbU7iQ6o99Z0QPYnbIl47Jnz4O_pDqn6RC1fcHEoVSAiIUFHeZ-rqGd4Hw=w360-h640",
+          "https://play-lh.googleusercontent.com/u5nuzeiKIZ2JA5IUDmgjeMWxpw8s3QXU2_KlwyMHdhnOS6BAFP5xAVkM3C48Eh1cJfSPmyJlj7m8PCC4YAFGlw=w360-h640",
+          "https://play-lh.googleusercontent.com/iWlcG-GAXf3JjjrLBuYzs7aDYSRmZRSNJQvcoCSzKi7GSp6ZR3WbgCgBd3LiebKMHFKR85NGNhNl_j0O4e01=w360-h640",
+          "https://play-lh.googleusercontent.com/Obj7EFdNPeCmnk-G6WeuX4tkAY_2hZU5bM136_V9nRUzWZDz9kYmx26y_-F_7In8_75fU8NyDRn6HcwVBQDNow=w360-h640",
+          "https://play-lh.googleusercontent.com/ezbegocVyep-SPElx1Kh2lNecCfw3PAuppgU85qXqN8d_SKsSl1GvICnWqEpo3sa1UCl-fdg1JNXEKP-XsqyYMc=w360-h640",
+          "https://play-lh.googleusercontent.com/ebSy_f2NZw9YFtwH89C_TKsBahfNDP_y6rI-QrUC9HPabqy7jYf_R2D9AaUO9AcmrK-Xl3EnVEZ2nMHcdmi_=w360-h640"
+        ]
+      }
     },
     "locateus": {
       "id": 6739027332,
@@ -83,7 +134,28 @@
       "ageRating": "4+",
       "languages": [
         "EN"
-      ]
+      ],
+      "screenshots": {
+        "ios": [
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/f8/c3/df/f8c3dfa9-084f-ff7a-91d7-e83f638a5a8d/iPhone_1.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/66/c1/ca/66c1cac2-8437-1cf3-36da-63a9c06ca9ae/iPhone_2.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/c2/44/76/c2447610-c883-9c70-e3c4-d6137a86cec9/iPhone_3.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/33/13/02/331302b8-65d7-7aff-b72d-6de819997326/iPhone_4.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/41/f6/5b/41f65bfa-9215-a4c6-587a-cd3496fb11a0/iPhone_5.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/6e/9f/f9/6e9ff9e4-5ac6-1483-fd6a-e30ee455fdf4/iPhone__8.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/91/67/63/91676351-7a52-02f3-5b8b-389d66fb22e5/iPhone__7.jpg/392x696bb.jpg"
+        ],
+        "android": [
+          "https://play-lh.googleusercontent.com/ruHu3rzVRpXQeFaYeYozRP12AyoSbeYfKneQHIGXU4K2XBW30UkymQE9BQXR9qEdHZ1o6lSCj7cEl_iQDfHvVg=w360-h640",
+          "https://play-lh.googleusercontent.com/r_UBjdfCHMvBTymNN3kvE-Uk1XTtsEkydou2NHkGB5TbRo6ZGJqHhEZkDX02zCm63LvhmdgtDDTH4feq1Url-A=w360-h640",
+          "https://play-lh.googleusercontent.com/WtYMKWZJHenfL9bRTqQtVOHkR8y5xu-6xC55K-pOeOSqnuhNR2EVuVXLVmLlBFi8IklYmbOKoQLMRYGPy4PdPW8=w360-h640",
+          "https://play-lh.googleusercontent.com/gxsWwPsnEudmqsPCehQDRawKBud4JEvaFGRvSisXPuFG9cIK2TPZkIOgLGcXg9WkGknQFHFXVrEWghEoI-gcsg=w360-h640",
+          "https://play-lh.googleusercontent.com/x-flqQjYbGFnIF81QuFrX3-Xu4KwYrgZ0zoVa57ThZGRBYaRSJgmDzKtGed1vbkrc16-fddRb6y09iPRHEZIxY4=w360-h640",
+          "https://play-lh.googleusercontent.com/W50MUPmn0Qlkst5yPUkySSX7PPQboFN02VexfJ3F-59htwFi9v-npu4IyvKEWGWIK1H40Oo41qC5vurj-h0L=w360-h640",
+          "https://play-lh.googleusercontent.com/15KPBVtkRJo-8PNTYcQk6IDmJIAFA_a2R9B8wfkejfPkI1s5Y3144xVblm6qR6M2V_VQfuRdW_yazIm0pPzY=w360-h640",
+          "https://play-lh.googleusercontent.com/upVz8I8EzFZo8Ad4FWpblycZ7OVr-tKA-V8HHBe6Ef6fsx0BtTY7U7Zngrf60YujBh8QL4gHZdtHo22w38rKqA=w360-h640"
+        ]
+      }
     },
     "keto": {
       "id": 1475764462,
@@ -104,7 +176,27 @@
         "FR",
         "DE",
         "ES"
-      ]
+      ],
+      "screenshots": {
+        "ios": [
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/ee/d7/5f/eed75f0d-e8fb-ca94-6497-b01686dc3f8c/iPhone_6.9__U2014_7.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/82/92/90/82929039-4dd6-8294-a364-cf43f8a005c9/iPhone_6.9__U2014_8.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/37/10/ef/3710ef40-770d-14ff-9025-320827d6da7e/iPhone_6.9__U2014_9.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/40/db/01/40db010c-5ff7-8e1a-27a4-2d6994c047b8/iPhone_6.9__U2014_10.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/4f/a2/5c/4fa25cc4-5c6c-239c-05e1-5ba6894e0f2c/iPhone_6.9__U2014_11.jpg/392x696bb.jpg",
+          "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/bb/31/88/bb3188bb-d306-239a-359f-794ef2cbc66c/iPhone_6.9__U2014_12.jpg/392x696bb.jpg"
+        ],
+        "android": [
+          "https://play-lh.googleusercontent.com/DUm_WgqRNBO89z1qs-B90jiGDE8_w2gU9OjvXxxsyAwatijhxZ2uUxTP-Ty6_oMeABHlMNa0hAlNiMU4wBhk=w360-h640",
+          "https://play-lh.googleusercontent.com/2tIgr4cwrOnnUjtQ33-qO0QIcczfamV1Wu2jAgYBaL2MXfE7IyJGnt7dx3eq8i8LUsUucNv0g-115pyzTtx2SBY=w360-h640",
+          "https://play-lh.googleusercontent.com/JfUnrmyuTfndf-7sKeAdtral_MNaT3ZcdbZnVu5dACUNNQtsnwXQlFDqjHMG965Qi5ZxiUJsY40Aig1nPtXciTg=w360-h640",
+          "https://play-lh.googleusercontent.com/HZ7wiX_usjanFeLFzNFVJbi5NSi1pAZpvJuQ1-KqLfx2eLehFYiwA9i5g9tdwLtv_fFihQW1-gMGMJmlozX4Bxc=w360-h640",
+          "https://play-lh.googleusercontent.com/_KbecOXhShhQt_N79WVeeMOd23dxXpQJQVXebcXbnh-SrXaxtVpDBQ9SgX8N0oXRO2Z3gGVa-OD3ZEH4GaJncA=w360-h640",
+          "https://play-lh.googleusercontent.com/AEQvNruLE9P4hL9AIuni_C0H8AFm-g9uPt2WAKg-tLQNvdObHwekLuISOtArL062FJCPDWYOhmCnZm-OScdv9gU=w360-h640",
+          "https://play-lh.googleusercontent.com/8HtkkfJysqvog0rqaSYypeHLJWOAEMeG_RGsLe0xTOizz_VbEeYK5Xp953wKEyUiQqcrK5StYdNoDctHTKbflck=w360-h640",
+          "https://play-lh.googleusercontent.com/lbWE3tKd5iyu4JklG955vA1QKFjEgUpoEEkLtHtcxSyIKqg0lMtOKkcumTecoDwHDZJxJeX0htF4vpy1H516MA=w360-h640"
+        ]
+      }
     }
   }
 }

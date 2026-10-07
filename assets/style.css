@@ -467,3 +467,7 @@ tbody td:first-child { font-weight: 700; }
 @media print { .rules { grid-template-columns: repeat(2, 1fr); } }
 
 .stores { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }
+
+.shots-title { font-size: 1rem; margin-top: 18px; }
+.shot img.store { border-radius: 14px; border: 1px solid var(--line); filter: none; background: var(--surface-2); }
+@media print { .shot img.store { border-radius: 8px; } }
