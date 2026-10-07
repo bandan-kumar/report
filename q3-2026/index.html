@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Q3 2026 Performance Review · Bandan Kumar</title>
+  <meta name="description" content="Q3 2026 performance review: DietPlan built end to end in about seven weeks, Caloric released, a 50 MB smaller app and a secured AI backend.">
+  <meta name="color-scheme" content="light dark">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231e5fb0'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3EBK%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="../assets/style.css">
+  <script src="../assets/theme.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <a class="btn" href="../"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-left"/></svg> <span>Apps</span></a>
+      <div class="actions">
+        <a class="btn" href="Bandan-Kumar-Q3-2026-Review.pdf" download><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download"/></svg> <span class="label-long">Download</span> PDF</a>
+        <button class="btn" type="button" data-print><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#printer"/></svg> <span class="label-long">Print</span></button>
+        <button class="btn icon-only" type="button" data-theme-toggle aria-label="Switch theme"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#moon"/></svg></button>
+      </div>
+    </div>
+  </header>
+
+  <header class="report-hero">
+    <div class="wrap">
+      <p class="eyebrow">Performance review</p>
+      <h1>Q3 2026 Performance Review</h1>
+      <p class="period">July – September 2026</p>
+      <div class="who"><b>Bandan Kumar</b><span>iOS Developer · DietPlan &amp; Caloric</span></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <!-- At a glance -->
+    <section class="block">
+      <h2>Q3 at a Glance</h2>
+      <p class="sub">A new app from first screen to feature-complete, in one quarter.</p>
+      <div class="grid stats">
+        <div class="card stat"><div class="big">~7</div><h3>weeks of development</h3><p>DietPlan app built end to end</p></div>
+        <div class="card stat"><div class="big">14</div><h3>modules &amp; features</h3><p>Onboarding to AI meal plans</p></div>
+        <div class="card stat"><div class="big">~50 MB</div><h3>smaller app size</h3><p>~140 MB → 89.3 MB with On-Demand Resources</p></div>
+        <div class="card stat"><div class="big">100%</div><h3>QA items resolved</h3><p>Only 23 items logged for the whole app</p></div>
+      </div>
+      <p class="result"><b>Result:</b> DietPlan feature-complete by 8 Sept 2026, with only a 3-day extension.</p>
+    </section>
+
+    <!-- Delivery -->
+    <section class="block">
+      <h2>Steady Delivery, Week on Week</h2>
+      <p class="sub">Overall progress from weekly reports.</p>
+      <div class="card split">
+        <div class="chart" role="img" aria-label="Overall progress by week: 5% on 20 Jul, 10% on 27 Jul, 25% on 3 Aug, 45% on 10 Aug, 60% on 17 Aug, 80% on 24 Aug, 90% on 31 Aug, 100% on 8 Sep">
+          <div class="bar" style="--v:5"><b>5%</b><i></i><span>20 Jul</span></div>
+          <div class="bar" style="--v:10"><b>10%</b><i></i><span>27 Jul</span></div>
+          <div class="bar" style="--v:25"><b>25%</b><i></i><span>3 Aug</span></div>
+          <div class="bar" style="--v:45"><b>45%</b><i></i><span>10 Aug</span></div>
+          <div class="bar" style="--v:60"><b>60%</b><i></i><span>17 Aug</span></div>
+          <div class="bar" style="--v:80"><b>80%</b><i></i><span>24 Aug</span></div>
+          <div class="bar" style="--v:90"><b>90%</b><i></i><span>31 Aug</span></div>
+          <div class="bar done" style="--v:100"><b>100%</b><i></i><span>8 Sep</span></div>
+        </div>
+        <ul class="timeline">
+          <li><div><b>Jul</b><span>Design review, estimates, data research</span></div></li>
+          <li><div><b>Aug</b><span>Onboarding, meals, trackers, reminders, Apple Health</span></div></li>
+          <li><div><b>Late Aug</b><span>New database, AI meal plans, custom recipes</span></div></li>
+          <li class="now"><div><b>Sept</b><span>23 TL review points, 23 QA items, analytics events</span></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- DietPlan -->
+    <section class="block" id="dietplan">
+      <h2>Built the DietPlan App End to End</h2>
+      <p class="sub">Every module developed and integrated by me.</p>
+      <div class="grid features">
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#log-in"/></svg></div><div><h3>Onboarding</h3><p>Validation, Firebase Auth, Firestore, Storage</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#coffee"/></svg></div><div><h3>Meal Plans &amp; Recipes</h3><p>Filters, meal swap, meal follow, carbs tracking</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#activity"/></svg></div><div><h3>Weight &amp; Body Tracking</h3><p>Weight chart, body measurements</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#bell"/></svg></div><div><h3>Reminders &amp; Settings</h3><p>Reminder presets, full settings flow</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#heart"/></svg></div><div><h3>Apple Health</h3><p>Reads health data into the app</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#link"/></svg></div><div><h3>Universal Links</h3><p>Share meals &amp; recipes, App Store fallback</p></div></div>
+      </div>
+      <p class="result"><b>Result:</b> Feature-complete app built end to end, with only the premium screens left before release.</p>
+
+      <h2 style="margin-top:clamp(28px,5vw,48px);font-size:clamp(1.2rem,2.6vw,1.5rem)">DietPlan in Action</h2>
+      <p class="sub">Real screens from the app.</p>
+      <div class="gallery" tabindex="0" aria-label="DietPlan screenshots, scroll sideways">
+        <figure class="shot"><img src="../assets/img/dietplan-onboarding.png" alt="Onboarding screen asking 'What is your gender?'" loading="lazy" width="460" height="995"><figcaption>Onboarding</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/dietplan-home.png" alt="Home screen with a featured diet and today's food" loading="lazy" width="460" height="995"><figcaption>Home</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/dietplan-meals.png" alt="Meal plans list with categories" loading="lazy" width="460" height="995"><figcaption>Meal plans</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/dietplan-ai-plan.png" alt="AI-generated meal plan for the day" loading="lazy" width="460" height="995"><figcaption>AI-generated plan</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/dietplan-meal-swap.png" alt="Meal swap sheet comparing nutritional changes" loading="lazy" width="460" height="995"><figcaption>Meal swap</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/dietplan-weight.png" alt="Weight tracker with a progress chart" loading="lazy" width="460" height="995"><figcaption>Weight tracker</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/dietplan-reminders.png" alt="Reminders screen with quiet hours and presets" loading="lazy" width="460" height="995"><figcaption>Reminders</figcaption></figure>
+        <figure class="shot"><img src="../assets/img/dietplan-shopping.png" alt="Shopping list with checkable items" loading="lazy" width="460" height="995"><figcaption>Shopping list</figcaption></figure>
+      </div>
+    </section>
+
+    <!-- Data -->
+    <section class="block">
+      <h2>Built the Meal &amp; Recipe Data from Scratch</h2>
+      <p class="sub">Taking ownership of the app's core content.</p>
+      <div class="grid compare">
+        <div class="card before">
+          <h3>Starting point</h3>
+          <ul>
+            <li>Source CSV needed significant restructuring to fit the app</li>
+            <li>Duplicate entries and inconsistent fields</li>
+            <li>Scraping 54 lakh+ recipes from an external site was being considered</li>
+          </ul>
+        </div>
+        <div class="card after">
+          <h3>What I built</h3>
+          <ul>
+            <li>Clean, non-redundant dataset built using the EatFirst API and AI generation</li>
+            <li>Researched the API: direct calls instead of scraping</li>
+            <li>Designed the new database and remapped the app's models</li>
+          </ul>
+        </div>
+      </div>
+      <p class="result"><b>Result:</b> Reliable, maintainable data, with no fragile scraper to keep alive.</p>
+    </section>
+
+    <!-- App size -->
+    <section class="block">
+      <h2>Smaller, Faster App Download</h2>
+      <p class="sub">Optimising what users download.</p>
+      <div class="size-grid">
+        <div class="size-card">
+          <div class="big">~50 MB</div>
+          <p>reduction in app size</p>
+          <div class="flow">~140 MB → 89.3 MB</div>
+        </div>
+        <div class="stack">
+          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download-cloud"/></svg></div><div><h3>Apple On-Demand Resources</h3><p>Moved heavy content out of the main app bundle, so it downloads only when needed.</p></div></div>
+          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#database"/></svg></div><div><h3>Split database</h3><p>Broke the large database into smaller databases, so users don't download everything at once.</p></div></div>
+          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#zap"/></svg></div><div><h3>Better first experience</h3><p>A smaller install and faster first launch, especially on slower networks.</p></div></div>
+        </div>
+        <figure class="shot" style="flex:none;width:150px"><img src="../assets/img/dietplan-cuisines.png" alt="Manage Cuisines screen listing downloadable cuisines" loading="lazy" width="460" height="995"></figure>
+      </div>
+      <p class="result"><b>Result:</b> Lighter app for every user, with content delivered on demand.</p>
+    </section>
+
+    <!-- AI + App Attest -->
+    <section class="block">
+      <h2>AI Features, Secured with App Attest</h2>
+      <p class="sub">Adopting a newer Apple security technology.</p>
+      <div class="size-grid" style="grid-template-columns:minmax(0,1fr) auto">
+        <div class="stack">
+          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#zap"/></svg></div><div><h3>AI meal plan generation</h3><p>Personalised meal plans generated with Gemini.</p></div></div>
+          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#file-text"/></svg></div><div><h3>Custom recipe adding</h3><p>Users can add their own recipes to plans.</p></div></div>
+          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#cloud"/></svg></div><div><h3>Project-level Cloud Function</h3><p>Moved AI calls from the shared function to a dedicated DietPlan function.</p></div></div>
+          <div class="feature"><div class="ico-sm hot"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#shield"/></svg></div><div><h3>Apple App Attest</h3><p>Only genuine app installs can call the AI backend. A newer security layer not yet widely used in our projects.</p></div></div>
+        </div>
+        <figure class="shot" style="flex:none;width:170px"><img src="../assets/img/dietplan-ai-planner.png" alt="AI Meal Planner screen asking to pick favourite cuisines" loading="lazy" width="460" height="995"></figure>
+      </div>
+      <p class="result"><b>Result:</b> AI features protected against misuse and unauthorised API calls.</p>
+    </section>
+
+    <!-- AI backend -->
+    <section class="block">
+      <h2>AI Backend: Secure &amp; Cost-Controlled</h2>
+      <p class="sub">Every AI request passes through safeguards I built into the Cloud Function.</p>
+      <div class="grid pipeline">
+        <div class="card step"><div class="ico-sm hot"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#shield"/></svg></div><h3>App Attest</h3><p>Only genuine app installs can call the function</p></div>
+        <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#list-x"/></svg></div><h3>Model allow-list</h3><p>Requests for any AI model not already defined are rejected</p></div>
+        <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sliders"/></svg></div><h3>Configurable model</h3><p>Gemini or ChatGPT, configured from Firebase</p></div>
+        <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#pie"/></svg></div><h3>Token limit</h3><p>Requests over the defined token limit are dropped</p></div>
+        <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#trending-up"/></svg></div><h3>Usage &amp; cost logs</h3><p>Daily AI usage and cost logged per user</p></div>
+      </div>
+      <p class="tamper"><b>Built-in tamper check:</b> if the logged daily cost doesn't match the actual AI bill, it signals the backend has been compromised.</p>
+      <p class="result"><b>Result:</b> AI usage is protected from misuse, limited in cost, and monitored daily.</p>
+    </section>
+
+    <!-- Caloric -->
+    <section class="block" id="caloric">
+      <h2>Also Delivered: Caloric App Release</h2>
+      <p class="sub">A second app: key issues fixed so it was ready for release.</p>
+      <div class="grid three">
+        <div class="card">
+          <h3><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#award"/></svg></span> Premium &amp; Offers</h3>
+          <ul><li>Premium screen UI fixes</li><li>Screen not dismissing</li><li>Restore &amp; auto-restore purchases</li><li>Offer screen showing after logout / in review build</li></ul>
+        </div>
+        <div class="card">
+          <h3><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#cloud"/></svg></span> Backend</h3>
+          <ul><li>Cloud Function was created but not wired in correctly</li><li>Connected the app to it properly</li></ul>
+        </div>
+        <div class="card">
+          <h3><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#lock"/></svg></span> Authentication</h3>
+          <ul><li>Sign-out asked users to log in again, then deleted their data</li><li>Fixed so sign-out works cleanly and safely</li></ul>
+        </div>
+      </div>
+      <p class="result"><b>Result:</b> Caloric issues fixed across subscriptions, backend and auth, and the app was released.</p>
+    </section>
+
+    <!-- Quality -->
+    <section class="block">
+      <h2>Quality &amp; Ownership</h2>
+      <p class="sub">Going beyond the assigned task list.</p>
+      <div class="grid features" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))">
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg></div><div><h3>Proactive self-QA</h3><p>While QA cycles were pending, I tested the app myself and fixed anything that didn't feel right.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg></div><div><h3>23 / 23 QA items closed</h3><p>Only 23 QA items for the entire app. All resolved, and 6 were suggestions rather than bugs.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#check-square"/></svg></div><div><h3>23 / 23 TL review points done</h3><p>UI polish across Onboarding, Home and Meals: smooth number transitions, themed controls, infinite recipe carousel.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#trending-up"/></svg></div><div><h3>Analytics ready</h3><p>Events added across the app so the product team can measure user behaviour from launch.</p></div></div>
+      </div>
+    </section>
+
+    <!-- Growth -->
+    <section class="block">
+      <h2>Growth &amp; Team Contribution</h2>
+      <p class="sub">&nbsp;</p>
+      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));align-items:start">
+        <div class="grid" style="gap:14px">
+          <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#globe"/></svg></div><div><h3>Localization helper</h3><p>Built an internal tool to automate app string translation. It supported several developers in their workflow at the time.</p></div></div>
+          <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#calendar"/></svg></div><div><h3>Planning &amp; estimation</h3><p>Created a module-wise estimated timeline before development and validated the data structure with a senior developer.</p></div></div>
+        </div>
+        <div class="grid" style="gap:18px">
+          <div>
+            <h3 style="margin-bottom:12px">New technologies applied this quarter</h3>
+            <div class="pills"><span class="pill">Apple App Attest</span><span class="pill">On-Demand Resources</span><span class="pill">Gemini &amp; ChatGPT</span><span class="pill">Cloud Functions</span><span class="pill">Universal Links</span><span class="pill">HealthKit</span></div>
+          </div>
+          <div class="callout"><h3>Area I'm working on</h3><p>Communicating earlier and more proactively with design and product teams, so dependencies and open questions are raised sooner.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Challenges -->
+    <section class="block">
+      <h2>Key Challenges &amp; How I Handled Them</h2>
+      <p class="sub">&nbsp;</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>Challenge</th><th>What I did</th><th>Outcome</th></tr></thead>
+          <tbody>
+            <tr><td data-label="Challenge">Source data didn't fit the app's structure</td><td data-label="What I did">Rebuilt the dataset using EatFirst API + AI generation</td><td data-label="Outcome">Clean, reliable database</td></tr>
+            <tr><td data-label="Challenge">Database redesign late in the build</td><td data-label="What I did">Rebuilt the DB and remapped models and functions</td><td data-label="Outcome">Only a 3-day extension on the timeline</td></tr>
+            <tr><td data-label="Challenge">Design assets &amp; content arrived late</td><td data-label="What I did">Prioritised modules without dependencies first</td><td data-label="Outcome">Development never stalled</td></tr>
+            <tr><td data-label="Challenge">Securing AI calls</td><td data-label="What I did">Dedicated Cloud Function with Apple App Attest</td><td data-label="Outcome">Backend protected from misuse</td></tr>
+            <tr><td data-label="Challenge">QA cycles running behind</td><td data-label="What I did">Self-tested and fixed issues proactively</td><td data-label="Outcome">Only 23 bugs found, none major</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Q4 -->
+    <section class="block">
+      <div class="ahead">
+        <h2>Looking Ahead to Q4</h2>
+        <ul>
+          <li><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#award"/></svg></span><span>Integrate the new premium screens once design is final</span></li>
+          <li><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#send"/></svg></span><span>Launch DietPlan on the App Store</span></li>
+          <li><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#smartphone"/></svg></span><span>Adapt to the new Product Engineer role, managing both iOS and Android apps to reduce cross-team dependency</span></li>
+          <li><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#message"/></svg></span><span>Keep improving proactive cross-team communication</span></li>
+        </ul>
+        <p class="thanks">Thank you</p>
+      </div>
+    </section>
+
+    <p class="print-only print-foot">Bandan Kumar · Q3 2026 Performance Review</p>
+  </main>
+
+  <footer class="footer no-print">
+    <div class="wrap">© 2026 Bandan Kumar</div>
+  </footer>
+</body>
+</html>
