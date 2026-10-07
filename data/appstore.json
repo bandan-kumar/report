@@ -1,0 +1,110 @@
+{
+  "fetched": "2026-10-07",
+  "country": "us",
+  "apps": {
+    "dietplan": {
+      "id": 719586528,
+      "name": "Diet Plan: Daily Meal Planner",
+      "url": "https://apps.apple.com/us/app/diet-plan-daily-meal-planner/id719586528",
+      "rating": 4.7,
+      "ratingCount": 1925,
+      "version": "5.4",
+      "updated": "2026-08-19",
+      "firstReleased": "2013-10-25",
+      "sizeMB": 180.1,
+      "minOS": "15.0",
+      "price": "Free",
+      "category": "Health & Fitness",
+      "ageRating": "12+",
+      "languages": [
+        "EN",
+        "FR",
+        "DE",
+        "IT",
+        "ES"
+      ]
+    },
+    "upkee": {
+      "id": 6757587275,
+      "name": "Upkee: House Cleaning Schedule",
+      "url": "https://apps.apple.com/us/app/upkee-house-cleaning-schedule/id6757587275",
+      "rating": 5,
+      "ratingCount": 3,
+      "version": "1.0.2",
+      "updated": "2026-09-21",
+      "firstReleased": "2026-08-05",
+      "sizeMB": 106.3,
+      "minOS": "18.0",
+      "price": "Free",
+      "category": "Productivity",
+      "ageRating": "4+",
+      "languages": [
+        "NL",
+        "EN",
+        "FR",
+        "DE",
+        "IT",
+        "JA",
+        "ES",
+        "TR"
+      ]
+    },
+    "caloric": {
+      "id": 6499521146,
+      "name": "Caloric: AI Calorie Counter",
+      "url": "https://apps.apple.com/us/app/caloric-ai-calorie-counter/id6499521146",
+      "rating": 4.51,
+      "ratingCount": 176,
+      "version": "1.7.1",
+      "updated": "2026-09-25",
+      "firstReleased": "2024-10-16",
+      "sizeMB": 201.5,
+      "minOS": "16.0",
+      "price": "Free",
+      "category": "Health & Fitness",
+      "ageRating": "4+",
+      "languages": [
+        "EN"
+      ]
+    },
+    "locateus": {
+      "id": 6739027332,
+      "name": "Find My Location : LocateUs",
+      "url": "https://apps.apple.com/us/app/find-my-location-locateus/id6739027332",
+      "rating": 5,
+      "ratingCount": 4,
+      "version": "1.03",
+      "updated": "2026-08-08",
+      "firstReleased": "2025-09-12",
+      "sizeMB": 75.3,
+      "minOS": "17.0",
+      "price": "Free",
+      "category": "Lifestyle",
+      "ageRating": "4+",
+      "languages": [
+        "EN"
+      ]
+    },
+    "keto": {
+      "id": 1475764462,
+      "name": "Keto Diet App: Keto Manager",
+      "url": "https://apps.apple.com/us/app/keto-diet-app-keto-manager/id1475764462",
+      "rating": 4.67,
+      "ratingCount": 9400,
+      "version": "5.1.6",
+      "updated": "2026-08-18",
+      "firstReleased": "2019-11-08",
+      "sizeMB": 270.9,
+      "minOS": "13.0",
+      "price": "Free",
+      "category": "Health & Fitness",
+      "ageRating": "12+",
+      "languages": [
+        "EN",
+        "FR",
+        "DE",
+        "ES"
+      ]
+    }
+  }
+}
