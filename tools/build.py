@@ -149,12 +149,6 @@ def role_chip(a):
     return chip("role", f"{'Primary' if a['role'] == 'primary' else 'Backup'} · {a['tier']}")
 
 
-ROLE_NOTE = {
-    ("primary", "Autonomous"): "I own the Product and ASO numbers and decide within the guardrails. Approval is needed for onboarding changes, price and paywall model changes, anything with AI or API cost, and launches.",
-    ("primary", "Guided"): "The Product and ASO specialist teams set the targets and approve the plan at the start of the quarter. I run the work and own the result.",
-    ("backup", "Autonomous"): "Backup only: I step in when the primary is unavailable.",
-    ("backup", "Guided"): "Backup only: I step in when the primary is unavailable.",
-}
 
 def app_card(a):
     metrics = ""
@@ -207,7 +201,7 @@ def build_index():
         </div>
 
         <div class="group">
-          <div class="group-head"><h3>Primary</h3><p>Apps I own end to end, on every platform they run on.</p></div>
+          <div class="group-head"><h3>Primary</h3><p>Apps I own and develop.</p></div>
           <div class="grid apps">
 {prim}          </div>
         </div>
@@ -369,28 +363,27 @@ Q4 = {
         headline="Launch v2.0 well, and own both the store page and the first-run experience.",
         why="The live listing shows {rt}★ from {rc} ratings and {nl} store languages. v2.0 is feature-complete with 9 languages and a new UI, so the store page no longer shows what the app has become.",
         actions=[
-            "Get the v2.0 launch approved, including the AI meal plans, which carry API cost.",
-            "Integrate the premium screens once design is final. Any change to the paywall model goes for approval first.",
-            "Refresh the store page for launch: screenshots from the v2.0 UI, and localized metadata for Hindi, Japanese, Portuguese and Russian. Store creative and localization work do not need approval.",
-            "Read the onboarding funnel from day one using the Q3 analytics events, and bring any onboarding change for approval.",
+            "Launch v2.0 on the App Store, including the AI meal plans.",
+            "Integrate the premium screens once design is final.",
+            "Refresh the store page for launch: screenshots from the v2.0 UI, and localized metadata for Hindi, Japanese, Portuguese and Russian.",
+            "Read the onboarding funnel from day one using the Q3 analytics events, and fix the biggest drop-off.",
         ],
-        test="Screenshot A/B test on the store page. Primary metric: conversion rate. It runs for at least two full weeks.",
+        test="Screenshot A/B test on the store page. Primary metric: conversion rate.",
         measure=["Onboarding completion", "Conversion rate", "Paywall conversion", "Rating after launch"],
-        months=["Approvals and premium screens, ASO baseline", "Launch v2.0 with the refreshed store page", "Screenshot test result, first onboarding and paywall read"],
+        months=["Premium screens, ASO baseline", "Launch v2.0 with the refreshed store page", "Screenshot test result, first onboarding and paywall read"],
     ),
     "upkee": dict(
         headline="Turn a brand-new app into one with real ratings and a measured funnel.",
         why="Released in Aug 2026: {rt}★ but only {rc} ratings, with {nl} store languages already. The first job is volume and visibility, not new features.",
         actions=[
-            "Get the Q4 plan and targets approved by the Product and ASO specialist teams at the start of the quarter.",
-            "Check that onboarding and first-task events are in place, read the funnel, and bring fixes for the biggest drop-off for approval.",
-            "Ask for a rating after a success moment (a completed cleaning task), and only from happy users. Ratings work needs no approval.",
-            "Have the ASO specialist team review the keyword set before it goes live.",
-            "Finish the Android version, so the app runs on both platforms, and bring the launch for approval.",
+            "Check that onboarding and first-task events are in place, read the funnel, and fix the biggest drop-off.",
+            "Ask for a rating after a success moment (a completed cleaning task), and only from happy users.",
+            "Review the keyword set and screenshots against what people search for.",
+            "Finish the Android version, so the app runs on both platforms.",
         ],
-        test="Screenshot A/B test. The ASO specialist team reviews the first variant; I run the test and own the result. Primary metric: conversion rate.",
+        test="Screenshot A/B test on the store page. Primary metric: conversion rate.",
         measure=["Onboarding completion", "Conversion rate", "Number of ratings", "Paywall conversion"],
-        months=["Plan approved, funnel events check, ASO baseline", "Fix the top drop-off, rating prompt and screenshot test live", "Review rating and conversion trend, test result"],
+        months=["Funnel events check, ASO baseline, Android build", "Fix the top drop-off, rating prompt and screenshot test live", "Review rating and conversion trend, test result"],
     ),
     "caloric": dict(
         headline="Backup: keep an eye on stability after the Q3 fixes.",
@@ -438,14 +431,6 @@ FUNNEL = [
      "Public App Store listing", "Rating prompt timing, fixing repeat issues"),
 ]
 
-TEST_RULES = [
-    "Write a brief first: the hypothesis, one primary metric, the guardrails, sample size and duration.",
-    "Test one variable at a time, and run one test per app at a time.",
-    "Lock the primary metric before looking at any data.",
-    "Run the planned sample and at least two full weeks, so weekdays and weekends are both covered.",
-    "Judge on revenue, not just conversion. Refund rate, cancellation rate, rating and crash-free rate decide close calls.",
-    "Roll out or roll back within a week, and log every test, wins and losses alike.",
-]
 
 
 def build_q4():
@@ -487,7 +472,6 @@ def build_q4():
         </div>
 """
     s += """      </div>
-      <p class="note">Guardrails on every release and test: crash-free rate, rating and refund rate.</p>
     </section>
 
     <section class="block">
@@ -520,7 +504,6 @@ def build_q4():
             <div><h3>{a['name']}</h3><div class="chips">{role_chip(a)}{chip(*a['status'])}</div></div>
           </div>
           <p class="plan-focus">{html.escape(q['headline'])}</p>
-          <p class="role-note">{html.escape(ROLE_NOTE[(a['role'], a['tier'])])}</p>
           <p class="why">{html.escape(why)}</p>
           <h4>{'If I step in' if backup else 'First actions'}</h4>
           <ul class="bullets">
@@ -552,16 +535,6 @@ def build_q4():
     </section>
 
     <section class="block">
-      <h2>How I run tests</h2>
-      <p class="sub">The same rules for every test on DietPlan and Upkee.</p>
-      <div class="grid rules">
-"""
-    for i, r in enumerate(TEST_RULES, 1):
-        s += f'        <div class="card rule"><span class="num">{i}</span><p>{html.escape(r)}</p></div>\n'
-    s += """      </div>
-    </section>
-
-    <section class="block">
       <h2>Operating rhythm</h2>
       <p class="sub">A small routine that fits alongside development.</p>
       <div class="grid three">
@@ -572,7 +545,7 @@ def build_q4():
         <div class="card"><h3>Monthly</h3><ul>
           <li>Onboarding and paywall funnel for DietPlan and Upkee</li>
           <li>Rating trend and crash-free rate for all five apps</li>
-          <li>Test log updated, wins and losses</li></ul></div>
+          <li>What each change did to the numbers</li></ul></div>
         <div class="card"><h3>End of quarter</h3><ul>
           <li>ASO and rating movement summary</li>
           <li>What shipped and what it changed</li>
@@ -584,9 +557,8 @@ def build_q4():
       <div class="ahead">
         <h2>What I need</h2>
         <ul>
-          <li><span class="ico-sm">""" + icon(p, "send") + """</span><span>Approval to launch DietPlan v2.0, including the AI features that carry API cost</span></li>
           <li><span class="ico-sm">""" + icon(p, "award") + """</span><span>Final design for the DietPlan premium screens</span></li>
-          <li><span class="ico-sm">""" + icon(p, "check-square") + """</span><span>Product and ASO specialist team approval of the Upkee plan and targets</span></li>
+          <li><span class="ico-sm">""" + icon(p, "calendar") + """</span><span>A target launch date for DietPlan v2.0</span></li>
           <li><span class="ico-sm">""" + icon(p, "search") + """</span><span>App Store Connect analytics access for DietPlan and Upkee</span></li>
         </ul>
       </div>
