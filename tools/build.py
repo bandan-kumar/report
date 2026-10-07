@@ -95,15 +95,15 @@ HEAD = """<!doctype html>
   <meta name="description" content="{desc}">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="{fav}">
-  <link rel="stylesheet" href="{p}assets/style.css">
-  <script src="{p}assets/theme.js"></script>
+  <link rel="stylesheet" href="{p}assets/style.css?v=3">
+  <script src="{p}assets/theme.js?v=3"></script>
 </head>
 <body>
 """
 
 def topbar(p, home=False):
     left = (f'<a class="brand" href="./"><span class="mark">BK</span> Bandan Kumar</a>' if home else
-            f'<a class="btn" href="{p}">{icon(p, "arrow-left")} <span>Apps</span></a>')
+            f'<a class="btn" href="{p}" data-back>{icon(p, "arrow-left")} <span>Apps</span></a>')
     return f"""  <header class="topbar">
     <div class="wrap">
       {left}
@@ -402,11 +402,17 @@ Q4 = {
     ),
 }
 
-KPIS = [
-    ("search", "ASO", "Impressions, product page views and downloads, to see where people drop off before installing.", "App Store Connect, App Analytics"),
-    ("trending-up", "Conversion rate", "Downloads divided by product page views. Moves with screenshots, title and ratings.", "App Store Connect, App Analytics"),
-    ("check-square", "Onboarding completion", "Users who finish onboarding divided by users who start it.", "Firebase Analytics events"),
-    ("award", "Paywall conversion", "Subscribers divided by paywall views.", "Subscription analytics"),
+FUNNEL = [
+    ("search", "Discover", "Impressions and product page views",
+     "App Store Connect, App Analytics", "Title, subtitle, keywords"),
+    ("download", "Install", "Conversion rate: downloads per page view",
+     "App Store Connect, App Analytics", "Screenshots, ratings, localization"),
+    ("check-square", "Activate", "Onboarding completion",
+     "Firebase Analytics events", "Fewer steps, value shown early"),
+    ("award", "Pay", "Paywall conversion",
+     "Subscription analytics", "Paywall design, placement, pricing"),
+    ("thumbs-up", "Recommend", "Rating and number of ratings",
+     "Public App Store listing", "Rating prompt timing, fixing repeat issues"),
 ]
 
 
@@ -416,7 +422,7 @@ def build_q4():
                     desc="Q4 2026 planning: focus, first actions and the numbers to track for each of the five apps.")
     s += f"""  <header class="topbar">
     <div class="wrap">
-      <a class="btn" href="{p}">{icon(p, "arrow-left")} <span>Apps</span></a>
+      <a class="btn" href="{p}" data-back>{icon(p, "arrow-left")} <span>Apps</span></a>
       <div class="actions">
         <button class="btn" type="button" data-print>{icon(p, "printer")} <span class="label-long">Print</span></button>
         <button class="btn icon-only" type="button" data-theme-toggle aria-label="Switch theme">{icon(p, "moon")}</button>
@@ -435,15 +441,20 @@ def build_q4():
 
   <main class="wrap">
     <section class="block">
-      <h2>What I'll track</h2>
-      <p class="sub">The same few numbers for every app, so progress is easy to compare.</p>
-      <div class="grid kpis">
+      <h2>The funnel I own</h2>
+      <p class="sub">From store search to a paying, happy user. Each stage has one number to watch and something I can change.</p>
+      <div class="grid flow">
 """
-    for ico, title, body, src in KPIS:
-        s += f"""        <div class="card feature"><div class="ico">{icon(p, ico)}</div><div><h3>{title}</h3><p>{body}</p><p class="src">{src}</p></div></div>
+    for i, (ico, stage, metric, src, lever) in enumerate(FUNNEL, 1):
+        s += f"""        <div class="card step">
+          <div class="ico-sm">{icon(p, ico)}</div>
+          <p class="stage">{i}. {stage}</p>
+          <h3>{metric}</h3>
+          <p class="src">{src}</p>
+          <p class="lever"><b>I can change:</b> {lever}</p>
+        </div>
 """
     s += """      </div>
-      <p class="tamper"><b>Targets:</b> October is for baselines. The numbers above are measured first for each app, and targets are agreed with the team after that rather than guessed now.</p>
     </section>
 
     <section class="block">

@@ -34,6 +34,17 @@
       sync();
     }
     if (e.target.closest('[data-print]')) window.print();
+
+    // Back button: return to the previous page (and its scroll position) when it is on this site.
+    var back = e.target.closest('[data-back]');
+    if (back && !e.metaKey && !e.ctrlKey && !e.shiftKey && history.length > 1) {
+      try {
+        if (document.referrer && new URL(document.referrer).origin === location.origin) {
+          e.preventDefault();
+          history.back();
+        }
+      } catch (err) { /* fall back to the normal link */ }
+    }
   });
 
   if (window.matchMedia) {

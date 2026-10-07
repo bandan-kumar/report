@@ -7,13 +7,13 @@
   <meta name="description" content="Q4 2026 planning: focus, first actions and the numbers to track for each of the five apps.">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231e5fb0'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3EBK%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="../assets/style.css">
-  <script src="../assets/theme.js"></script>
+  <link rel="stylesheet" href="../assets/style.css?v=3">
+  <script src="../assets/theme.js?v=3"></script>
 </head>
 <body>
   <header class="topbar">
     <div class="wrap">
-      <a class="btn" href="../"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-left"/></svg> <span>Apps</span></a>
+      <a class="btn" href="../" data-back><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-left"/></svg> <span>Apps</span></a>
       <div class="actions">
         <button class="btn" type="button" data-print><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#printer"/></svg> <span class="label-long">Print</span></button>
         <button class="btn icon-only" type="button" data-theme-toggle aria-label="Switch theme"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#moon"/></svg></button>
@@ -32,15 +32,45 @@
 
   <main class="wrap">
     <section class="block">
-      <h2>What I'll track</h2>
-      <p class="sub">The same few numbers for every app, so progress is easy to compare.</p>
-      <div class="grid kpis">
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg></div><div><h3>ASO</h3><p>Impressions, product page views and downloads, to see where people drop off before installing.</p><p class="src">App Store Connect, App Analytics</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#trending-up"/></svg></div><div><h3>Conversion rate</h3><p>Downloads divided by product page views. Moves with screenshots, title and ratings.</p><p class="src">App Store Connect, App Analytics</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#check-square"/></svg></div><div><h3>Onboarding completion</h3><p>Users who finish onboarding divided by users who start it.</p><p class="src">Firebase Analytics events</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#award"/></svg></div><div><h3>Paywall conversion</h3><p>Subscribers divided by paywall views.</p><p class="src">Subscription analytics</p></div></div>
+      <h2>The funnel I own</h2>
+      <p class="sub">From store search to a paying, happy user. Each stage has one number to watch and something I can change.</p>
+      <div class="grid flow">
+        <div class="card step">
+          <div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg></div>
+          <p class="stage">1. Discover</p>
+          <h3>Impressions and product page views</h3>
+          <p class="src">App Store Connect, App Analytics</p>
+          <p class="lever"><b>I can change:</b> Title, subtitle, keywords</p>
+        </div>
+        <div class="card step">
+          <div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download"/></svg></div>
+          <p class="stage">2. Install</p>
+          <h3>Conversion rate: downloads per page view</h3>
+          <p class="src">App Store Connect, App Analytics</p>
+          <p class="lever"><b>I can change:</b> Screenshots, ratings, localization</p>
+        </div>
+        <div class="card step">
+          <div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#check-square"/></svg></div>
+          <p class="stage">3. Activate</p>
+          <h3>Onboarding completion</h3>
+          <p class="src">Firebase Analytics events</p>
+          <p class="lever"><b>I can change:</b> Fewer steps, value shown early</p>
+        </div>
+        <div class="card step">
+          <div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#award"/></svg></div>
+          <p class="stage">4. Pay</p>
+          <h3>Paywall conversion</h3>
+          <p class="src">Subscription analytics</p>
+          <p class="lever"><b>I can change:</b> Paywall design, placement, pricing</p>
+        </div>
+        <div class="card step">
+          <div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg></div>
+          <p class="stage">5. Recommend</p>
+          <h3>Rating and number of ratings</h3>
+          <p class="src">Public App Store listing</p>
+          <p class="lever"><b>I can change:</b> Rating prompt timing, fixing repeat issues</p>
+        </div>
       </div>
-      <p class="tamper"><b>Targets:</b> October is for baselines. The numbers above are measured first for each app, and targets are agreed with the team after that rather than guessed now.</p>
     </section>
 
     <section class="block">
