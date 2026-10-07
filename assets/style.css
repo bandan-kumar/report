@@ -458,3 +458,12 @@ tbody td:first-child { font-weight: 700; }
 @media (max-width: 1000px) { .flow { grid-template-columns: repeat(2, 1fr); } .flow .step::after { display: none; } .flow .step:last-child { grid-column: 1 / -1; } }
 @media (max-width: 560px) { .flow { grid-template-columns: 1fr; } }
 @media print { .flow { grid-template-columns: repeat(5, 1fr); } .flow .step::after { display: none; } .flow .step:last-child { grid-column: auto; } .flow .step h3 { font-size: .85rem; } }
+
+.role-note { margin-top: 10px; padding: 10px 12px; background: var(--surface-2); border-radius: 10px; font-size: .9rem; color: var(--muted); }
+.rules { grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; }
+.rule { display: grid; grid-template-columns: 30px 1fr; gap: 12px; align-items: start; padding: 14px 16px; }
+.rule .num { width: 30px; height: 30px; border-radius: 50%; background: var(--brand-soft); color: var(--brand); font-weight: 800; display: grid; place-items: center; font-size: .9rem; }
+.rule p { color: var(--text); font-size: .95rem; }
+@media print { .rules { grid-template-columns: repeat(2, 1fr); } }
+
+.stores { display: flex; gap: 10px; flex-wrap: wrap; align-items: center; }

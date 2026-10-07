@@ -24,7 +24,7 @@ def icon(path, name):
     return f'<svg class="icon" aria-hidden="true"><use href="{path}assets/icons.svg#{name}"/></svg>'
 
 APPS = [
-    dict(slug="dietplan", langs=['English', 'German', 'Spanish', 'French', 'Hindi', 'Italian', 'Japanese', 'Portuguese (Brazil)', 'Russian'], strings='956', name="DietPlan", letter="D", cls="diet", role="primary",
+    dict(slug="dietplan", langs=['English', 'German', 'Spanish', 'French', 'Hindi', 'Italian', 'Japanese', 'Portuguese (Brazil)', 'Russian'], strings='956', name="DietPlan", letter="D", cls="diet", role="primary", tier="Autonomous", play="https://play.google.com/store/apps/details?id=com.pixsterstudio.dietplans",
          status=("live", "Live"),
          platform="iOS",
          summary="AI-powered meal plans, recipes, weight tracking and reminders. An earlier version is already live; the rebuilt version was feature-complete on 8 Sep 2026 and is heading for its App Store release.",
@@ -39,15 +39,15 @@ APPS = [
             "Closed all 23 QA items and all 23 team-lead review points.",
          ],
          next=["Integrate the new premium screens once design is final.", "Launch the new version on the App Store."]),
-    dict(slug="upkee", langs=['English', 'German', 'Spanish', 'French', 'Italian', 'Japanese', 'Dutch', 'Turkish'], strings='2,226', name="Upkee", letter="U", cls="upk", role="primary",
+    dict(slug="upkee", langs=['English', 'German', 'Spanish', 'French', 'Italian', 'Japanese', 'Dutch', 'Turkish'], strings='2,226', name="Upkee", letter="U", cls="upk", role="primary", tier="Guided", play="", android="In development",
          status=("live", "Live"),
          platform="iOS",
          summary="",
          metrics=[], tags=[], reviews=[], q3=[], next=[]),
-    dict(slug="caloric", langs=['English'], strings='', name="Caloric", letter="C", cls="cal", role="secondary",
+    dict(slug="caloric", langs=['English'], strings='', name="Caloric", letter="C", cls="cal", role="backup", tier="Autonomous", play="https://play.google.com/store/apps/details?id=com.pixsterstudio.caloric",
          status=("live", "Live"),
          platform="iOS",
-         summary="Secondary developer. Released in Q3 after key fixes across subscriptions and offers, the backend Cloud Function, and a sign-out flow that used to delete user data.",
+         summary="Released in Q3 after key fixes across subscriptions and offers, the backend Cloud Function, and a sign-out flow that used to delete user data.",
          metrics=[("3", "areas fixed before release"), ("Q3", "quarter of release"), ("Fixed", "sign-out data loss")],
          tags=["Subscriptions", "Cloud Functions", "Auth"],
          reviews=[("q3-2026/#caloric", "Q3 2026", "Premium and offers, backend wiring and sign-out fixes that got the app released.")],
@@ -58,12 +58,12 @@ APPS = [
             "Fixed sign-out, which asked users to log in again and then deleted their data.",
          ],
          next=[]),
-    dict(slug="locateus", langs=['English'], strings='', name="LocateUs", letter="L", cls="loc", role="secondary",
+    dict(slug="locateus", langs=['English'], strings='', name="LocateUs", letter="L", cls="loc", role="backup", tier="Guided", play="https://play.google.com/store/apps/details?id=com.pixsterstudio.locationtracker",
          status=("live", "Live"),
          platform="iOS",
          summary="",
          metrics=[], tags=[], reviews=[], q3=[], next=[]),
-    dict(slug="keto", langs=[], strings='', name="Keto", letter="K", cls="keto", role="secondary",
+    dict(slug="keto", langs=[], strings='', name="Keto", letter="K", cls="keto", role="backup", tier="Guided", play="https://play.google.com/store/apps/details?id=com.diet.pixsterstudio.ketodietican",
          status=("live", "Live"),
          platform="iOS",
          summary="",
@@ -73,11 +73,11 @@ APPS = [
 for _a in APPS:
     _st = STORE_APPS.get(_a["slug"])
     _a["store"] = _st
+    _a["platform"] = "iOS · Android" if _a.get("play") else "iOS"
     if _st:
         if not _a["summary"]:
-            role = "Primary developer." if _a["role"] == "primary" else "Secondary developer."
             _a["summary"] = (f"{_st['name']}: a {_st['category']} app on the App Store since "
-                             f"{fmt_date(_st['firstReleased'], False)}. {role}")
+                             f"{fmt_date(_st['firstReleased'], False)}.")
         _a["card_metrics"] = [
             (f"{_st['rating']:.1f} ★", f"{fmt_int(_st['ratingCount'])} ratings"),
             (f"v{_st['version']}", "on the App Store"),
@@ -121,6 +121,20 @@ def icon_tile(a, p, extra):
         return f'<div class="app-icon has-img{extra}" aria-hidden="true"><img src="{p}assets/apps/{a["slug"]}.png" alt="" width="256" height="256"></div>'
     return f'<div class="app-icon {a["cls"]}{extra}" aria-hidden="true">{a["letter"]}</div>'
 
+def play_button(a, p):
+    if a.get("play"):
+        return f' <a class="btn" href="{a["play"]}" rel="noopener">View on Google Play {icon(p, "arrow-right")}</a>'
+    if a.get("android"):
+        return f' <span class="chip pre plain">Android {a["android"].lower()}</span>'
+    return ""
+
+
+def android_line(a):
+    if a.get("android"):
+        return f'<div class="langline">{icon("", "smartphone")} Android: {a["android"].lower()}</div>'
+    return ""
+
+
 def langline(a):
     n = len(a["store"]["languages"]) if a.get("store") else len(a["langs"])
     if not n:
@@ -132,7 +146,15 @@ def chip(kind, text):
     return f'<span class="chip {kind}">{html.escape(text)}</span>'
 
 def role_chip(a):
-    return chip("role", "Primary developer" if a["role"] == "primary" else "Secondary developer")
+    return chip("role", f"{'Primary' if a['role'] == 'primary' else 'Backup'} · {a['tier']}")
+
+
+ROLE_NOTE = {
+    ("primary", "Autonomous"): "I own the Product and ASO numbers and decide within the guardrails. Approval is needed for onboarding changes, price and paywall model changes, anything with AI or API cost, and launches.",
+    ("primary", "Guided"): "The Product and ASO specialist teams set the targets and approve the plan at the start of the quarter. I run the work and own the result.",
+    ("backup", "Autonomous"): "Backup only: I step in when the primary is unavailable.",
+    ("backup", "Guided"): "Backup only: I step in when the primary is unavailable.",
+}
 
 def app_card(a):
     metrics = ""
@@ -156,13 +178,14 @@ def app_card(a):
             {metrics}
             {tags}
             {langline(a)}
+            {android_line(a)}
             <span class="go">View review {icon('', 'arrow-right')}</span>
           </article>
 """
 
 def build_index():
     prim = "\n".join(app_card(a) for a in APPS if a["role"] == "primary")
-    sec = "\n".join(app_card(a) for a in APPS if a["role"] == "secondary")
+    sec = "\n".join(app_card(a) for a in APPS if a["role"] == "backup")
     s = HEAD.format(title="Bandan Kumar · Apps &amp; Reviews", p="", fav=FAVICON,
                     desc="The apps Bandan Kumar builds and supports, with a review page for each and the quarterly reports.")
     s += topbar("", home=True)
@@ -172,7 +195,7 @@ def build_index():
       <div class="wrap">
         <p class="eyebrow">Product Engineer</p>
         <h1>Apps I build, ship<br>and review.</h1>
-        <p class="lead">Five apps, each with its own review: where it stands today, what changed, and what comes next.</p>
+        <p class="lead">Two apps I own end to end and three I back up. Each has its own review: where it stands today, what changed, and what comes next.</p>
       </div>
     </section>
 
@@ -184,13 +207,13 @@ def build_index():
         </div>
 
         <div class="group">
-          <div class="group-head"><h3>Primary</h3><p>Apps I own and develop.</p></div>
+          <div class="group-head"><h3>Primary</h3><p>Apps I own end to end, on every platform they run on.</p></div>
           <div class="grid apps">
 {prim}          </div>
         </div>
 
         <div class="group">
-          <div class="group-head"><h3>Secondary</h3><p>Apps I cover when the primary developer is unavailable and something urgent needs doing.</p></div>
+          <div class="group-head"><h3>Backup</h3><p>Apps I cover when the primary is unavailable.</p></div>
           <div class="grid apps">
 {sec}          </div>
         </div>
@@ -280,7 +303,7 @@ def build_app(a):
               '        <div class="grid snapshot">\n'
               + "".join(f'          <div class="card snap has"><b>{html.escape(b)}</b><span>{html.escape(l)}</span></div>\n' for b, l in boxes)
               + '        </div>\n'
-              f'        <p class="note"><a class="btn" href="{st["url"]}" rel="noopener">View on the App Store {icon(p, "arrow-right")}</a></p>\n'
+              f'        <p class="note stores"><a class="btn" href="{st["url"]}" rel="noopener">View on the App Store {icon(p, "arrow-right")}</a>{play_button(a, p)}</p>\n'
               '        <p class="note">Downloads, impressions and conversion are not public, so they are not shown here.</p>\n'
               '      </section>\n')
     if a["metrics"]:
@@ -343,62 +366,62 @@ def build_app(a):
 
 Q4 = {
     "dietplan": dict(
-        headline="Launch v2.0 well: a strong first impression in the store and in onboarding.",
-        why="The live listing shows 4.7★ from {rc} ratings and {nl} store languages. v2.0 is feature-complete with 9 languages and a new UI, so the store page no longer shows what the app has become.",
+        headline="Launch v2.0 well, and own both the store page and the first-run experience.",
+        why="The live listing shows {rt}★ from {rc} ratings and {nl} store languages. v2.0 is feature-complete with 9 languages and a new UI, so the store page no longer shows what the app has become.",
         actions=[
-            "Integrate the premium screens as soon as design is final, then launch v2.0 on the App Store.",
-            "Refresh ASO for the launch: screenshots from the v2.0 UI, subtitle and keywords reviewed, AI meal plans in the listing.",
-            "Add the four new languages (Hindi, Japanese, Portuguese, Russian) to the store listing with localized metadata.",
-            "Watch the onboarding funnel from day one using the analytics events added in Q3.",
+            "Get the v2.0 launch approved, including the AI meal plans, which carry API cost.",
+            "Integrate the premium screens once design is final. Any change to the paywall model goes for approval first.",
+            "Refresh the store page for launch: screenshots from the v2.0 UI, and localized metadata for Hindi, Japanese, Portuguese and Russian. Store creative and localization work do not need approval.",
+            "Read the onboarding funnel from day one using the Q3 analytics events, and bring any onboarding change for approval.",
         ],
-        measure=["Onboarding completion", "Impression to download conversion", "Paywall conversion", "Rating after launch"],
-        months=["Finish premium screens, ASO baseline", "Launch v2.0 with a refreshed store page", "Read onboarding and paywall funnel, first fixes"],
+        test="Screenshot A/B test on the store page. Primary metric: conversion rate. It runs for at least two full weeks.",
+        measure=["Onboarding completion", "Conversion rate", "Paywall conversion", "Rating after launch"],
+        months=["Approvals and premium screens, ASO baseline", "Launch v2.0 with the refreshed store page", "Screenshot test result, first onboarding and paywall read"],
     ),
     "upkee": dict(
         headline="Turn a brand-new app into one with real ratings and a measured funnel.",
         why="Released in Aug 2026: {rt}★ but only {rc} ratings, with {nl} store languages already. The first job is volume and visibility, not new features.",
         actions=[
-            "Check that onboarding and first-task events are in place, read the funnel, and fix the biggest drop-off.",
-            "Ask for a rating after a success moment (a completed cleaning task), and only from users who are happy.",
-            "ASO baseline: title, subtitle, keywords and screenshots reviewed against what people search for, in all store languages.",
-            "Once there is enough traffic, check paywall conversion.",
+            "Get the Q4 plan and targets approved by the Product and ASO specialist teams at the start of the quarter.",
+            "Check that onboarding and first-task events are in place, read the funnel, and bring fixes for the biggest drop-off for approval.",
+            "Ask for a rating after a success moment (a completed cleaning task), and only from happy users. Ratings work needs no approval.",
+            "Have the ASO specialist team review the keyword set before it goes live.",
+            "Finish the Android version, so the app runs on both platforms, and bring the launch for approval.",
         ],
-        measure=["Onboarding completion", "Impression to download conversion", "Number of ratings", "Paywall conversion"],
-        months=["Funnel events check, ASO baseline", "Fix the top drop-off, rating prompt live", "Review rating and conversion trend"],
+        test="Screenshot A/B test. The ASO specialist team reviews the first variant; I run the test and own the result. Primary metric: conversion rate.",
+        measure=["Onboarding completion", "Conversion rate", "Number of ratings", "Paywall conversion"],
+        months=["Plan approved, funnel events check, ASO baseline", "Fix the top drop-off, rating prompt and screenshot test live", "Review rating and conversion trend, test result"],
     ),
     "caloric": dict(
-        headline="Keep it stable and check the paywall; nothing urgent beyond that.",
+        headline="Backup: keep an eye on stability after the Q3 fixes.",
         why="{rt}★ from {rc} ratings, English only, last updated {upd} after the Q3 fixes.",
         actions=[
             "Watch crashes and new reviews for the Q3 fixes (restore purchases, sign-out).",
-            "Review how often the paywall and usage limits appear for free users.",
-            "Cover urgent bugs when the primary developer is unavailable.",
-            "Propose localization as the larger opportunity (English only today); do not start it without agreement.",
+            "Cover urgent bugs and hotfix releases when the primary is unavailable.",
+            "Pass suggestions, such as localization (English only today), to the primary rather than starting them.",
         ],
-        measure=["Rating trend", "Crash rate", "Paywall conversion"],
-        months=["Watch Q3 fixes, paywall frequency review", "Fixes only if needed", "Quarter summary, localization proposal"],
+        measure=["Rating trend", "Crash rate"],
+        months=["Watch the Q3 fixes", "Standby", "Quarter summary"],
     ),
     "locateus": dict(
-        headline="Light-touch support: keep it working and watch the numbers.",
+        headline="Backup: keep it working and watch the basics.",
         why="{rt}★ from {rc} ratings, English only, last updated {upd}.",
         actions=[
-            "Cover urgent fixes when the primary developer is unavailable.",
-            "Check the store page once: screenshots and keywords still match the app.",
-            "Flag the low number of ratings to the owner as a growth question.",
+            "Cover urgent fixes when the primary is unavailable.",
+            "Flag the low number of ratings to the primary as a growth question.",
         ],
-        measure=["Rating", "Impression to download conversion"],
-        months=["Store-page check", "Urgent fixes only", "Quarter summary"],
+        measure=["Rating", "Crash rate"],
+        months=["Store-page check", "Standby", "Quarter summary"],
     ),
     "keto": dict(
-        headline="Largest audience: protect it, and pass recurring issues to the primary developer.",
+        headline="Backup on the largest audience: be ready to step in.",
         why="{rt}★ from {rc} ratings and {nl} store languages. A regression here reaches the most users.",
         actions=[
-            "Cover urgent bugs and hotfix releases when the primary developer is unavailable.",
-            "Triage recurring review themes monthly and hand a short list to the primary developer.",
-            "Check that subscription and premium-access issues mentioned in reviews are tracked.",
+            "Cover urgent bugs and hotfix releases when the primary is unavailable.",
+            "Keep up with release and review status so I can step in without a warm-up.",
         ],
-        measure=["Rating trend", "Crash rate", "Review themes"],
-        months=["Review-theme triage", "Urgent fixes only, hand-off list", "Rating-trend check"],
+        measure=["Rating trend", "Crash rate"],
+        months=["Review-status check", "Standby", "Quarter summary"],
     ),
 }
 
@@ -415,11 +438,20 @@ FUNNEL = [
      "Public App Store listing", "Rating prompt timing, fixing repeat issues"),
 ]
 
+TEST_RULES = [
+    "Write a brief first: the hypothesis, one primary metric, the guardrails, sample size and duration.",
+    "Test one variable at a time, and run one test per app at a time.",
+    "Lock the primary metric before looking at any data.",
+    "Run the planned sample and at least two full weeks, so weekdays and weekends are both covered.",
+    "Judge on revenue, not just conversion. Refund rate, cancellation rate, rating and crash-free rate decide close calls.",
+    "Roll out or roll back within a week, and log every test, wins and losses alike.",
+]
+
 
 def build_q4():
     p = "../"
     s = HEAD.format(title="Q4 2026 Planning · Bandan Kumar", p=p, fav=FAVICON,
-                    desc="Q4 2026 planning: focus, first actions and the numbers to track for each of the five apps.")
+                    desc="Q4 2026 planning: focus, first actions and the numbers to watch for DietPlan and Upkee, plus backup cover for three more apps.")
     s += f"""  <header class="topbar">
     <div class="wrap">
       <a class="btn" href="{p}" data-back>{icon(p, "arrow-left")} <span>Apps</span></a>
@@ -435,14 +467,14 @@ def build_q4():
       <p class="eyebrow">Planning</p>
       <h1>Q4 2026 Planning</h1>
       <p class="period">October – December 2026</p>
-      <div class="who"><b>Bandan Kumar</b><span>Product Engineer · 5 apps</span></div>
+      <div class="who"><b>Bandan Kumar</b><span>Product Engineer · 2 apps owned, 3 backed up</span></div>
     </div>
   </header>
 
   <main class="wrap">
     <section class="block">
       <h2>The funnel I own</h2>
-      <p class="sub">From store search to a paying, happy user. Each stage has one number to watch and something I can change.</p>
+      <p class="sub">For DietPlan and Upkee: from store search to a paying, happy user. Each stage has one number to watch and something I can change.</p>
       <div class="grid flow">
 """
     for i, (ico, stage, metric, src, lever) in enumerate(FUNNEL, 1):
@@ -455,6 +487,7 @@ def build_q4():
         </div>
 """
     s += """      </div>
+      <p class="note">Guardrails on every release and test: crash-free rate, rating and refund rate.</p>
     </section>
 
     <section class="block">
@@ -473,7 +506,7 @@ def build_q4():
 
     <section class="block">
       <h2>App plans</h2>
-      <p class="sub">What I will do first, and what I will measure.</p>
+      <p class="sub">What I will do first, and what I will watch.</p>
       <div class="plans">
 """
     for a in APPS:
@@ -481,16 +514,20 @@ def build_q4():
         st = a.get("store") or {}
         why = q["why"].format(rt=f"{st.get('rating', 0):.1f}", rc=fmt_int(st.get("ratingCount", 0)),
                               nl=len(st.get("languages", [])), upd=fmt_date(st["updated"]) if st else "")
+        backup = a["role"] == "backup"
         s += f"""        <article class="card plan" id="{a['slug']}">
           <div class="plan-head">{icon_tile(a, p, '')}
             <div><h3>{a['name']}</h3><div class="chips">{role_chip(a)}{chip(*a['status'])}</div></div>
           </div>
           <p class="plan-focus">{html.escape(q['headline'])}</p>
+          <p class="role-note">{html.escape(ROLE_NOTE[(a['role'], a['tier'])])}</p>
           <p class="why">{html.escape(why)}</p>
-          <h4>First actions</h4>
+          <h4>{'If I step in' if backup else 'First actions'}</h4>
           <ul class="bullets">
-""" + "".join(f"            <li>{html.escape(x)}</li>\n" for x in q["actions"]) + """          </ul>
-          <h4>Measure</h4>
+""" + "".join(f"            <li>{html.escape(x)}</li>\n" for x in q["actions"]) + "          </ul>\n"
+        if q.get("test"):
+            s += f"          <h4>First test</h4>\n          <p>{html.escape(q['test'])}</p>\n"
+        s += """          <h4>Watch</h4>
           <div class="tags">""" + "".join(f'<span class="tag">{html.escape(x)}</span>' for x in q["measure"]) + """</div>
         </article>
 """
@@ -515,17 +552,27 @@ def build_q4():
     </section>
 
     <section class="block">
+      <h2>How I run tests</h2>
+      <p class="sub">The same rules for every test on DietPlan and Upkee.</p>
+      <div class="grid rules">
+"""
+    for i, r in enumerate(TEST_RULES, 1):
+        s += f'        <div class="card rule"><span class="num">{i}</span><p>{html.escape(r)}</p></div>\n'
+    s += """      </div>
+    </section>
+
+    <section class="block">
       <h2>Operating rhythm</h2>
       <p class="sub">A small routine that fits alongside development.</p>
       <div class="grid three">
         <div class="card"><h3>Weekly</h3><ul>
-          <li>Impressions, page views, conversion and downloads for the two primary apps</li>
-          <li>New reviews across all five apps</li>
+          <li>Impressions, page views, conversion and downloads for DietPlan and Upkee</li>
+          <li>New reviews on all five apps</li>
           <li>Anything unusual noted the same day</li></ul></div>
         <div class="card"><h3>Monthly</h3><ul>
-          <li>Onboarding and paywall funnel for the primary apps</li>
-          <li>Rating trend for all five apps</li>
-          <li>Hand-off list of recurring issues for the primary developers of the secondary apps</li></ul></div>
+          <li>Onboarding and paywall funnel for DietPlan and Upkee</li>
+          <li>Rating trend and crash-free rate for all five apps</li>
+          <li>Test log updated, wins and losses</li></ul></div>
         <div class="card"><h3>End of quarter</h3><ul>
           <li>ASO and rating movement summary</li>
           <li>What shipped and what it changed</li>
@@ -537,9 +584,10 @@ def build_q4():
       <div class="ahead">
         <h2>What I need</h2>
         <ul>
-          <li><span class="ico-sm">""" + icon(p, "search") + """</span><span>App Store Connect analytics access for all five apps</span></li>
+          <li><span class="ico-sm">""" + icon(p, "send") + """</span><span>Approval to launch DietPlan v2.0, including the AI features that carry API cost</span></li>
           <li><span class="ico-sm">""" + icon(p, "award") + """</span><span>Final design for the DietPlan premium screens</span></li>
-          <li><span class="ico-sm">""" + icon(p, "calendar") + """</span><span>A target launch date for DietPlan v2.0</span></li>
+          <li><span class="ico-sm">""" + icon(p, "check-square") + """</span><span>Product and ASO specialist team approval of the Upkee plan and targets</span></li>
+          <li><span class="ico-sm">""" + icon(p, "search") + """</span><span>App Store Connect analytics access for DietPlan and Upkee</span></li>
         </ul>
       </div>
     </section>
