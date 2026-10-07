@@ -175,7 +175,7 @@
     <!-- AI backend -->
     <section class="block">
       <h2>AI Backend: Secure &amp; Cost-Controlled</h2>
-      <p class="sub">Every AI request passes through safeguards in the Cloud Function.</p>
+      <p class="sub">Every AI request passes through safeguards I built into the Cloud Function.</p>
       <div class="grid pipeline">
         <div class="card step"><div class="ico-sm hot"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#shield"/></svg></div><h3>App Attest</h3><p>Only genuine app installs can call the function</p></div>
         <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#list-x"/></svg></div><h3>Model allow-list</h3><p>Requests for any AI model not already defined are rejected</p></div>
@@ -184,7 +184,6 @@
         <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#trending-up"/></svg></div><h3>Usage &amp; cost logs</h3><p>Daily AI usage and cost logged per user</p></div>
       </div>
       <p class="tamper"><b>Built-in tamper check:</b> if the logged daily cost doesn't match the actual AI bill, it signals the backend has been compromised.</p>
-      <p class="note">The Cloud Function itself was set up by the TL. I added cost logging to Firestore so there is a history, adopted a teammate's in-app cost overlay, and moved cost tracking into the backend so it stays accurate when models change.</p>
       <p class="result"><b>Result:</b> AI usage is protected from misuse, limited in cost, and monitored daily.</p>
     </section>
 
