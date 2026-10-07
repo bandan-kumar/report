@@ -420,3 +420,24 @@ tbody td:first-child { font-weight: 700; }
 .loc-group h3 { font-size: 1rem; margin-bottom: 10px; display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap; }
 .loc-group h3 span { color: var(--muted); font-weight: 500; font-size: .9rem; }
 .snap.has b { font-size: clamp(1.2rem, 3vw, 1.6rem); }
+
+/* ---------- Q4 planning ---------- */
+.kpis { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px; }
+.src { font-size: .8rem; margin-top: 6px; color: var(--brand) !important; font-weight: 600; }
+.glance { grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr)); gap: 14px; }
+.glance-card { text-decoration: none; color: inherit; display: block; transition: transform .15s, border-color .15s; }
+.glance-card:hover { transform: translateY(-2px); border-color: var(--brand); }
+.glance-top { display: flex; align-items: center; gap: 12px; margin-bottom: 10px; }
+.glance-top .app-icon { width: 44px; height: 44px; font-size: 1.1rem; }
+.glance-top h3 { font-size: 1.1rem; margin-bottom: 4px; }
+.glance-card p { color: var(--muted); }
+.plans { display: grid; gap: 18px; }
+.plan-head { display: flex; align-items: center; gap: 14px; margin-bottom: 14px; }
+.plan-head h3 { font-size: 1.25rem; margin-bottom: 6px; }
+.plan-head .chips { display: flex; gap: 8px; flex-wrap: wrap; }
+.plan-focus { font-weight: 700; font-size: 1.08rem; letter-spacing: -.01em; }
+.why { color: var(--muted); margin-top: 6px; }
+.plan h4 { font-size: .78rem; text-transform: uppercase; letter-spacing: .1em; color: var(--brand); margin: 18px 0 8px; }
+.plan { scroll-margin-top: 80px; }
+@media (min-width: 900px) { .plans { grid-template-columns: 1fr 1fr; } }
+@media print { .plans { grid-template-columns: 1fr 1fr; } .glance { grid-template-columns: repeat(3, 1fr); } .glance-card { transform: none; } }

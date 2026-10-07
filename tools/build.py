@@ -218,15 +218,15 @@ def build_index():
             </div>
           </article>
 
-          <article class="card report soon">
+          <article class="card report">
             <div class="ico">{icon('', 'target')}</div>
             <div>
-              <span class="chip pre plain">Coming soon</span>
-              <h3 style="margin-top:10px">Q4 2026 Plan</h3>
+              <span class="chip plain">October – December 2026</span>
+              <h3 style="margin-top:10px">Q4 2026 Planning</h3>
             </div>
-            <p>Product and ASO status, the main opportunity for each app, and what to focus on first.</p>
+            <p>Focus, first actions and the numbers to track for each app: ASO, conversion, onboarding completion and paywall conversion.</p>
             <div class="row">
-              <a class="btn" href="#reports" aria-disabled="true" tabindex="-1">Not published yet</a>
+              <a class="btn primary" href="q4-2026/">View plan {icon('', 'arrow-right')}</a>
             </div>
           </article>
         </div>
@@ -313,8 +313,8 @@ def build_app(a):
 """
     s += f"""          <article class="card row-card">
             <div class="ico-sm">{icon(p, 'target')}</div>
-            <div class="grow"><h3>Q4 2026</h3><p>Plan and focus areas. Not published yet.</p></div>
-            <span class="chip pre plain">Coming soon</span>
+            <div class="grow"><h3>Q4 2026</h3><p>Focus, first actions and what to measure.</p></div>
+            <a class="btn primary" href="{p}q4-2026/#{a['slug']}">Open {icon(p, 'arrow-right')}</a>
           </article>
         </div>
       </section>
@@ -340,7 +340,215 @@ def build_app(a):
     os.makedirs(d, exist_ok=True)
     open(f"{d}/index.html", "w").write(s)
 
+
+Q4 = {
+    "dietplan": dict(
+        headline="Launch v2.0 well: a strong first impression in the store and in onboarding.",
+        why="The live listing shows 4.7★ from {rc} ratings and {nl} store languages. v2.0 is feature-complete with 9 languages and a new UI, so the store page no longer shows what the app has become.",
+        actions=[
+            "Integrate the premium screens as soon as design is final, then launch v2.0 on the App Store.",
+            "Refresh ASO for the launch: screenshots from the v2.0 UI, subtitle and keywords reviewed, AI meal plans in the listing.",
+            "Add the four new languages (Hindi, Japanese, Portuguese, Russian) to the store listing with localized metadata.",
+            "Watch the onboarding funnel from day one using the analytics events added in Q3.",
+        ],
+        measure=["Onboarding completion", "Impression to download conversion", "Paywall conversion", "Rating after launch"],
+        months=["Finish premium screens, ASO baseline", "Launch v2.0 with a refreshed store page", "Read onboarding and paywall funnel, first fixes"],
+    ),
+    "upkee": dict(
+        headline="Turn a brand-new app into one with real ratings and a measured funnel.",
+        why="Released in Aug 2026: {rt}★ but only {rc} ratings, with {nl} store languages already. The first job is volume and visibility, not new features.",
+        actions=[
+            "Check that onboarding and first-task events are in place, read the funnel, and fix the biggest drop-off.",
+            "Ask for a rating after a success moment (a completed cleaning task), and only from users who are happy.",
+            "ASO baseline: title, subtitle, keywords and screenshots reviewed against what people search for, in all store languages.",
+            "Once there is enough traffic, check paywall conversion.",
+        ],
+        measure=["Onboarding completion", "Impression to download conversion", "Number of ratings", "Paywall conversion"],
+        months=["Funnel events check, ASO baseline", "Fix the top drop-off, rating prompt live", "Review rating and conversion trend"],
+    ),
+    "caloric": dict(
+        headline="Keep it stable and check the paywall; nothing urgent beyond that.",
+        why="{rt}★ from {rc} ratings, English only, last updated {upd} after the Q3 fixes.",
+        actions=[
+            "Watch crashes and new reviews for the Q3 fixes (restore purchases, sign-out).",
+            "Review how often the paywall and usage limits appear for free users.",
+            "Cover urgent bugs when the primary developer is unavailable.",
+            "Propose localization as the larger opportunity (English only today); do not start it without agreement.",
+        ],
+        measure=["Rating trend", "Crash rate", "Paywall conversion"],
+        months=["Watch Q3 fixes, paywall frequency review", "Fixes only if needed", "Quarter summary, localization proposal"],
+    ),
+    "locateus": dict(
+        headline="Light-touch support: keep it working and watch the numbers.",
+        why="{rt}★ from {rc} ratings, English only, last updated {upd}.",
+        actions=[
+            "Cover urgent fixes when the primary developer is unavailable.",
+            "Check the store page once: screenshots and keywords still match the app.",
+            "Flag the low number of ratings to the owner as a growth question.",
+        ],
+        measure=["Rating", "Impression to download conversion"],
+        months=["Store-page check", "Urgent fixes only", "Quarter summary"],
+    ),
+    "keto": dict(
+        headline="Largest audience: protect it, and pass recurring issues to the primary developer.",
+        why="{rt}★ from {rc} ratings and {nl} store languages. A regression here reaches the most users.",
+        actions=[
+            "Cover urgent bugs and hotfix releases when the primary developer is unavailable.",
+            "Triage recurring review themes monthly and hand a short list to the primary developer.",
+            "Check that subscription and premium-access issues mentioned in reviews are tracked.",
+        ],
+        measure=["Rating trend", "Crash rate", "Review themes"],
+        months=["Review-theme triage", "Urgent fixes only, hand-off list", "Rating-trend check"],
+    ),
+}
+
+KPIS = [
+    ("search", "ASO", "Impressions, product page views and downloads, to see where people drop off before installing.", "App Store Connect, App Analytics"),
+    ("trending-up", "Conversion rate", "Downloads divided by product page views. Moves with screenshots, title and ratings.", "App Store Connect, App Analytics"),
+    ("check-square", "Onboarding completion", "Users who finish onboarding divided by users who start it.", "Firebase Analytics events"),
+    ("award", "Paywall conversion", "Subscribers divided by paywall views.", "Subscription analytics"),
+]
+
+
+def build_q4():
+    p = "../"
+    s = HEAD.format(title="Q4 2026 Planning · Bandan Kumar", p=p, fav=FAVICON,
+                    desc="Q4 2026 planning: focus, first actions and the numbers to track for each of the five apps.")
+    s += f"""  <header class="topbar">
+    <div class="wrap">
+      <a class="btn" href="{p}">{icon(p, "arrow-left")} <span>Apps</span></a>
+      <div class="actions">
+        <button class="btn" type="button" data-print>{icon(p, "printer")} <span class="label-long">Print</span></button>
+        <button class="btn icon-only" type="button" data-theme-toggle aria-label="Switch theme">{icon(p, "moon")}</button>
+      </div>
+    </div>
+  </header>
+
+  <header class="report-hero">
+    <div class="wrap">
+      <p class="eyebrow">Planning</p>
+      <h1>Q4 2026 Planning</h1>
+      <p class="period">October – December 2026</p>
+      <div class="who"><b>Bandan Kumar</b><span>Product Engineer · 5 apps</span></div>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <section class="block">
+      <h2>What I'll track</h2>
+      <p class="sub">The same few numbers for every app, so progress is easy to compare.</p>
+      <div class="grid kpis">
+"""
+    for ico, title, body, src in KPIS:
+        s += f"""        <div class="card feature"><div class="ico">{icon(p, ico)}</div><div><h3>{title}</h3><p>{body}</p><p class="src">{src}</p></div></div>
+"""
+    s += """      </div>
+      <p class="tamper"><b>Targets:</b> October is for baselines. The numbers above are measured first for each app, and targets are agreed with the team after that rather than guessed now.</p>
+    </section>
+
+    <section class="block">
+      <h2>At a glance</h2>
+      <p class="sub">One focus per app.</p>
+      <div class="grid glance">
+"""
+    for a in APPS:
+        s += f"""        <a class="card glance-card" href="#{a['slug']}">
+          <div class="glance-top">{icon_tile(a, p, '')}<div><h3>{a['name']}</h3>{role_chip(a)}</div></div>
+          <p>{html.escape(Q4[a['slug']]['headline'])}</p>
+        </a>
+"""
+    s += """      </div>
+    </section>
+
+    <section class="block">
+      <h2>App plans</h2>
+      <p class="sub">What I will do first, and what I will measure.</p>
+      <div class="plans">
+"""
+    for a in APPS:
+        q = Q4[a["slug"]]
+        st = a.get("store") or {}
+        why = q["why"].format(rt=f"{st.get('rating', 0):.1f}", rc=fmt_int(st.get("ratingCount", 0)),
+                              nl=len(st.get("languages", [])), upd=fmt_date(st["updated"]) if st else "")
+        s += f"""        <article class="card plan" id="{a['slug']}">
+          <div class="plan-head">{icon_tile(a, p, '')}
+            <div><h3>{a['name']}</h3><div class="chips">{role_chip(a)}{chip(*a['status'])}</div></div>
+          </div>
+          <p class="plan-focus">{html.escape(q['headline'])}</p>
+          <p class="why">{html.escape(why)}</p>
+          <h4>First actions</h4>
+          <ul class="bullets">
+""" + "".join(f"            <li>{html.escape(x)}</li>\n" for x in q["actions"]) + """          </ul>
+          <h4>Measure</h4>
+          <div class="tags">""" + "".join(f'<span class="tag">{html.escape(x)}</span>' for x in q["measure"]) + """</div>
+        </article>
+"""
+    s += """      </div>
+    </section>
+
+    <section class="block">
+      <h2>Quarter timeline</h2>
+      <p class="sub">Month by month: baseline first, then fix, then measure.</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>App</th><th>October</th><th>November</th><th>December</th></tr></thead>
+          <tbody>
+"""
+    for a in APPS:
+        m = Q4[a["slug"]]["months"]
+        s += (f'            <tr><td data-label="App">{a["name"]}</td><td data-label="October">{html.escape(m[0])}</td>'
+              f'<td data-label="November">{html.escape(m[1])}</td><td data-label="December">{html.escape(m[2])}</td></tr>\n')
+    s += """          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="block">
+      <h2>Operating rhythm</h2>
+      <p class="sub">A small routine that fits alongside development.</p>
+      <div class="grid three">
+        <div class="card"><h3>Weekly</h3><ul>
+          <li>Impressions, page views, conversion and downloads for the two primary apps</li>
+          <li>New reviews across all five apps</li>
+          <li>Anything unusual noted the same day</li></ul></div>
+        <div class="card"><h3>Monthly</h3><ul>
+          <li>Onboarding and paywall funnel for the primary apps</li>
+          <li>Rating trend for all five apps</li>
+          <li>Hand-off list of recurring issues for the primary developers of the secondary apps</li></ul></div>
+        <div class="card"><h3>End of quarter</h3><ul>
+          <li>ASO and rating movement summary</li>
+          <li>What shipped and what it changed</li>
+          <li>Draft priorities for Q1 2027</li></ul></div>
+      </div>
+    </section>
+
+    <section class="block">
+      <div class="ahead">
+        <h2>What I need</h2>
+        <ul>
+          <li><span class="ico-sm">""" + icon(p, "search") + """</span><span>App Store Connect analytics access for all five apps</span></li>
+          <li><span class="ico-sm">""" + icon(p, "award") + """</span><span>Final design for the DietPlan premium screens</span></li>
+          <li><span class="ico-sm">""" + icon(p, "calendar") + """</span><span>A target launch date for DietPlan v2.0</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <p class="print-only print-foot">Bandan Kumar · Q4 2026 Planning · App Store figures as of """ + fmt_date(STORE["fetched"]) + """</p>
+  </main>
+
+  <footer class="footer no-print">
+    <div class="wrap">© 2026 Bandan Kumar · App Store figures as of """ + fmt_date(STORE["fetched"]) + """</div>
+  </footer>
+</body>
+</html>
+"""
+    d = f"{ROOT}/q4-2026"
+    os.makedirs(d, exist_ok=True)
+    open(f"{d}/index.html", "w").write(s)
+
+
 build_index()
+build_q4()
 for a in APPS:
     build_app(a)
 print("built", len(APPS), "apps")
