@@ -27,7 +27,7 @@ APPS = [
     dict(slug="dietplan", langs=['English', 'German', 'Spanish', 'French', 'Hindi', 'Italian', 'Japanese', 'Portuguese (Brazil)', 'Russian'], strings='956', name="DietPlan", letter="D", cls="diet", role="primary", tier="Autonomous", play="https://play.google.com/store/apps/details?id=com.pixsterstudio.dietplans",
          status=("live", "Live"),
          platform="iOS",
-         summary="AI-powered meal plans, recipes, weight tracking and reminders. An earlier version is already live; the rebuilt version was feature-complete on 8 Sep 2026 and is heading for its App Store release.",
+         summary="AI meal plans, recipes, weight tracking and reminders. An older version is already live. The rebuilt version was feature-complete on 8 Sep 2026 and is waiting on the premium screens before its App Store release.",
          metrics=[("14", "modules & features"), ("89.3 MB", "app size, down from ~140"), ("23/23", "QA items resolved")],
          tags=["Firebase", "Gemini", "HealthKit", "App Attest"],
          reviews=[("q3-2026/#dietplan", "Q3 2026", "Built end to end in about seven weeks, with an AI backend secured by App Attest.")],
@@ -47,7 +47,7 @@ APPS = [
     dict(slug="caloric", langs=['English'], strings='', name="Caloric", letter="C", cls="cal", role="backup", tier="Autonomous", play="https://play.google.com/store/apps/details?id=com.pixsterstudio.caloric",
          status=("live", "Live"),
          platform="iOS",
-         summary="Released in Q3 after key fixes across subscriptions and offers, the backend Cloud Function, and a sign-out flow that used to delete user data.",
+         summary="Released in Q3 after fixes to subscriptions and offers, the backend Cloud Function and a sign-out bug that deleted user data.",
          metrics=[("3", "areas fixed before release"), ("Q3", "quarter of release"), ("Fixed", "sign-out data loss")],
          tags=["Subscriptions", "Cloud Functions", "Auth"],
          reviews=[("q3-2026/#caloric", "Q3 2026", "Premium and offers, backend wiring and sign-out fixes that got the app released.")],
@@ -76,8 +76,8 @@ for _a in APPS:
     _a["platform"] = "iOS · Android" if _a.get("play") else "iOS"
     if _st:
         if not _a["summary"]:
-            _a["summary"] = (f"{_st['name']}: a {_st['category']} app on the App Store since "
-                             f"{fmt_date(_st['firstReleased'], False)}.")
+            _a["summary"] = (f"On the App Store since {fmt_date(_st['firstReleased'], False)} "
+                             f"as \"{_st['name']}\" ({_st['category']}).")
         _a["card_metrics"] = [
             (f"{_st['rating']:.1f} ★", f"{fmt_int(_st['ratingCount'])} ratings"),
             (f"v{_st['version']}", "on the App Store"),
@@ -360,8 +360,8 @@ def build_app(a):
 
 Q4 = {
     "dietplan": dict(
-        headline="Launch v2.0 well, and own both the store page and the first-run experience.",
-        why="The live listing shows {rt}★ from {rc} ratings and {nl} store languages. v2.0 is feature-complete with 9 languages and a new UI, so the store page no longer shows what the app has become.",
+        headline="Launch v2.0 with a refreshed store page and a good first-run experience.",
+        why="The live listing shows {rt}★ from {rc} ratings in {nl} store languages. v2.0 is feature-complete with 9 languages and a new UI, and the current store page shows none of that.",
         actions=[
             "Launch v2.0 on the App Store, including the AI meal plans.",
             "Integrate the premium screens once design is final.",
@@ -373,48 +373,55 @@ Q4 = {
         months=["Premium screens, ASO baseline", "Launch v2.0 with the refreshed store page", "Screenshot test result, first onboarding and paywall read"],
     ),
     "upkee": dict(
-        headline="Turn a brand-new app into one with real ratings and a measured funnel.",
-        why="Released in Aug 2026: {rt}★ but only {rc} ratings, with {nl} store languages already. The first job is volume and visibility, not new features.",
+        headline="Build up ratings and get the onboarding funnel measured.",
+        why="Released in Aug 2026. It has {rt}★ but only {rc} ratings, and {nl} store languages already. The priority is more ratings and more visibility.",
         actions=[
             "Check that onboarding and first-task events are in place, read the funnel, and fix the biggest drop-off.",
             "Ask for a rating after a success moment (a completed cleaning task), and only from happy users.",
             "Review the keyword set and screenshots against what people search for.",
-            "Finish the Android version, so the app runs on both platforms.",
+            "Finish the Android version so the app is on both platforms.",
         ],
         test="Screenshot A/B test on the store page. Primary metric: conversion rate.",
         measure=["Onboarding completion", "Conversion rate", "Number of ratings", "Paywall conversion"],
         months=["Funnel events check, ASO baseline, Android build", "Fix the top drop-off, rating prompt and screenshot test live", "Review rating and conversion trend, test result"],
     ),
     "caloric": dict(
-        headline="Backup: keep an eye on stability after the Q3 fixes.",
+        headline="Backup: keep an eye on crashes and reviews.",
         why="{rt}★ from {rc} ratings, English only, last updated {upd} after the Q3 fixes.",
         actions=[
-            "Watch crashes and new reviews for the Q3 fixes (restore purchases, sign-out).",
+            "Keep an eye on crashes and new reviews, especially for the Q3 fixes (restore purchases, sign-out).",
+            "Talk through upcoming features with the primary so I know what is going on in the app.",
+            "Suggest localization to the primary, since the app is English only today.",
+            "Help with iOS-specific issues when they come up.",
             "Cover urgent bugs and hotfix releases when the primary is unavailable.",
-            "Pass suggestions, such as localization (English only today), to the primary rather than starting them.",
         ],
-        measure=["Rating trend", "Crash rate"],
-        months=["Watch the Q3 fixes", "Standby", "Quarter summary"],
+        measure=["Crash rate", "Rating trend"],
+        months=["Watch the Q3 fixes", "Keep an eye on crashes and reviews", "Quarter summary"],
     ),
     "locateus": dict(
-        headline="Backup: keep it working and watch the basics.",
+        headline="Backup: keep an eye on crashes and reviews.",
         why="{rt}★ from {rc} ratings, English only, last updated {upd}.",
         actions=[
-            "Cover urgent fixes when the primary is unavailable.",
-            "Flag the low number of ratings to the primary as a growth question.",
+            "Keep an eye on crashes and new reviews.",
+            "Talk through upcoming features with the primary so I know what is going on in the app.",
+            "Mention the low number of ratings to the primary.",
+            "Help with iOS-specific issues when they come up.",
+            "Cover urgent bugs and hotfix releases when the primary is unavailable.",
         ],
-        measure=["Rating", "Crash rate"],
-        months=["Store-page check", "Standby", "Quarter summary"],
+        measure=["Crash rate", "Rating"],
+        months=["Store-page check", "Keep an eye on crashes and reviews", "Quarter summary"],
     ),
     "keto": dict(
-        headline="Backup on the largest audience: be ready to step in.",
-        why="{rt}★ from {rc} ratings and {nl} store languages. A regression here reaches the most users.",
+        headline="Backup on the app with the most users: stay familiar with it.",
+        why="{rt}★ from {rc} ratings and {nl} store languages. It has the largest audience of the five, so a bug here reaches the most people.",
         actions=[
+            "Keep an eye on crashes and new reviews.",
+            "Talk through upcoming features with the primary so I know what is going on in the app.",
+            "Help with iOS-specific issues when they come up.",
             "Cover urgent bugs and hotfix releases when the primary is unavailable.",
-            "Keep up with release and review status so I can step in without a warm-up.",
         ],
-        measure=["Rating trend", "Crash rate"],
-        months=["Review-status check", "Standby", "Quarter summary"],
+        measure=["Crash rate", "Rating trend"],
+        months=["Review-status check", "Keep an eye on crashes and reviews", "Quarter summary"],
     ),
 }
 
