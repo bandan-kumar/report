@@ -103,10 +103,12 @@
       <h2>Also in DietPlan v2.0</h2>
       <p class="sub">Work that doesn't show in a screenshot.</p>
       <div class="grid features">
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download"/></svg></div><div><h3>Upgrade from v1</h3><p>v2.0 ships over the live app. On first launch it imports each user's profile, weight log, plan and reminders, with safeguards so a bad import can't lock anyone out.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download"/></svg></div><div><h3>Data migration for existing users</h3><p>v2.0 ships over the live app. On first launch it imports each user's profile, weight log, plan and reminders, with safeguards so a bad import can't lock anyone out.</p></div></div>
         <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#smartphone"/></svg></div><div><h3>Home screen widgets</h3><p>Today's meals (tap to complete), weight progress and the next reminder.</p></div></div>
         <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#trending-up"/></svg></div><div><h3>Analytics system</h3><p>A named event catalog, retention events and an in-app event log for testers.</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#check-square"/></svg></div><div><h3>134 automated tests</h3><p>They cover the meal catalog and the v1 migration.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#check-square"/></svg></div><div><h3>134 automated tests</h3><p>They cover the meal database, user data storage and the migration from v1.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#smartphone"/></svg></div><div><h3>iPad window support</h3><p>Layouts follow the window size, so the app works in Split View, Slide Over and Stage Manager as well as full screen.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#globe"/></svg></div><div><h3>Automatic translation</h3><p>Xcode's own string extraction picks up new text, even strings added directly in code, and a script translates it with Google Translate on each debug build.</p></div></div>
       </div>
     </section>
 
@@ -226,7 +228,7 @@
       <p class="sub">&nbsp;</p>
       <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));align-items:start">
         <div class="grid" style="gap:14px">
-          <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#globe"/></svg></div><div><h3>Localization helper</h3><p>Built an internal tool to automate app string translation. It supported several developers in their workflow at the time.</p></div></div>
+          <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#globe"/></svg></div><div><h3>Localization helper</h3><p>Built an internal tool to automate app string translation. Several developers used it and it worked very well at the time. Google has since tightened its limits, so large batches can fail. The script handles this and the impact is small, but it is less effective than before.</p></div></div>
           <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#calendar"/></svg></div><div><h3>Planning &amp; estimation</h3><p>Created a module-wise estimated timeline before development and validated the data structure with a senior developer.</p></div></div>
         </div>
         <div class="grid" style="gap:18px">

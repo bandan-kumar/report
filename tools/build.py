@@ -35,6 +35,7 @@ APPS = [
             "Built every module end to end: onboarding, meal plans and recipes, weight tracking, reminders, Apple Health and universal links.",
             "Rebuilt the meal and recipe dataset from the EatThisMuch API plus generated dishes. The main catalog ships inside the app.",
             "Built the upgrade path from v1, so existing users keep their profile, weight log, plan and reminders.",
+            "Added iPad window support, automated tests for the database and user data, and automatic translation of new strings.",
             "Cut the app size from about 140 MB to 89.3 MB with On-Demand Resources and a split database.",
             "Added AI meal plans on a dedicated Cloud Function, protected by App Attest, a model allow-list, token limits and daily cost logs.",
             "Closed all 23 QA items and all 23 team-lead review points.",
@@ -245,6 +246,7 @@ def build_index():
             <p>Focus, first actions and the numbers to track for each app: ASO, conversion, onboarding completion and paywall conversion.</p>
             <div class="row">
               <a class="btn primary" href="q4-2026/">View plan {icon('', 'arrow-right')}</a>
+              <a class="btn" href="q4-2026/Bandan-Kumar-Q4-2026-Planning.pdf" download>{icon('', 'download')} PDF</a>
             </div>
           </article>
         </div>
@@ -463,6 +465,7 @@ def build_q4():
     <div class="wrap">
       <a class="btn" href="{p}" data-back>{icon(p, "arrow-left")} <span>Apps</span></a>
       <div class="actions">
+        <a class="btn" href="Bandan-Kumar-Q4-2026-Planning.pdf" download>{icon(p, "download")} <span class="label-long">Download</span> PDF</a>
         <button class="btn" type="button" data-print>{icon(p, "printer")} <span class="label-long">Print</span></button>
         <button class="btn icon-only" type="button" data-theme-toggle aria-label="Switch theme">{icon(p, "moon")}</button>
       </div>
