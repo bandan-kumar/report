@@ -1,0 +1,72 @@
+name: Build and deploy site
+
+on:
+  push:
+    branches: [main]
+  schedule:
+    - cron: "0 0 * * *"   # daily, 00:00 UTC
+  workflow_dispatch:       # lets you run it by hand from the Actions tab
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Refresh public App Store data (scheduled and manual runs)
+        if: github.event_name != 'push'
+        run: python3 tools/update_appstore.py
+
+      - name: Build pages
+        run: python3 tools/build.py
+
+      - name: Commit data and page changes (scheduled and manual runs)
+        if: github.event_name != 'push'
+        run: |
+          if [ -n "$(git status --porcelain)" ]; then
+            git config user.name "github-actions[bot]"
+            git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+            git add -A
+            git commit -m "Refresh App Store data"
+            git push
+          else
+            echo "No changes"
+          fi
+
+      - name: Assemble site
+        run: |
+          mkdir _site
+          rsync -a --exclude '.git' --exclude '.github' --exclude '_site' --exclude 'tools' ./ _site/
+
+      - name: Generate A4 PDFs from the pages
+        run: |
+          python3 -m http.server 8765 --directory _site >/dev/null 2>&1 &
+          sleep 2
+          chrome=$(command -v google-chrome || command -v google-chrome-stable || command -v chromium)
+          for pair in "q3-2026:Bandan-Kumar-Q3-2026-Review" "q4-2026:Bandan-Kumar-Q4-2026-Planning"; do
+            dir=${pair%%:*}; name=${pair##*:}
+            "$chrome" --headless=new --no-sandbox --disable-gpu --no-pdf-header-footer \
+              --virtual-time-budget=10000 --print-to-pdf="_site/$dir/$name.pdf" "http://localhost:8765/$dir/"
+          done
+          ls -la _site/q3-2026 _site/q4-2026
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: _site
+
+      - id: deployment
+        uses: actions/deploy-pages@v4
