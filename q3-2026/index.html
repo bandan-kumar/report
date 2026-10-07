@@ -98,6 +98,18 @@
       </div>
     </section>
 
+    <!-- Also in v2.0 -->
+    <section class="block">
+      <h2>Also in DietPlan v2.0</h2>
+      <p class="sub">Work that doesn't show in a screenshot.</p>
+      <div class="grid features">
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download"/></svg></div><div><h3>Upgrade from v1</h3><p>v2.0 ships over the live app. On first launch it imports each user's profile, weight log, plan and reminders, with safeguards so a bad import can't lock anyone out.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#smartphone"/></svg></div><div><h3>Home screen widgets</h3><p>Today's meals (tap to complete), weight progress and the next reminder.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#trending-up"/></svg></div><div><h3>Analytics system</h3><p>A named event catalog, retention events and an in-app event log for testers.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#check-square"/></svg></div><div><h3>134 automated tests</h3><p>They cover the meal catalog and the v1 migration.</p></div></div>
+      </div>
+    </section>
+
     <!-- Data -->
     <section class="block">
       <h2>Built the Meal &amp; Recipe Data from Scratch</h2>
@@ -114,13 +126,14 @@
         <div class="card after">
           <h3>What I built</h3>
           <ul>
-            <li>Clean, non-redundant dataset built using the EatFirst API and AI generation</li>
-            <li>Researched the API: direct calls instead of scraping</li>
+            <li>Clean, non-redundant dataset: 1,454 dishes from the EatThisMuch API, plus 265 generated for cuisines it covered thinly</li>
+            <li>A teammate found the site and built a scraper for it. I found that it has an API we could call directly, so I used that instead of scraping pages</li>
             <li>Designed the new database and remapped the app's models</li>
+            <li>The main catalog ships inside the app. The API is only a search fallback when local results are thin</li>
           </ul>
         </div>
       </div>
-      <p class="result"><b>Result:</b> Reliable, maintainable data, with no fragile scraper to keep alive.</p>
+      <p class="result"><b>Result:</b> Reliable, maintainable data that works offline, with the API used only as a fallback.</p>
     </section>
 
     <!-- App size -->
@@ -162,7 +175,7 @@
     <!-- AI backend -->
     <section class="block">
       <h2>AI Backend: Secure &amp; Cost-Controlled</h2>
-      <p class="sub">Every AI request passes through safeguards I built into the Cloud Function.</p>
+      <p class="sub">Every AI request passes through safeguards in the Cloud Function.</p>
       <div class="grid pipeline">
         <div class="card step"><div class="ico-sm hot"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#shield"/></svg></div><h3>App Attest</h3><p>Only genuine app installs can call the function</p></div>
         <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#list-x"/></svg></div><h3>Model allow-list</h3><p>Requests for any AI model not already defined are rejected</p></div>
@@ -171,6 +184,7 @@
         <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#trending-up"/></svg></div><h3>Usage &amp; cost logs</h3><p>Daily AI usage and cost logged per user</p></div>
       </div>
       <p class="tamper"><b>Built-in tamper check:</b> if the logged daily cost doesn't match the actual AI bill, it signals the backend has been compromised.</p>
+      <p class="note">The Cloud Function itself was set up by the TL. I added cost logging to Firestore so there is a history, adopted a teammate's in-app cost overlay, and moved cost tracking into the backend so it stays accurate when models change.</p>
       <p class="result"><b>Result:</b> AI usage is protected from misuse, limited in cost, and monitored daily.</p>
     </section>
 
@@ -234,7 +248,7 @@
         <table>
           <thead><tr><th>Challenge</th><th>What I did</th><th>Outcome</th></tr></thead>
           <tbody>
-            <tr><td data-label="Challenge">Source data didn't fit the app's structure</td><td data-label="What I did">Rebuilt the dataset using EatFirst API + AI generation</td><td data-label="Outcome">Clean, reliable database</td></tr>
+            <tr><td data-label="Challenge">Source data didn't fit the app's structure</td><td data-label="What I did">Rebuilt the dataset from the EatThisMuch API + generated dishes</td><td data-label="Outcome">Clean, reliable database</td></tr>
             <tr><td data-label="Challenge">Database redesign late in the build</td><td data-label="What I did">Rebuilt the DB and remapped models and functions</td><td data-label="Outcome">Only a 3-day extension on the timeline</td></tr>
             <tr><td data-label="Challenge">Design assets &amp; content arrived late</td><td data-label="What I did">Prioritised modules without dependencies first</td><td data-label="Outcome">Development never stalled</td></tr>
             <tr><td data-label="Challenge">Securing AI calls</td><td data-label="What I did">Dedicated Cloud Function with Apple App Attest</td><td data-label="Outcome">Backend protected from misuse</td></tr>

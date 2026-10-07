@@ -33,7 +33,8 @@ APPS = [
          reviews=[("q3-2026/#dietplan", "Q3 2026", "Built end to end in about seven weeks, with an AI backend secured by App Attest.")],
          q3=[
             "Built every module end to end: onboarding, meal plans and recipes, weight tracking, reminders, Apple Health and universal links.",
-            "Rebuilt the meal and recipe dataset using the EatFirst API and AI generation, with no scraper to maintain.",
+            "Rebuilt the meal and recipe dataset from the EatThisMuch API plus generated dishes. The main catalog ships inside the app.",
+            "Built the upgrade path from v1, so existing users keep their profile, weight log, plan and reminders.",
             "Cut the app size from about 140 MB to 89.3 MB with On-Demand Resources and a split database.",
             "Added AI meal plans on a dedicated Cloud Function, protected by App Attest, a model allow-list, token limits and daily cost logs.",
             "Closed all 23 QA items and all 23 team-lead review points.",
