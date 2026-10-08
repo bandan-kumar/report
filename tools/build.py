@@ -318,14 +318,15 @@ def build_app(a):
               '          <p class="note">Downloads, impressions and conversion are not public, so they are not shown here.</p>\n'
               '        </div>\n'
               '      </section>\n')
-    kws = (st or {}).get("keywords") or []
+    tracked = (st or {}).get("keywords") or []
+    kws = sorted([k for k in tracked if k["rank"]], key=lambda k: k["rank"])[:5]
     if kws:
         rows = "".join(
             f'          <li><span class="kw-term">{html.escape(k["term"])}</span>'
             + (f'<span class="rank">#{k["rank"]}</span>' if k["rank"] else '<span class="rank none">Not in top 200</span>')
             + "</li>\n" for k in kws)
         s += ('      <section class="block">\n        <h2>Search visibility</h2>\n'
-              f'        <p class="sub">Where {a["name"]} appears in App Store search for the phrases people use.</p>\n'
+              f'        <p class="sub">Where {a["name"]} appears in App Store search for the phrases people use. The best five of {len(tracked)} tracked phrases.</p>\n'
               f'        <div class="card kw-card">\n          <ul class="kw-list">\n{rows}          </ul>\n'
               f'          <p class="note">Approximate: Apple\'s public search order, US store, top 200 results, as of {fmt_date(STORE["fetched"])}.</p>\n'
               '        </div>\n      </section>\n')

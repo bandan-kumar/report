@@ -8,10 +8,15 @@
     "version": "5.4",
     "ranks": {
      "diet plan": 3,
-     "7 day diet plan": 11,
+     "7 day diet plan": 12,
      "diet planner": 11,
      "weight loss diet": 15,
-     "weight loss plan": 32
+     "weight loss plan": 33,
+     "diet plan weight loss": 17,
+     "meal planner for weight loss": 20,
+     "healthy meal planner": 24,
+     "weight loss planner": 21,
+     "meal planner": 82
     }
    },
    "upkee": {
@@ -20,10 +25,15 @@
     "version": "1.0.2",
     "ranks": {
      "house cleaning schedule": 18,
-     "cleaning schedule": 28,
+     "cleaning schedule": 26,
      "cleaning schedule app": 39,
-     "house cleaning": 38,
-     "housework": 43
+     "house cleaning": 43,
+     "housework": 43,
+     "house cleaning checklist free": 35,
+     "house cleaning app": 47,
+     "weekly cleaning schedule": 52,
+     "cleaning planner": 77,
+     "adhd cleaning checklist": 67
     }
    },
    "caloric": {

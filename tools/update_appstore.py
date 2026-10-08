@@ -13,8 +13,14 @@ IDS = {
 COUNTRY = "us"
 # Plain phrases people type into the App Store. Brand names and the keyword field itself are deliberately not listed.
 KEYWORDS = {
-    "dietplan": ["diet plan", "7 day diet plan", "diet planner", "weight loss diet", "weight loss plan"],
-    "upkee": ["house cleaning schedule", "cleaning schedule", "cleaning schedule app", "house cleaning", "housework"],
+    "dietplan": [
+        "diet plan", "7 day diet plan", "diet planner", "weight loss diet", "weight loss plan",
+        "diet plan weight loss", "meal planner for weight loss", "healthy meal planner", "weight loss planner", "meal planner",
+    ],
+    "upkee": [
+        "house cleaning schedule", "cleaning schedule", "cleaning schedule app", "house cleaning", "housework",
+        "house cleaning checklist free", "house cleaning app", "weekly cleaning schedule", "cleaning planner", "adhd cleaning checklist",
+    ],
 }
 SEARCH_PAUSE = 3  # seconds between searches: Apple allows roughly 20 requests a minute
 HISTORY_DAYS = 365
