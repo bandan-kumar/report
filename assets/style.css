@@ -526,10 +526,10 @@ tbody td:first-child { font-weight: 700; }
 .metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
 .metrics.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
 .metric { background: var(--surface-2); border-radius: var(--radius-sm); padding: 12px; min-width: 0; }
-.metric b { display: block; font-size: 1rem; line-height: 1.25; letter-spacing: -.01em; white-space: nowrap; }
+.metric b { display: block; font-size: 1rem; line-height: 1.25; letter-spacing: -.01em; overflow-wrap: anywhere; }
 .metric span { display: block; margin-top: 2px; font-size: .75rem; line-height: 1.3; color: var(--muted); }
 .metrics.cols-4 .metric { padding: 14px 16px; }
-.metrics.cols-4 .metric b { font-size: 1.2rem; }
+.metrics.cols-4 .metric b { font-size: 1.15rem; }
 .metrics.cols-4 .metric span { font-size: var(--fs-small); }
 .snapshot-card .note { margin-top: 16px; }
 
@@ -561,7 +561,7 @@ tbody td:first-child { font-weight: 700; }
 @media print {
   :root, :root:not([data-theme="light"]), :root[data-theme="dark"] { --on-brand: #ffffff; }
   .metrics.cols-4 { grid-template-columns: repeat(4, 1fr); }
-  .metric b { white-space: nowrap; }
+  .metric b { overflow-wrap: anywhere; }
   .block, .section { margin-top: 20px; }
   .plans .group .grid, .glance { grid-template-columns: repeat(2, 1fr); }
   .group { break-inside: auto; }

@@ -107,7 +107,7 @@ HEAD = """<!doctype html>
   <meta name="description" content="{desc}">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="{fav}">
-  <link rel="stylesheet" href="{p}assets/style.css?v=124">
+  <link rel="stylesheet" href="{p}assets/style.css?v=125">
   <script src="{p}assets/theme.js?v=9"></script>
 </head>
 <body>
