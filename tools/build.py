@@ -606,17 +606,6 @@ def build_q4():
       </div>
     </section>
 
-    <section class="block">
-      <div class="ahead">
-        <h2>What I need</h2>
-        <ul>
-          <li><span class="ico-sm">""" + icon(p, "award") + """</span><span>Final design for the DietPlan premium screens</span></li>
-          <li><span class="ico-sm">""" + icon(p, "calendar") + """</span><span>A target launch date for DietPlan v2.0</span></li>
-          <li><span class="ico-sm">""" + icon(p, "search") + """</span><span>App Store Connect analytics access for DietPlan and Upkee</span></li>
-        </ul>
-      </div>
-    </section>
-
     <p class="print-only print-foot">Bandan Kumar · Q4 2026 Planning · App Store figures as of """ + fmt_date(STORE["fetched"]) + """</p>
   </main>
 
