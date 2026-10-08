@@ -576,3 +576,19 @@ tbody td:first-child { font-weight: 700; }
 @media (max-width: 380px) {
   .metrics:not(.cols-4) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
+
+/* ---------- Tidy-up: classes that replace inline styles ---------- */
+.block > h2 + div, .block > h2 + .table-wrap { margin-top: 24px; }
+.mini-title { font-size: var(--fs-h3); margin-bottom: 12px; }
+.after-chip { margin-top: 10px; }
+.sub-section { font-size: 1.4rem; margin-top: clamp(28px, 5vw, 48px); letter-spacing: -.01em; }
+.app-lead { margin-top: 18px; color: var(--muted); max-width: 70ch; }
+.shot.phone { flex: none; width: 160px; }
+.size-grid.two-col { grid-template-columns: minmax(0, 1fr) auto; align-items: start; }
+.stack.card { gap: 18px; }
+.features.wide { grid-template-columns: repeat(auto-fit, minmax(min(100%, 380px), 1fr)); }
+.two-up { grid-template-columns: repeat(auto-fit, minmax(min(100%, 420px), 1fr)); align-items: start; gap: 18px; }
+.stack-col { gap: 14px; align-content: start; }
+.stack-col.roomy { gap: 18px; }
+@media (max-width: 860px) { .size-grid.two-col { grid-template-columns: 1fr; } .shot.phone { justify-self: center; } }
+@media print { .shot.phone { width: 110px; } .size-grid.two-col { grid-template-columns: 1fr auto; } .features.wide { grid-template-columns: repeat(2, 1fr); } .two-up { grid-template-columns: 1fr 1fr; } }

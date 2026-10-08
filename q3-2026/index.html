@@ -7,8 +7,8 @@
   <meta name="description" content="Q3 2026 performance review: DietPlan built end to end in about seven weeks, Caloric released, a 77 MB smaller app and a secured AI backend.">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231e5fb0'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3EBK%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="../assets/style.css?v=5">
-  <script src="../assets/theme.js?v=5"></script>
+  <link rel="stylesheet" href="../assets/style.css?v=6">
+  <script src="../assets/theme.js?v=6"></script>
 </head>
 <body>
   <header class="topbar">
@@ -84,7 +84,7 @@
       </div>
       <p class="result"><b>Result:</b> Feature-complete app built end to end, with only the premium screens left before release.</p>
 
-      <h2 style="margin-top:clamp(28px,5vw,48px);font-size:clamp(1.2rem,2.6vw,1.5rem)">DietPlan in Action</h2>
+      <h2 class="sub-section">DietPlan in Action</h2>
       <p class="sub">Real screens from the app.</p>
       <div class="gallery" tabindex="0" aria-label="DietPlan screenshots, scroll sideways">
         <figure class="shot"><img src="../assets/img/dietplan-onboarding.png" alt="Onboarding screen asking 'What is your gender?'" loading="lazy" width="460" height="995"><figcaption>Onboarding</figcaption></figure>
@@ -153,7 +153,7 @@
           <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#database"/></svg></div><div><h3>Split database</h3><p>Broke the large database into smaller databases, so users don't download everything at once.</p></div></div>
           <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#zap"/></svg></div><div><h3>Better first experience</h3><p>A smaller install and faster first launch, especially on slower networks.</p></div></div>
         </div>
-        <figure class="shot" style="flex:none;width:150px"><img src="../assets/img/dietplan-cuisines.png" alt="Manage Cuisines screen listing downloadable cuisines" loading="lazy" width="460" height="995"></figure>
+        <figure class="shot phone"><img src="../assets/img/dietplan-cuisines.png" alt="Manage Cuisines screen listing downloadable cuisines" loading="lazy" width="460" height="995"></figure>
       </div>
       <p class="result"><b>Result:</b> Lighter app for every user, with content delivered on demand.</p>
     </section>
@@ -162,14 +162,14 @@
     <section class="block">
       <h2>AI Features, Secured with App Attest</h2>
       <p class="sub">Adopting a newer Apple security technology.</p>
-      <div class="size-grid" style="grid-template-columns:minmax(0,1fr) auto">
-        <div class="stack">
+      <div class="size-grid two-col">
+        <div class="stack card">
           <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#zap"/></svg></div><div><h3>AI meal plan generation</h3><p>Personalised meal plans generated with Gemini.</p></div></div>
           <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#file-text"/></svg></div><div><h3>Custom recipe adding</h3><p>Users can add their own recipes to plans.</p></div></div>
           <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#cloud"/></svg></div><div><h3>Project-level Cloud Function</h3><p>Moved AI calls from the shared function to a dedicated DietPlan function.</p></div></div>
           <div class="feature"><div class="ico-sm hot"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#shield"/></svg></div><div><h3>Apple App Attest</h3><p>Only genuine app installs can call the AI backend. A newer security layer not yet widely used in our projects.</p></div></div>
         </div>
-        <figure class="shot" style="flex:none;width:170px"><img src="../assets/img/dietplan-ai-planner.png" alt="AI Meal Planner screen asking to pick favourite cuisines" loading="lazy" width="460" height="995"></figure>
+        <figure class="shot phone"><img src="../assets/img/dietplan-ai-planner.png" alt="AI Meal Planner screen asking to pick favourite cuisines" loading="lazy" width="460" height="995"></figure>
       </div>
       <p class="result"><b>Result:</b> AI features protected against misuse and unauthorised API calls.</p>
     </section>
@@ -214,7 +214,7 @@
     <section class="block">
       <h2>Quality &amp; Ownership</h2>
       <p class="sub">Going beyond the assigned task list.</p>
-      <div class="grid features" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,380px),1fr))">
+      <div class="grid features wide">
         <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg></div><div><h3>Proactive self-QA</h3><p>While QA cycles were pending, I tested the app myself and fixed anything that didn't feel right.</p></div></div>
         <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg></div><div><h3>23 / 23 QA items closed</h3><p>Only 23 QA items for the entire app. All resolved, and 6 were suggestions rather than bugs.</p></div></div>
         <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#check-square"/></svg></div><div><h3>23 / 23 TL review points done</h3><p>UI polish across Onboarding, Home and Meals: smooth number transitions, themed controls, infinite recipe carousel.</p></div></div>
@@ -225,15 +225,14 @@
     <!-- Growth -->
     <section class="block">
       <h2>Growth &amp; Team Contribution</h2>
-      <p class="sub">&nbsp;</p>
-      <div class="grid" style="grid-template-columns:repeat(auto-fit,minmax(min(100%,420px),1fr));align-items:start">
-        <div class="grid" style="gap:14px">
+      <div class="grid two-up">
+        <div class="grid stack-col">
           <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#globe"/></svg></div><div><h3>Localization helper</h3><p>Built an internal tool to automate app string translation. Several developers used it and it worked very well at the time. Google has since tightened its limits, so large batches can fail. The script handles this and the impact is small, but it is less effective than before.</p></div></div>
           <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#calendar"/></svg></div><div><h3>Planning &amp; estimation</h3><p>Created a module-wise estimated timeline before development and validated the data structure with a senior developer.</p></div></div>
         </div>
-        <div class="grid" style="gap:18px">
+        <div class="grid stack-col roomy">
           <div>
-            <h3 style="margin-bottom:12px">New technologies applied this quarter</h3>
+            <h3 class="mini-title">New technologies applied this quarter</h3>
             <div class="pills"><span class="pill">Apple App Attest</span><span class="pill">On-Demand Resources</span><span class="pill">Gemini &amp; ChatGPT</span><span class="pill">Cloud Functions</span><span class="pill">Universal Links</span><span class="pill">HealthKit</span></div>
           </div>
           <div class="callout"><h3>Area I'm working on</h3><p>Communicating earlier and more proactively with design and product teams, so dependencies and open questions are raised sooner.</p></div>
@@ -244,7 +243,6 @@
     <!-- Challenges -->
     <section class="block">
       <h2>Key Challenges &amp; How I Handled Them</h2>
-      <p class="sub">&nbsp;</p>
       <div class="table-wrap">
         <table>
           <thead><tr><th>Challenge</th><th>What I did</th><th>Outcome</th></tr></thead>

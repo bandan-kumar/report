@@ -97,8 +97,8 @@ HEAD = """<!doctype html>
   <meta name="description" content="{desc}">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="{fav}">
-  <link rel="stylesheet" href="{p}assets/style.css?v=5">
-  <script src="{p}assets/theme.js?v=5"></script>
+  <link rel="stylesheet" href="{p}assets/style.css?v=6">
+  <script src="{p}assets/theme.js?v=6"></script>
 </head>
 <body>
 """
@@ -231,7 +231,7 @@ def build_index():
             <div class="ico">{icon('', 'file-text')}</div>
             <div>
               <span class="chip plain">July – September 2026</span>
-              <h3 style="margin-top:10px">Q3 2026 Performance Review</h3>
+              <h3 class="after-chip">Q3 2026 Performance Review</h3>
             </div>
             <p>What shipped, what changed, the challenges along the way, and what is next.</p>
             <div class="row">
@@ -244,7 +244,7 @@ def build_index():
             <div class="ico">{icon('', 'target')}</div>
             <div>
               <span class="chip plain">October – December 2026</span>
-              <h3 style="margin-top:10px">Q4 2026 Planning</h3>
+              <h3 class="after-chip">Q4 2026 Planning</h3>
             </div>
             <p>Focus, first actions and the numbers to track for each app: ASO, conversion, onboarding completion and paywall conversion.</p>
             <div class="row">
@@ -281,7 +281,7 @@ def build_app(a):
           <div class="chips">{chip(*a['status'])} {role_chip(a)}{'<span class="tag">' + a['platform'] + '</span>' if a['platform'] else ''}</div>
         </div>
       </div>
-      <div class="wrap"><p class="lead" style="margin-top:18px;color:var(--muted);max-width:70ch">{html.escape(a['summary'])}</p></div>
+      <div class="wrap"><p class="lead app-lead">{html.escape(a['summary'])}</p></div>
     </section>
 
     <div class="wrap">
