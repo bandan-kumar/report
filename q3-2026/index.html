@@ -7,17 +7,54 @@
   <meta name="description" content="Q3 2026 performance review: DietPlan built end to end in about seven weeks, Caloric released, a 77 MB smaller app and a secured AI backend.">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231e5fb0'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3EBK%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="../assets/style.css?v=6">
-  <script src="../assets/theme.js?v=6"></script>
+  <link rel="stylesheet" href="../assets/style.css?v=7">
+  <script src="../assets/theme.js?v=7"></script>
 </head>
 <body>
+<!--sprite-->
+<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" focusable="false">
+<symbol id="sun" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></g></symbol>
+  <symbol id="moon" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></g></symbol>
+  <symbol id="printer" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9V2h12v7M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/><rect x="6" y="14" width="12" height="8"/></g></symbol>
+  <symbol id="download" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4M7 10l5 5 5-5M12 15V3"/></g></symbol>
+  <symbol id="arrow-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></g></symbol>
+  <symbol id="arrow-left" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></g></symbol>
+  <symbol id="file-text" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8zM14 2v6h6M16 13H8M16 17H8M10 9H8"/></g></symbol>
+  <symbol id="target" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="6"/><circle cx="12" cy="12" r="2"/></g></symbol>
+  <symbol id="log-in" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4M10 17l5-5-5-5M15 12H3"/></g></symbol>
+  <symbol id="coffee" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8zM6 1v3M10 1v3M14 1v3"/></g></symbol>
+  <symbol id="activity" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></g></symbol>
+  <symbol id="bell" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9M13.73 21a2 2 0 0 1-3.46 0"/></g></symbol>
+  <symbol id="heart" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></g></symbol>
+  <symbol id="link" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></g></symbol>
+  <symbol id="cloud" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 10h-1.26A8 8 0 1 0 9 20h9a5 5 0 0 0 0-10z"/></g></symbol>
+  <symbol id="download-cloud" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 17l4 4 4-4M12 12v9M20.88 18.09A5 5 0 0 0 18 9h-1.26A8 8 0 1 0 3 16.29"/></g></symbol>
+  <symbol id="database" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><ellipse cx="12" cy="5" rx="9" ry="3"/><path d="M21 12c0 1.66-4 3-9 3s-9-1.34-9-3M3 5v14c0 1.66 4 3 9 3s9-1.34 9-3V5"/></g></symbol>
+  <symbol id="zap" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></g></symbol>
+  <symbol id="shield" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10zM9 12l2 2 4-4"/></g></symbol>
+  <symbol id="sliders" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 21v-7M4 10V3M12 21v-9M12 8V3M20 21v-5M20 12V3M1 14h6M9 8h6M17 16h6"/></g></symbol>
+  <symbol id="list-x" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7h10M4 12h6M4 17h10M16 11l5 5M21 11l-5 5"/></g></symbol>
+  <symbol id="pie" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.21 15.89A10 10 0 1 1 8 2.83M22 12A10 10 0 0 0 12 2v10z"/></g></symbol>
+  <symbol id="trending-up" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M23 6l-9.5 9.5-5-5L1 18M17 6h6v6"/></g></symbol>
+  <symbol id="award" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="7"/><path d="M8.21 13.89L7 23l5-3 5 3-1.21-9.12"/></g></symbol>
+  <symbol id="lock" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></g></symbol>
+  <symbol id="check-square" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></g></symbol>
+  <symbol id="thumbs-up" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3zM7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></g></symbol>
+  <symbol id="search" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></g></symbol>
+  <symbol id="globe" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></g></symbol>
+  <symbol id="calendar" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></g></symbol>
+  <symbol id="send" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></g></symbol>
+  <symbol id="smartphone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></g></symbol>
+  <symbol id="message" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></g></symbol>
+</svg>
+<!--/sprite-->
   <header class="topbar">
     <div class="wrap">
-      <a class="btn" href="../" data-back><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#arrow-left"/></svg> <span>Apps</span></a>
+      <a class="btn" href="../" data-back><svg class="icon" aria-hidden="true"><use href="#arrow-left"/></svg> <span>Apps</span></a>
       <div class="actions">
-        <a class="btn" href="Bandan-Kumar-Q3-2026-Review.pdf" download><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download"/></svg> <span class="label-long">Download</span> PDF</a>
-        <button class="btn" type="button" data-print><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#printer"/></svg> <span class="label-long">Print</span></button>
-        <button class="btn icon-only" type="button" data-theme-toggle aria-label="Switch theme"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#moon"/></svg></button>
+        <a class="btn" href="Bandan-Kumar-Q3-2026-Review.pdf" download><svg class="icon" aria-hidden="true"><use href="#download"/></svg> <span class="label-long">Download</span> PDF</a>
+        <button class="btn" type="button" data-print><svg class="icon" aria-hidden="true"><use href="#printer"/></svg> <span class="label-long">Print</span></button>
+        <button class="btn icon-only" type="button" data-theme-toggle aria-label="Switch theme"><svg class="icon" aria-hidden="true"><use href="#moon"/></svg></button>
       </div>
     </div>
   </header>
@@ -75,12 +112,12 @@
       <h2>Built the DietPlan App End to End</h2>
       <p class="sub">Every module developed and integrated by me.</p>
       <div class="grid features">
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#log-in"/></svg></div><div><h3>Onboarding</h3><p>Validation, Firebase Auth, Firestore, Storage</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#coffee"/></svg></div><div><h3>Meal Plans &amp; Recipes</h3><p>Filters, meal swap, meal follow, carbs tracking</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#activity"/></svg></div><div><h3>Weight &amp; Body Tracking</h3><p>Weight chart, body measurements</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#bell"/></svg></div><div><h3>Reminders &amp; Settings</h3><p>Reminder presets, full settings flow</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#heart"/></svg></div><div><h3>Apple Health</h3><p>Reads health data into the app</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#link"/></svg></div><div><h3>Universal Links</h3><p>Share meals &amp; recipes, App Store fallback</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#log-in"/></svg></div><div><h3>Onboarding</h3><p>Validation, Firebase Auth, Firestore, Storage</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#coffee"/></svg></div><div><h3>Meal Plans &amp; Recipes</h3><p>Filters, meal swap, meal follow, carbs tracking</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#activity"/></svg></div><div><h3>Weight &amp; Body Tracking</h3><p>Weight chart, body measurements</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#bell"/></svg></div><div><h3>Reminders &amp; Settings</h3><p>Reminder presets, full settings flow</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#heart"/></svg></div><div><h3>Apple Health</h3><p>Reads health data into the app</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#link"/></svg></div><div><h3>Universal Links</h3><p>Share meals &amp; recipes, App Store fallback</p></div></div>
       </div>
       <p class="result"><b>Result:</b> Feature-complete app built end to end, with only the premium screens left before release.</p>
 
@@ -103,12 +140,12 @@
       <h2>Also in DietPlan v2.0</h2>
       <p class="sub">Work that doesn't show in a screenshot.</p>
       <div class="grid features">
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download"/></svg></div><div><h3>Data migration for existing users</h3><p>v2.0 ships over the live app. On first launch it imports each user's profile, weight log, plan and reminders, with safeguards so a bad import can't lock anyone out.</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#smartphone"/></svg></div><div><h3>Home screen widgets</h3><p>Today's meals (tap to complete), weight progress and the next reminder.</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#trending-up"/></svg></div><div><h3>Analytics system</h3><p>A named event catalog, retention events and an in-app event log for testers.</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#check-square"/></svg></div><div><h3>134 automated tests</h3><p>They cover the meal database, user data storage and the migration from v1.</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#smartphone"/></svg></div><div><h3>iPad window support</h3><p>Layouts follow the window size, so the app works in Split View, Slide Over and Stage Manager as well as full screen.</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#globe"/></svg></div><div><h3>Automatic translation</h3><p>Xcode's own string extraction picks up new text, even strings added directly in code, and a script translates it with Google Translate on each debug build.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#download"/></svg></div><div><h3>Data migration for existing users</h3><p>v2.0 ships over the live app. On first launch it imports each user's profile, weight log, plan and reminders, with safeguards so a bad import can't lock anyone out.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#smartphone"/></svg></div><div><h3>Home screen widgets</h3><p>Today's meals (tap to complete), weight progress and the next reminder.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#trending-up"/></svg></div><div><h3>Analytics system</h3><p>A named event catalog, retention events and an in-app event log for testers.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#check-square"/></svg></div><div><h3>134 automated tests</h3><p>They cover the meal database, user data storage and the migration from v1.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#smartphone"/></svg></div><div><h3>iPad window support</h3><p>Layouts follow the window size, so the app works in Split View, Slide Over and Stage Manager as well as full screen.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#globe"/></svg></div><div><h3>Automatic translation</h3><p>Xcode's own string extraction picks up new text, even strings added directly in code, and a script translates it with Google Translate on each debug build.</p></div></div>
       </div>
     </section>
 
@@ -149,9 +186,9 @@
           <div class="flow">180 MB → 103 MB</div>
         </div>
         <div class="stack">
-          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#download-cloud"/></svg></div><div><h3>Apple On-Demand Resources</h3><p>Moved heavy content out of the main app bundle, so it downloads only when needed.</p></div></div>
-          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#database"/></svg></div><div><h3>Split database</h3><p>Broke the large database into smaller databases, so users don't download everything at once.</p></div></div>
-          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#zap"/></svg></div><div><h3>Better first experience</h3><p>A smaller install and faster first launch, especially on slower networks.</p></div></div>
+          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#download-cloud"/></svg></div><div><h3>Apple On-Demand Resources</h3><p>Moved heavy content out of the main app bundle, so it downloads only when needed.</p></div></div>
+          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#database"/></svg></div><div><h3>Split database</h3><p>Broke the large database into smaller databases, so users don't download everything at once.</p></div></div>
+          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#zap"/></svg></div><div><h3>Better first experience</h3><p>A smaller install and faster first launch, especially on slower networks.</p></div></div>
         </div>
         <figure class="shot phone"><img src="../assets/img/dietplan-cuisines.png" alt="Manage Cuisines screen listing downloadable cuisines" loading="lazy" width="460" height="995"></figure>
       </div>
@@ -164,10 +201,10 @@
       <p class="sub">Adopting a newer Apple security technology.</p>
       <div class="size-grid two-col">
         <div class="stack card">
-          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#zap"/></svg></div><div><h3>AI meal plan generation</h3><p>Personalised meal plans generated with Gemini.</p></div></div>
-          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#file-text"/></svg></div><div><h3>Custom recipe adding</h3><p>Users can add their own recipes to plans.</p></div></div>
-          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#cloud"/></svg></div><div><h3>Project-level Cloud Function</h3><p>Moved AI calls from the shared function to a dedicated DietPlan function.</p></div></div>
-          <div class="feature"><div class="ico-sm hot"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#shield"/></svg></div><div><h3>Apple App Attest</h3><p>Only genuine app installs can call the AI backend. A newer security layer not yet widely used in our projects.</p></div></div>
+          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#zap"/></svg></div><div><h3>AI meal plan generation</h3><p>Personalised meal plans generated with Gemini.</p></div></div>
+          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#file-text"/></svg></div><div><h3>Custom recipe adding</h3><p>Users can add their own recipes to plans.</p></div></div>
+          <div class="feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#cloud"/></svg></div><div><h3>Project-level Cloud Function</h3><p>Moved AI calls from the shared function to a dedicated DietPlan function.</p></div></div>
+          <div class="feature"><div class="ico-sm hot"><svg class="icon" aria-hidden="true"><use href="#shield"/></svg></div><div><h3>Apple App Attest</h3><p>Only genuine app installs can call the AI backend. A newer security layer not yet widely used in our projects.</p></div></div>
         </div>
         <figure class="shot phone"><img src="../assets/img/dietplan-ai-planner.png" alt="AI Meal Planner screen asking to pick favourite cuisines" loading="lazy" width="460" height="995"></figure>
       </div>
@@ -179,11 +216,11 @@
       <h2>AI Backend: Secure &amp; Cost-Controlled</h2>
       <p class="sub">Every AI request passes through safeguards I built into the Cloud Function.</p>
       <div class="grid pipeline">
-        <div class="card step"><div class="ico-sm hot"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#shield"/></svg></div><h3>App Attest</h3><p>Only genuine app installs can call the function</p></div>
-        <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#list-x"/></svg></div><h3>Model allow-list</h3><p>Requests for any AI model not already defined are rejected</p></div>
-        <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#sliders"/></svg></div><h3>Configurable model</h3><p>Gemini or ChatGPT, configured from Firebase</p></div>
-        <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#pie"/></svg></div><h3>Token limit</h3><p>Requests over the defined token limit are dropped</p></div>
-        <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#trending-up"/></svg></div><h3>Usage &amp; cost logs</h3><p>Daily AI usage and cost logged per user</p></div>
+        <div class="card step"><div class="ico-sm hot"><svg class="icon" aria-hidden="true"><use href="#shield"/></svg></div><h3>App Attest</h3><p>Only genuine app installs can call the function</p></div>
+        <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="#list-x"/></svg></div><h3>Model allow-list</h3><p>Requests for any AI model not already defined are rejected</p></div>
+        <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="#sliders"/></svg></div><h3>Configurable model</h3><p>Gemini or ChatGPT, configured from Firebase</p></div>
+        <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="#pie"/></svg></div><h3>Token limit</h3><p>Requests over the defined token limit are dropped</p></div>
+        <div class="card step"><div class="ico-sm"><svg class="icon" aria-hidden="true"><use href="#trending-up"/></svg></div><h3>Usage &amp; cost logs</h3><p>Daily AI usage and cost logged per user</p></div>
       </div>
       <p class="tamper"><b>Built-in tamper check:</b> if the logged daily cost doesn't match the actual AI bill, it signals the backend has been compromised.</p>
       <p class="result"><b>Result:</b> AI usage is protected from misuse, limited in cost, and monitored daily.</p>
@@ -195,15 +232,15 @@
       <p class="sub">A second app: key issues fixed so it was ready for release.</p>
       <div class="grid three">
         <div class="card">
-          <h3><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#award"/></svg></span> Premium &amp; Offers</h3>
+          <h3><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="#award"/></svg></span> Premium &amp; Offers</h3>
           <ul><li>Premium screen UI fixes</li><li>Screen not dismissing</li><li>Restore &amp; auto-restore purchases</li><li>Offer screen showing after logout / in review build</li></ul>
         </div>
         <div class="card">
-          <h3><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#cloud"/></svg></span> Backend</h3>
+          <h3><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="#cloud"/></svg></span> Backend</h3>
           <ul><li>Cloud Function was created but not wired in correctly</li><li>Connected the app to it properly</li></ul>
         </div>
         <div class="card">
-          <h3><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#lock"/></svg></span> Authentication</h3>
+          <h3><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="#lock"/></svg></span> Authentication</h3>
           <ul><li>Sign-out asked users to log in again, then deleted their data</li><li>Fixed so sign-out works cleanly and safely</li></ul>
         </div>
       </div>
@@ -215,10 +252,10 @@
       <h2>Quality &amp; Ownership</h2>
       <p class="sub">Going beyond the assigned task list.</p>
       <div class="grid features wide">
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#search"/></svg></div><div><h3>Proactive self-QA</h3><p>While QA cycles were pending, I tested the app myself and fixed anything that didn't feel right.</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#thumbs-up"/></svg></div><div><h3>23 / 23 QA items closed</h3><p>Only 23 QA items for the entire app. All resolved, and 6 were suggestions rather than bugs.</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#check-square"/></svg></div><div><h3>23 / 23 TL review points done</h3><p>UI polish across Onboarding, Home and Meals: smooth number transitions, themed controls, infinite recipe carousel.</p></div></div>
-        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#trending-up"/></svg></div><div><h3>Analytics ready</h3><p>Events added across the app so the product team can measure user behaviour from launch.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#search"/></svg></div><div><h3>Proactive self-QA</h3><p>While QA cycles were pending, I tested the app myself and fixed anything that didn't feel right.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#thumbs-up"/></svg></div><div><h3>23 / 23 QA items closed</h3><p>Only 23 QA items for the entire app. All resolved, and 6 were suggestions rather than bugs.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#check-square"/></svg></div><div><h3>23 / 23 TL review points done</h3><p>UI polish across Onboarding, Home and Meals: smooth number transitions, themed controls, infinite recipe carousel.</p></div></div>
+        <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#trending-up"/></svg></div><div><h3>Analytics ready</h3><p>Events added across the app so the product team can measure user behaviour from launch.</p></div></div>
       </div>
     </section>
 
@@ -227,8 +264,8 @@
       <h2>Growth &amp; Team Contribution</h2>
       <div class="grid two-up">
         <div class="grid stack-col">
-          <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#globe"/></svg></div><div><h3>Localization helper</h3><p>Built an internal tool to automate app string translation. Several developers used it and it worked very well at the time. Google has since tightened its limits, so large batches can fail. The script handles this and the impact is small, but it is less effective than before.</p></div></div>
-          <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#calendar"/></svg></div><div><h3>Planning &amp; estimation</h3><p>Created a module-wise estimated timeline before development and validated the data structure with a senior developer.</p></div></div>
+          <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#globe"/></svg></div><div><h3>Localization helper</h3><p>Built an internal tool to automate app string translation. Several developers used it and it worked very well at the time. Google has since tightened its limits, so large batches can fail. The script handles this and the impact is small, but it is less effective than before.</p></div></div>
+          <div class="card feature"><div class="ico"><svg class="icon" aria-hidden="true"><use href="#calendar"/></svg></div><div><h3>Planning &amp; estimation</h3><p>Created a module-wise estimated timeline before development and validated the data structure with a senior developer.</p></div></div>
         </div>
         <div class="grid stack-col roomy">
           <div>
@@ -262,10 +299,10 @@
       <div class="ahead">
         <h2>Looking Ahead to Q4</h2>
         <ul>
-          <li><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#award"/></svg></span><span>Integrate the new premium screens once design is final</span></li>
-          <li><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#send"/></svg></span><span>Launch DietPlan on the App Store</span></li>
-          <li><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#smartphone"/></svg></span><span>Adapt to the new Product Engineer role, managing both iOS and Android apps to reduce cross-team dependency</span></li>
-          <li><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="../assets/icons.svg#message"/></svg></span><span>Keep improving proactive cross-team communication</span></li>
+          <li><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="#award"/></svg></span><span>Integrate the new premium screens once design is final</span></li>
+          <li><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="#send"/></svg></span><span>Launch DietPlan on the App Store</span></li>
+          <li><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="#smartphone"/></svg></span><span>Adapt to the new Product Engineer role, managing both iOS and Android apps to reduce cross-team dependency</span></li>
+          <li><span class="ico-sm"><svg class="icon" aria-hidden="true"><use href="#message"/></svg></span><span>Keep improving proactive cross-team communication</span></li>
         </ul>
         <p class="thanks">Thank you</p>
       </div>

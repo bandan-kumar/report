@@ -1,4 +1,4 @@
-import os, html, json
+import os, re, html, json
 from datetime import date
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -20,8 +20,18 @@ def fmt_int(n):
 
 FAVICON = "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231e5fb0'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3EBK%3C/text%3E%3C/svg%3E"
 
+def _load_sprite():
+    raw = open(os.path.join(ROOT, "assets", "icons.svg")).read()
+    inner = re.search(r"<svg[^>]*>(.*)</svg>", raw, re.S).group(1).strip()
+    return ('<svg xmlns="http://www.w3.org/2000/svg" style="position:absolute;width:0;height:0;overflow:hidden" '
+            'aria-hidden="true" focusable="false">\n' + inner + "\n</svg>")
+
+
+SPRITE = _load_sprite()
+
+
 def icon(path, name):
-    return f'<svg class="icon" aria-hidden="true"><use href="{path}assets/icons.svg#{name}"/></svg>'
+    return f'<svg class="icon" aria-hidden="true"><use href="#{name}"/></svg>'
 
 APPS = [
     dict(slug="dietplan", langs=['English', 'German', 'Spanish', 'French', 'Hindi', 'Italian', 'Japanese', 'Portuguese (Brazil)', 'Russian'], strings='956', name="DietPlan", letter="D", cls="diet", role="primary", tier="Autonomous", play="https://play.google.com/store/apps/details?id=com.pixsterstudio.dietplans",
@@ -97,10 +107,11 @@ HEAD = """<!doctype html>
   <meta name="description" content="{desc}">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="{fav}">
-  <link rel="stylesheet" href="{p}assets/style.css?v=6">
-  <script src="{p}assets/theme.js?v=6"></script>
+  <link rel="stylesheet" href="{p}assets/style.css?v=7">
+  <script src="{p}assets/theme.js?v=7"></script>
 </head>
 <body>
+{sprite}
 """
 
 def topbar(p, home=False):
@@ -185,7 +196,7 @@ def app_card(a):
 def build_index():
     prim = "\n".join(app_card(a) for a in APPS if a["role"] == "primary")
     sec = "\n".join(app_card(a) for a in APPS if a["role"] == "backup")
-    s = HEAD.format(title="Bandan Kumar · Apps &amp; Reviews", p="", fav=FAVICON,
+    s = HEAD.format(sprite=SPRITE, title="Bandan Kumar · Apps &amp; Reviews", p="", fav=FAVICON,
                     desc="The apps Bandan Kumar builds and supports, with a review page for each and the quarterly reports.")
     s += topbar("", home=True)
     s += f"""
@@ -267,7 +278,7 @@ def build_index():
 
 def build_app(a):
     p = "../../"
-    s = HEAD.format(title=f"{a['name']} · Review · Bandan Kumar", p=p, fav=FAVICON,
+    s = HEAD.format(sprite=SPRITE, title=f"{a['name']} · Review · Bandan Kumar", p=p, fav=FAVICON,
                     desc=f"{a['name']}: status, quarterly reviews and focus areas.")
     s += topbar(p)
     plat = f" · {a['platform']}" if a["platform"] else ""
@@ -474,7 +485,7 @@ GROUP_CLOSE = "        </div>\n      </div>\n"
 
 def build_q4():
     p = "../"
-    s = HEAD.format(title="Q4 2026 Planning · Bandan Kumar", p=p, fav=FAVICON,
+    s = HEAD.format(sprite=SPRITE, title="Q4 2026 Planning · Bandan Kumar", p=p, fav=FAVICON,
                     desc="Q4 2026 planning: focus, first actions and the numbers to watch for DietPlan and Upkee, plus backup cover for three more apps.")
     s += f"""  <header class="topbar">
     <div class="wrap">
@@ -620,7 +631,16 @@ def build_q4():
     open(f"{d}/index.html", "w").write(s)
 
 
+def sync_q3_sprite():
+    p = os.path.join(ROOT, "q3-2026", "index.html")
+    s = open(p).read()
+    s = re.sub(r"<!--sprite-->.*?<!--/sprite-->", lambda m: "<!--sprite-->\n" + SPRITE + "\n<!--/sprite-->", s, flags=re.S)
+    s = re.sub(r'href="\.\./assets/icons\.svg(?:\?v=\d+)?#', 'href="#', s)
+    open(p, "w").write(s)
+
+
 build_index()
+sync_q3_sprite()
 build_q4()
 for a in APPS:
     build_app(a)
