@@ -699,3 +699,5 @@ html { scroll-padding-top: 130px; }
   .glance { grid-template-columns: repeat(3, 1fr); }
   .apps:not(:has(.plan)) { grid-template-columns: repeat(3, 1fr); }
 }
+
+.row-buttons { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 24px; }

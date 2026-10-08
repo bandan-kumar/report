@@ -98,6 +98,33 @@ for _a in APPS:
     else:
         _a["card_metrics"] = _a["metrics"]
 
+SITE_URL = "https://bandan-kumar.github.io/report/"
+SITE_PATH = "/report/"
+
+
+def head_meta(path, title, desc, image, p):
+    """Search-hiding, theme colour, home-screen icon and link-preview tags for one page."""
+    url = SITE_URL + path
+    img = f"{SITE_URL}assets/og/{image}.png"
+    d = html.escape(desc, quote=True)
+    return f"""<meta name="robots" content="noindex, nofollow">
+  <meta name="theme-color" content="#f4f7fc" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0a101c" media="(prefers-color-scheme: dark)">
+  <link rel="apple-touch-icon" href="{p}assets/icon-180.png">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bandan Kumar">
+  <meta property="og:title" content="{title}">
+  <meta property="og:description" content="{d}">
+  <meta property="og:url" content="{url}">
+  <meta property="og:image" content="{img}">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{title}">
+  <meta name="twitter:description" content="{d}">
+  <meta name="twitter:image" content="{img}">"""
+
+
 HEAD = """<!doctype html>
 <html lang="en">
 <head>
@@ -106,8 +133,9 @@ HEAD = """<!doctype html>
   <title>{title}</title>
   <meta name="description" content="{desc}">
   <meta name="color-scheme" content="light dark">
+  {meta}
   <link rel="icon" href="{fav}">
-  <link rel="stylesheet" href="{p}assets/style.css?v=125">
+  <link rel="stylesheet" href="{p}assets/style.css?v=126">
   <script src="{p}assets/theme.js?v=9"></script>
 </head>
 <body>
@@ -196,8 +224,9 @@ def app_card(a):
 def build_index():
     prim = "\n".join(app_card(a) for a in APPS if a["role"] == "primary")
     sec = "\n".join(app_card(a) for a in APPS if a["role"] == "backup")
-    s = HEAD.format(sprite=SPRITE, title="Bandan Kumar · Apps &amp; Reviews", p="", fav=FAVICON,
-                    desc="The apps Bandan Kumar builds and supports, with a review page for each and the quarterly reports.")
+    _t, _d = "Bandan Kumar · Apps &amp; Reviews", "The apps Bandan Kumar builds and supports, with a review page for each and the quarterly reports."
+    s = HEAD.format(sprite=SPRITE, title=_t, p="", fav=FAVICON, desc=_d,
+                    meta=head_meta("", _t, "Two apps I own and three I back up. Where each stands today, what changed, and what comes next, with live App Store data.", "home", ""))
     s += topbar("", home=True)
     s += f"""
   <main>
@@ -278,8 +307,12 @@ def build_index():
 
 def build_app(a):
     p = "../../"
-    s = HEAD.format(sprite=SPRITE, title=f"{a['name']} · Review · Bandan Kumar", p=p, fav=FAVICON,
-                    desc=f"{a['name']}: status, quarterly reviews and focus areas.")
+    _t = f"{a['name']} · Review · Bandan Kumar"
+    _st = a.get("store") or {}
+    _d = (f"{a['name']}: {_st['rating']:.1f} stars from {fmt_int(_st['ratingCount'])} ratings on the App Store. Status, quarterly reviews and focus areas."
+          if _st else f"{a['name']}: status, quarterly reviews and focus areas.")
+    s = HEAD.format(sprite=SPRITE, title=_t, p=p, fav=FAVICON, desc=_d,
+                    meta=head_meta(f"apps/{a['slug']}/", _t, _d, f"app-{a['slug']}", p))
     s += topbar(p)
     plat = f" · {a['platform']}" if a["platform"] else ""
     s += f"""
@@ -497,8 +530,10 @@ GROUP_CLOSE = "        </div>\n      </div>\n"
 
 def build_q4():
     p = "../"
-    s = HEAD.format(sprite=SPRITE, title="Q4 2026 Planning · Bandan Kumar", p=p, fav=FAVICON,
-                    desc="Q4 2026 planning: focus, first actions and the numbers to watch for DietPlan and Upkee, plus backup cover for three more apps.")
+    _t = "Q4 2026 Planning · Bandan Kumar"
+    _d = "Q4 2026 planning: focus, first actions and the numbers to watch for DietPlan and Upkee, plus backup cover for three more apps."
+    s = HEAD.format(sprite=SPRITE, title=_t, p=p, fav=FAVICON, desc=_d,
+                    meta=head_meta("q4-2026/", _t, _d, "q4-2026", p))
     s += f"""  <header class="topbar">
     <div class="wrap">
       <a class="btn" href="{p}" data-back>{icon(p, "arrow-left")} <span>Apps</span></a>
@@ -639,6 +674,54 @@ def build_q4():
     open(f"{d}/index.html", "w").write(s)
 
 
+def sync_q3_meta():
+    p = os.path.join(ROOT, "q3-2026", "index.html")
+    s = open(p).read()
+    title = "Q3 2026 Performance Review · Bandan Kumar"
+    desc = "Q3 2026 performance review: DietPlan built end to end in about seven weeks, Caloric released, a 77 MB smaller app and a secured AI backend."
+    block = "<!--meta-->\n  " + head_meta("q3-2026/", title, desc, "q3-2026", "../") + "\n  <!--/meta-->"
+    s = re.sub(r"<!--meta-->.*?<!--/meta-->", lambda m: block, s, flags=re.S)
+    open(p, "w").write(s)
+
+
+def build_404():
+    p = SITE_PATH
+    title = "Page not found · Bandan Kumar"
+    s = HEAD.format(sprite=SPRITE, title=title, p=p, fav=FAVICON, desc="This page does not exist.",
+                    meta=head_meta("", title, "This page does not exist.", "home", p))
+    s += f"""  <header class="topbar">
+    <div class="wrap">
+      <a class="brand" href="{p}"><span class="mark">BK</span> Bandan Kumar</a>
+      <div class="actions">
+        <button class="btn icon-only" type="button" data-theme-toggle aria-label="Switch theme">{icon(p, "moon")}</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero">
+      <div class="wrap">
+        <p class="eyebrow">Error 404</p>
+        <h1>That page doesn't exist.</h1>
+        <p class="lead">The link may be old or mistyped. These are the pages that do exist.</p>
+        <div class="row-buttons">
+          <a class="btn primary" href="{p}">All apps {icon(p, "arrow-right")}</a>
+          <a class="btn" href="{p}q3-2026/">Q3 2026 review</a>
+          <a class="btn" href="{p}q4-2026/">Q4 2026 planning</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© 2026 Bandan Kumar</div>
+  </footer>
+</body>
+</html>
+"""
+    open(f"{ROOT}/404.html", "w").write(s)
+
+
 def sync_q3_sprite():
     p = os.path.join(ROOT, "q3-2026", "index.html")
     s = open(p).read()
@@ -649,7 +732,9 @@ def sync_q3_sprite():
 
 build_index()
 sync_q3_sprite()
+sync_q3_meta()
 build_q4()
+build_404()
 for a in APPS:
     build_app(a)
 print("built", len(APPS), "apps")
