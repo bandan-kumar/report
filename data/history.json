@@ -1,0 +1,49 @@
+[
+ {
+  "date": "2026-10-08",
+  "apps": {
+   "dietplan": {
+    "rating": 4.7,
+    "ratingCount": 1925,
+    "version": "5.4",
+    "ranks": {
+     "diet plan": 3,
+     "7 day diet plan": 11,
+     "diet planner": 11,
+     "weight loss diet": 15,
+     "weight loss plan": 32
+    }
+   },
+   "upkee": {
+    "rating": 5,
+    "ratingCount": 3,
+    "version": "1.0.2",
+    "ranks": {
+     "house cleaning schedule": 18,
+     "cleaning schedule": 28,
+     "cleaning schedule app": 39,
+     "house cleaning": 38,
+     "housework": 43
+    }
+   },
+   "caloric": {
+    "rating": 4.51,
+    "ratingCount": 176,
+    "version": "1.7.1",
+    "ranks": {}
+   },
+   "locateus": {
+    "rating": 5,
+    "ratingCount": 4,
+    "version": "1.03",
+    "ranks": {}
+   },
+   "keto": {
+    "rating": 4.67,
+    "ratingCount": 9400,
+    "version": "5.1.6",
+    "ranks": {}
+   }
+  }
+ }
+]

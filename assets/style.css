@@ -592,3 +592,13 @@ tbody td:first-child { font-weight: 700; }
 .stack-col.roomy { gap: 18px; }
 @media (max-width: 860px) { .size-grid.two-col { grid-template-columns: 1fr; } .shot.phone { justify-self: center; } }
 @media print { .shot.phone { width: 110px; } .size-grid.two-col { grid-template-columns: 1fr auto; } .features.wide { grid-template-columns: repeat(2, 1fr); } .two-up { grid-template-columns: 1fr 1fr; } }
+
+/* ---------- Search visibility ---------- */
+.kw-list { display: grid; }
+.kw-list li { display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 12px 0; border-top: 1px solid var(--line); }
+.kw-list li:first-child { border-top: 0; padding-top: 0; }
+.kw-term { font-weight: 600; }
+.rank { flex: none; min-width: 52px; text-align: center; padding: 3px 12px; border-radius: 999px; background: var(--brand-soft); color: var(--brand); font-weight: 700; font-size: .9rem; }
+.rank.none { background: var(--surface-2); color: var(--muted); font-weight: 600; font-size: .8rem; }
+.kw-card .note { margin-top: 14px; }
+@media print { .kw-card { break-inside: avoid; } }

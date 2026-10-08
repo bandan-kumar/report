@@ -1,5 +1,5 @@
 """Refresh data/appstore.json from the public App Store lookup API (no key needed)."""
-import json, os, re, struct, urllib.request
+import json, os, re, struct, time, urllib.parse, urllib.request
 from datetime import datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -11,6 +11,14 @@ IDS = {
     "keto": 1475764462,
 }
 COUNTRY = "us"
+# Plain phrases people type into the App Store. Brand names and the keyword field itself are deliberately not listed.
+KEYWORDS = {
+    "dietplan": ["diet plan", "7 day diet plan", "diet planner", "weight loss diet", "weight loss plan"],
+    "upkee": ["house cleaning schedule", "cleaning schedule", "cleaning schedule app", "house cleaning", "housework"],
+}
+SEARCH_PAUSE = 3  # seconds between searches: Apple allows roughly 20 requests a minute
+HISTORY_DAYS = 365
+
 PLAY_IDS = {
     "dietplan": "com.pixsterstudio.dietplans",
     "caloric": "com.pixsterstudio.caloric",
@@ -24,6 +32,23 @@ def fetch(app_id):
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as r:
         return json.load(r)["results"][0]
+
+
+def search_rank(term, app_id):
+    """Position of the app in App Store search results for `term` (US, top 200), or None if absent."""
+    query = urllib.parse.urlencode({"term": term, "entity": "software", "country": COUNTRY, "limit": 200})
+    req = urllib.request.Request(f"https://itunes.apple.com/search?{query}", headers={"User-Agent": "Mozilla/5.0"})
+    for attempt in range(3):
+        try:
+            with urllib.request.urlopen(req, timeout=30) as resp:
+                results = json.load(resp)["results"]
+            for position, item in enumerate(results, 1):
+                if item.get("trackId") == app_id:
+                    return position
+            return None
+        except Exception:
+            time.sleep(10 * (attempt + 1))
+    raise RuntimeError(f"search failed for {term!r}")
 
 
 def ios_screenshots(r):
@@ -74,6 +99,26 @@ def play_screenshots(package):
     return out
 
 
+def update_history(out):
+    """Append today's numbers to data/history.json (one entry per day, last HISTORY_DAYS kept)."""
+    path = os.path.join(ROOT, "data", "history.json")
+    try:
+        with open(path) as f:
+            history = json.load(f)
+    except (OSError, ValueError):
+        history = []
+    entry = {"date": out["fetched"], "apps": {}}
+    for slug, a in out["apps"].items():
+        entry["apps"][slug] = {
+            "rating": a["rating"], "ratingCount": a["ratingCount"], "version": a["version"],
+            "ranks": {k["term"]: k["rank"] for k in a.get("keywords", [])},
+        }
+    history = [h for h in history if h.get("date") != entry["date"]] + [entry]
+    with open(path, "w") as f:
+        json.dump(history[-HISTORY_DAYS:], f, indent=1)
+        f.write("\n")
+
+
 def main():
     try:
         with open(os.path.join(ROOT, "data", "appstore.json")) as f:
@@ -107,11 +152,25 @@ def main():
                 print("play fetch failed for", slug, e)
             if not apps[slug]["screenshots"]["android"]:
                 apps[slug]["screenshots"]["android"] = previous.get(slug, {}).get("screenshots", {}).get("android", [])
+    for slug, terms in KEYWORDS.items():
+        last = {k["term"]: k["rank"] for k in previous.get(slug, {}).get("keywords", [])}
+        ranked = []
+        for term in terms:
+            try:
+                rank = search_rank(term, IDS[slug])
+            except Exception as e:  # keep the last known value rather than failing the whole run
+                print("rank lookup failed for", slug, term, e)
+                rank = last.get(term)
+            ranked.append({"term": term, "rank": rank})
+            time.sleep(SEARCH_PAUSE)
+        apps[slug]["keywords"] = ranked
+
     out = {"fetched": datetime.now(timezone.utc).strftime("%Y-%m-%d"), "country": COUNTRY, "apps": apps}
     os.makedirs(os.path.join(ROOT, "data"), exist_ok=True)
     with open(os.path.join(ROOT, "data", "appstore.json"), "w") as f:
         json.dump(out, f, indent=2)
         f.write("\n")
+    update_history(out)
     print("updated", len(apps), "apps")
 
 

@@ -40,7 +40,29 @@
           "https://play-lh.googleusercontent.com/1uwoD26R-MErqD5TRNLN6IORyxoxBUUAfmVw3qmfNJqvQJMLjxM5FRQ4OAaOjSLu8m2aG95NsUBH4UlfM81qqQ=w360-h640",
           "https://play-lh.googleusercontent.com/PfvA_5u-8kANHRMso_F8ZwyvG0x-2MPVIUKTwLMIPCt_hUCF_pbdt1rMnLSF7lZw3eGUJ9grjrBZks3kRZNuKQ=w360-h640"
         ]
-      }
+      },
+      "keywords": [
+        {
+          "term": "diet plan",
+          "rank": 3
+        },
+        {
+          "term": "7 day diet plan",
+          "rank": 11
+        },
+        {
+          "term": "diet planner",
+          "rank": 11
+        },
+        {
+          "term": "weight loss diet",
+          "rank": 15
+        },
+        {
+          "term": "weight loss plan",
+          "rank": 32
+        }
+      ]
     },
     "upkee": {
       "id": 6757587275,
@@ -77,7 +99,29 @@
           "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource211/v4/6d/ac/b0/6dacb09d-e3ad-252c-dee4-477aff96326d/iPhone_7.jpg/392x696bb.jpg"
         ],
         "android": []
-      }
+      },
+      "keywords": [
+        {
+          "term": "house cleaning schedule",
+          "rank": 18
+        },
+        {
+          "term": "cleaning schedule",
+          "rank": 28
+        },
+        {
+          "term": "cleaning schedule app",
+          "rank": 39
+        },
+        {
+          "term": "house cleaning",
+          "rank": 38
+        },
+        {
+          "term": "housework",
+          "rank": 43
+        }
+      ]
     },
     "caloric": {
       "id": 6499521146,
