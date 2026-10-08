@@ -7,8 +7,8 @@
   <meta name="description" content="Q4 2026 planning: focus, first actions and the numbers to watch for DietPlan and Upkee, plus backup cover for three more apps.">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231e5fb0'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3EBK%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="../assets/style.css?v=3">
-  <script src="../assets/theme.js?v=3"></script>
+  <link rel="stylesheet" href="../assets/style.css?v=5">
+  <script src="../assets/theme.js?v=5"></script>
 </head>
 <body>
   <header class="topbar">
@@ -77,37 +77,47 @@
     <section class="block">
       <h2>At a glance</h2>
       <p class="sub">One focus per app.</p>
-      <div class="grid glance">
-        <a class="card glance-card" href="#dietplan">
-          <div class="glance-top"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/dietplan.png" alt="" width="256" height="256"></div><div><h3>DietPlan</h3><span class="chip role">Primary · Autonomous</span></div></div>
-          <p>Launch v2.0 with a refreshed store page and a good first-run experience.</p>
-        </a>
-        <a class="card glance-card" href="#upkee">
-          <div class="glance-top"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/upkee.png" alt="" width="256" height="256"></div><div><h3>Upkee</h3><span class="chip role">Primary · Guided</span></div></div>
-          <p>Build up ratings and get the onboarding funnel measured.</p>
-        </a>
-        <a class="card glance-card" href="#caloric">
-          <div class="glance-top"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/caloric.png" alt="" width="256" height="256"></div><div><h3>Caloric</h3><span class="chip role">Backup · Autonomous</span></div></div>
-          <p>Backup: keep an eye on crashes and reviews.</p>
-        </a>
-        <a class="card glance-card" href="#locateus">
-          <div class="glance-top"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/locateus.png" alt="" width="256" height="256"></div><div><h3>LocateUs</h3><span class="chip role">Backup · Guided</span></div></div>
-          <p>Backup: keep an eye on crashes and reviews.</p>
-        </a>
-        <a class="card glance-card" href="#keto">
-          <div class="glance-top"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/keto.png" alt="" width="256" height="256"></div><div><h3>Keto</h3><span class="chip role">Backup · Guided</span></div></div>
-          <p>Backup on the app with the most users: stay familiar with it.</p>
-        </a>
+      <div class="group">
+        <div class="group-head"><h3>Primary</h3><p>Apps I own and develop.</p></div>
+        <div class="grid apps">
+          <a class="card glance-card" href="#dietplan">
+            <div class="glance-top"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/dietplan.png" alt="" width="256" height="256"></div><div><h3>DietPlan</h3><span class="chip role">Primary · Autonomous</span></div></div>
+            <p>Launch v2.0 with a refreshed store page and a good first-run experience.</p>
+          </a>
+          <a class="card glance-card" href="#upkee">
+            <div class="glance-top"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/upkee.png" alt="" width="256" height="256"></div><div><h3>Upkee</h3><span class="chip role">Primary · Guided</span></div></div>
+            <p>Build up ratings and get the onboarding funnel measured.</p>
+          </a>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-head"><h3>Backup</h3><p>Apps I cover when the primary is unavailable.</p></div>
+        <div class="grid apps">
+          <a class="card glance-card" href="#caloric">
+            <div class="glance-top"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/caloric.png" alt="" width="256" height="256"></div><div><h3>Caloric</h3><span class="chip role">Backup · Autonomous</span></div></div>
+            <p>Backup: keep an eye on crashes and reviews.</p>
+          </a>
+          <a class="card glance-card" href="#locateus">
+            <div class="glance-top"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/locateus.png" alt="" width="256" height="256"></div><div><h3>LocateUs</h3><span class="chip role">Backup · Guided</span></div></div>
+            <p>Backup: keep an eye on crashes and reviews.</p>
+          </a>
+          <a class="card glance-card" href="#keto">
+            <div class="glance-top"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/keto.png" alt="" width="256" height="256"></div><div><h3>Keto</h3><span class="chip role">Backup · Guided</span></div></div>
+            <p>Backup on the app with the most users: stay familiar with it.</p>
+          </a>
+        </div>
       </div>
     </section>
 
     <section class="block">
       <h2>App plans</h2>
       <p class="sub">What I will do first, and what I will watch.</p>
-      <div class="plans">
+      <div class="group">
+        <div class="group-head"><h3>Primary</h3><p>Apps I own and develop.</p></div>
+        <div class="grid apps">
         <article class="card plan" id="dietplan">
           <div class="plan-head"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/dietplan.png" alt="" width="256" height="256"></div>
-            <div><h3>DietPlan</h3><div class="chips"><span class="chip role">Primary · Autonomous</span><span class="chip live">Live</span></div></div>
+            <div><h3>DietPlan</h3><div class="chips"><span class="chip role">Primary · Autonomous</span></div></div>
           </div>
           <p class="plan-focus">Launch v2.0 with a refreshed store page and a good first-run experience.</p>
           <p class="why">The live listing shows 4.7★ from 1,925 ratings in 5 store languages. v2.0 is feature-complete with 9 languages and a new UI, and the current store page shows none of that.</p>
@@ -125,7 +135,7 @@
         </article>
         <article class="card plan" id="upkee">
           <div class="plan-head"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/upkee.png" alt="" width="256" height="256"></div>
-            <div><h3>Upkee</h3><div class="chips"><span class="chip role">Primary · Guided</span><span class="chip live">Live</span></div></div>
+            <div><h3>Upkee</h3><div class="chips"><span class="chip role">Primary · Guided</span></div></div>
           </div>
           <p class="plan-focus">Build up ratings and get the onboarding funnel measured.</p>
           <p class="why">Released in Aug 2026. It has 5.0★ but only 3 ratings, and 8 store languages already. The priority is more ratings and more visibility.</p>
@@ -141,9 +151,14 @@
           <h4>Watch</h4>
           <div class="tags"><span class="tag">Onboarding completion</span><span class="tag">Conversion rate</span><span class="tag">Number of ratings</span><span class="tag">Paywall conversion</span></div>
         </article>
+        </div>
+      </div>
+      <div class="group">
+        <div class="group-head"><h3>Backup</h3><p>Apps I cover when the primary is unavailable.</p></div>
+        <div class="grid apps">
         <article class="card plan" id="caloric">
           <div class="plan-head"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/caloric.png" alt="" width="256" height="256"></div>
-            <div><h3>Caloric</h3><div class="chips"><span class="chip role">Backup · Autonomous</span><span class="chip live">Live</span></div></div>
+            <div><h3>Caloric</h3><div class="chips"><span class="chip role">Backup · Autonomous</span></div></div>
           </div>
           <p class="plan-focus">Backup: keep an eye on crashes and reviews.</p>
           <p class="why">4.5★ from 176 ratings, English only, last updated 25 Sep 2026 after the Q3 fixes.</p>
@@ -160,7 +175,7 @@
         </article>
         <article class="card plan" id="locateus">
           <div class="plan-head"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/locateus.png" alt="" width="256" height="256"></div>
-            <div><h3>LocateUs</h3><div class="chips"><span class="chip role">Backup · Guided</span><span class="chip live">Live</span></div></div>
+            <div><h3>LocateUs</h3><div class="chips"><span class="chip role">Backup · Guided</span></div></div>
           </div>
           <p class="plan-focus">Backup: keep an eye on crashes and reviews.</p>
           <p class="why">5.0★ from 4 ratings, English only, last updated 8 Aug 2026.</p>
@@ -177,7 +192,7 @@
         </article>
         <article class="card plan" id="keto">
           <div class="plan-head"><div class="app-icon has-img" aria-hidden="true"><img src="../assets/apps/keto.png" alt="" width="256" height="256"></div>
-            <div><h3>Keto</h3><div class="chips"><span class="chip role">Backup · Guided</span><span class="chip live">Live</span></div></div>
+            <div><h3>Keto</h3><div class="chips"><span class="chip role">Backup · Guided</span></div></div>
           </div>
           <p class="plan-focus">Backup on the app with the most users: stay familiar with it.</p>
           <p class="why">4.7★ from 9,400 ratings and 4 store languages. It has the largest audience of the five, so a bug here reaches the most people.</p>
@@ -191,6 +206,7 @@
           <h4>Watch</h4>
           <div class="tags"><span class="tag">Crash rate</span><span class="tag">Rating trend</span></div>
         </article>
+        </div>
       </div>
     </section>
 

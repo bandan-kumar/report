@@ -8,6 +8,7 @@
   --muted: #566783;
   --line: #d8e1ef;
   --brand: #1e5fb0;
+  --on-brand: #ffffff;
   --brand-soft: #dbe8fa;
   --navy: #10264a;
   --on-navy: #ffffff;
@@ -20,6 +21,13 @@
   --warn-soft: #fdeedd;
   --shadow: 0 1px 2px rgba(15, 39, 72, .06), 0 10px 28px rgba(15, 39, 72, .07);
   --radius: 18px;
+  --radius-sm: 12px;
+  --space-section: clamp(40px, 6vw, 64px);
+  --pad-card: clamp(18px, 2.4vw, 24px);
+  --icon-box: 44px;
+  --fs-h2: clamp(1.5rem, 3.2vw, 1.9rem);
+  --fs-h3: 1.05rem;
+  --fs-small: .875rem;
   --font: -apple-system, BlinkMacSystemFont, "Segoe UI", Inter, Roboto, "Helvetica Neue", Arial, sans-serif;
 }
 
@@ -33,6 +41,7 @@
     --muted: #9aaac4;
     --line: #243453;
     --brand: #6aa6f2;
+    --on-brand: #08111f;
     --brand-soft: #1b2d4d;
     --navy: #16294d;
     --navy-accent: #8ab8f5;
@@ -55,6 +64,7 @@
   --muted: #9aaac4;
   --line: #243453;
   --brand: #6aa6f2;
+  --on-brand: #08111f;
   --brand-soft: #1b2d4d;
   --navy: #16294d;
   --navy-accent: #8ab8f5;
@@ -112,7 +122,7 @@ ul { padding: 0; list-style: none; }
   text-decoration: none; cursor: pointer; transition: transform .15s, border-color .15s, background .15s;
 }
 .btn:hover { border-color: var(--brand); transform: translateY(-1px); }
-.btn.primary { background: var(--brand); border-color: var(--brand); color: #fff; }
+.btn.primary { background: var(--brand); border-color: var(--brand); color: var(--on-brand); }
 .btn.primary:hover { filter: brightness(1.08); }
 .btn.icon-only { padding: 10px; }
 .btn[aria-disabled="true"] { opacity: .55; cursor: not-allowed; pointer-events: none; }
@@ -471,3 +481,98 @@ tbody td:first-child { font-weight: 700; }
 .shots-title { font-size: 1rem; margin-top: 18px; }
 .shot img.store { border-radius: 14px; border: 1px solid var(--line); filter: none; background: var(--surface-2); }
 @media print { .shot img.store { border-radius: 8px; } }
+
+/* =====================================================================
+   Consistency layer: one set of rules for headings, cards, icons,
+   tiles and chips, so every page reads as the same system.
+   ===================================================================== */
+
+/* Vertical rhythm */
+.section { padding: 0; margin-top: var(--space-section); }
+.hero { padding-bottom: 0; }
+.block { margin-top: var(--space-section); }
+.footer { margin-top: var(--space-section); }
+.group + .group { margin-top: var(--space-section); }
+
+/* Section headings: the same on every page */
+.section-head { display: block; margin-bottom: 24px; }
+.section-head h2, .block > h2 { font-size: var(--fs-h2); line-height: 1.2; letter-spacing: -.02em; }
+.section-head p, .block > .sub { color: var(--muted); font-size: 1rem; font-style: normal; margin: 6px 0 24px; }
+.section-head p { margin: 6px 0 0; }
+.group-head { margin-bottom: 16px; }
+.group-head h3 { font-size: var(--fs-h3); }
+
+/* Cards: one padding, one radius, one shadow */
+.card { padding: var(--pad-card); border-radius: var(--radius); }
+.feature, .step, .rule, .glance-card, .row-card { padding: var(--pad-card); }
+.stack .feature { padding: 0; }
+.card h3, .feature h3, .step h3, .row-card h3, .three h3 { font-size: var(--fs-h3); line-height: 1.3; }
+.app h3, .plan-head h3, .report h3, .glance-top h3 { font-size: 1.2rem; letter-spacing: -.01em; }
+.feature p, .row-card p, .step p, .stat p { font-size: var(--fs-small); }
+
+/* Icon boxes: one size, one shape */
+.ico, .ico-sm, .report .ico, .feature .ico {
+  width: var(--icon-box); height: var(--icon-box); border-radius: var(--radius-sm);
+  display: grid; place-items: center; flex: none;
+  background: var(--brand-soft); color: var(--brand);
+}
+.ico .icon, .ico-sm .icon, .report .ico .icon, .feature .ico .icon { width: 22px; height: 22px; }
+.feature { grid-template-columns: var(--icon-box) 1fr; align-items: start; }
+.ico-sm.hot { background: var(--accent); color: #fff; }
+.ahead .ico-sm { background: #1e5fb0; color: #fff; width: var(--icon-box); height: var(--icon-box); }
+.ahead li { grid-template-columns: var(--icon-box) 1fr; }
+
+/* Tiles: the same look for card metrics and the snapshot */
+.metrics { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+.metrics.cols-4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.metric { background: var(--surface-2); border-radius: var(--radius-sm); padding: 12px; min-width: 0; }
+.metric b { display: block; font-size: 1rem; line-height: 1.25; letter-spacing: -.01em; white-space: nowrap; }
+.metric span { display: block; margin-top: 2px; font-size: .75rem; line-height: 1.3; color: var(--muted); }
+.metrics.cols-4 .metric { padding: 14px 16px; }
+.metrics.cols-4 .metric b { font-size: 1.2rem; }
+.metrics.cols-4 .metric span { font-size: var(--fs-small); }
+.snapshot-card .note { margin-top: 16px; }
+
+/* Chips, tags and pills: one neutral outline style, one coloured style */
+.tag, .pill {
+  display: inline-flex; align-items: center; padding: 3px 11px; border-radius: 999px;
+  border: 1px solid var(--line); background: transparent; color: var(--muted);
+  font-size: .8rem; font-weight: 600;
+}
+.pill { padding: 5px 13px; font-size: .85rem; color: var(--text); background: var(--surface); }
+
+/* Card meta row (languages, Android status) */
+.card-meta { display: flex; flex-wrap: wrap; gap: 6px 18px; color: var(--muted); font-size: var(--fs-small); }
+.card-meta .langline { display: inline-flex; margin: 0; }
+
+/* App cards: same structure every time */
+.app { gap: 16px; }
+.app .go { font-size: var(--fs-small); }
+
+/* Q4 plans: grouped like the home page */
+.plans { display: block; }
+.plans .group .grid { align-items: stretch; }
+
+/* Callouts share one shape */
+.result, .tamper { border-radius: var(--radius-sm); padding: 14px 18px; }
+.note { font-size: var(--fs-small); }
+
+/* Print: keep the new rules in step with the print layout */
+@media print {
+  :root, :root:not([data-theme="light"]), :root[data-theme="dark"] { --on-brand: #ffffff; }
+  .metrics.cols-4 { grid-template-columns: repeat(4, 1fr); }
+  .metric b { white-space: nowrap; }
+  .block, .section { margin-top: 20px; }
+  .plans .group .grid, .glance { grid-template-columns: repeat(2, 1fr); }
+  .group { break-inside: auto; }
+  .group-head { break-after: avoid; page-break-after: avoid; }
+  .group-head + .grid > .card:first-child { break-before: avoid; }
+  .card, .metric { break-inside: avoid; }
+}
+@media (max-width: 640px) {
+  .metrics.cols-4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .metrics:not(.cols-4) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+@media (max-width: 380px) {
+  .metrics:not(.cols-4) { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}

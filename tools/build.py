@@ -82,8 +82,8 @@ for _a in APPS:
                              f"as \"{_st['name']}\" ({_st['category']}).")
         _a["card_metrics"] = [
             (f"{_st['rating']:.1f} ★", f"{fmt_int(_st['ratingCount'])} ratings"),
-            (f"v{_st['version']}", "on the App Store"),
-            (fmt_date(_st["updated"], False), "last updated"),
+            (f"v{_st['version']}", "version"),
+            (fmt_date(_st["updated"], False), "updated"),
         ]
     else:
         _a["card_metrics"] = _a["metrics"]
@@ -97,8 +97,8 @@ HEAD = """<!doctype html>
   <meta name="description" content="{desc}">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="{fav}">
-  <link rel="stylesheet" href="{p}assets/style.css?v=3">
-  <script src="{p}assets/theme.js?v=3"></script>
+  <link rel="stylesheet" href="{p}assets/style.css?v=5">
+  <script src="{p}assets/theme.js?v=5"></script>
 </head>
 <body>
 """
@@ -129,6 +129,11 @@ def play_button(a, p):
     if a.get("android"):
         return f' <span class="chip pre plain">Android {a["android"].lower()}</span>'
     return ""
+
+
+def meta_row(a):
+    items = [x for x in (langline(a), android_line(a)) if x]
+    return '<div class="card-meta">' + "".join(items) + "</div>" if items else ""
 
 
 def android_line(a):
@@ -172,9 +177,7 @@ def app_card(a):
             </div>
             <p>{html.escape(a['summary'])}</p>
             {metrics}
-            {tags}
-            {langline(a)}
-            {android_line(a)}
+            {meta_row(a)}
             <span class="go">View review {icon('', 'arrow-right')}</span>
           </article>
 """
@@ -297,11 +300,12 @@ def build_app(a):
         ]
         s += ('      <section class="block">\n        <h2>Product &amp; ASO snapshot</h2>\n'
               f'        <p class="sub">From the public App Store listing, US storefront, as of {fmt_date(STORE["fetched"])}.</p>\n'
-              '        <div class="grid snapshot">\n'
-              + "".join(f'          <div class="card snap has"><b>{html.escape(b)}</b><span>{html.escape(l)}</span></div>\n' for b, l in boxes)
-              + '        </div>\n'
-              f'        <p class="note stores"><a class="btn" href="{st["url"]}" rel="noopener">View on the App Store {icon(p, "arrow-right")}</a>{play_button(a, p)}</p>\n'
-              '        <p class="note">Downloads, impressions and conversion are not public, so they are not shown here.</p>\n'
+              '        <div class="card snapshot-card">\n          <div class="metrics cols-4">\n'
+              + "".join(f'            <div class="metric"><b>{html.escape(b)}</b><span>{html.escape(l)}</span></div>\n' for b, l in boxes)
+              + '          </div>\n'
+              f'          <p class="note stores"><a class="btn" href="{st["url"]}" rel="noopener">View on the App Store {icon(p, "arrow-right")}</a>{play_button(a, p)}</p>\n'
+              '          <p class="note">Downloads, impressions and conversion are not public, so they are not shown here.</p>\n'
+              '        </div>\n'
               '      </section>\n')
     shots = (st or {}).get("screenshots", {})
     if shots.get("ios") or shots.get("android"):
@@ -457,6 +461,17 @@ FUNNEL = [
 
 
 
+GROUPS = (("primary", "Primary", "Apps I own and develop."), ("backup", "Backup", "Apps I cover when the primary is unavailable."))
+
+
+def group_open(title, desc):
+    return (f'      <div class="group">\n        <div class="group-head"><h3>{title}</h3><p>{desc}</p></div>\n'
+            '        <div class="grid apps">\n')
+
+
+GROUP_CLOSE = "        </div>\n      </div>\n"
+
+
 def build_q4():
     p = "../"
     s = HEAD.format(title="Q4 2026 Planning · Bandan Kumar", p=p, fav=FAVICON,
@@ -502,23 +517,25 @@ def build_q4():
     <section class="block">
       <h2>At a glance</h2>
       <p class="sub">One focus per app.</p>
-      <div class="grid glance">
 """
-    for a in APPS:
-        s += f"""        <a class="card glance-card" href="#{a['slug']}">
-          <div class="glance-top">{icon_tile(a, p, '')}<div><h3>{a['name']}</h3>{role_chip(a)}</div></div>
-          <p>{html.escape(Q4[a['slug']]['headline'])}</p>
-        </a>
+    for role, title, desc in GROUPS:
+        s += group_open(title, desc)
+        for a in (x for x in APPS if x["role"] == role):
+            s += f"""          <a class="card glance-card" href="#{a['slug']}">
+            <div class="glance-top">{icon_tile(a, p, '')}<div><h3>{a['name']}</h3>{role_chip(a)}</div></div>
+            <p>{html.escape(Q4[a['slug']]['headline'])}</p>
+          </a>
 """
-    s += """      </div>
-    </section>
+        s += GROUP_CLOSE
+    s += """    </section>
 
     <section class="block">
       <h2>App plans</h2>
       <p class="sub">What I will do first, and what I will watch.</p>
-      <div class="plans">
 """
-    for a in APPS:
+    for role, title, desc in GROUPS:
+      s += group_open(title, desc)
+      for a in (x for x in APPS if x["role"] == role):
         q = Q4[a["slug"]]
         st = a.get("store") or {}
         why = q["why"].format(rt=f"{st.get('rating', 0):.1f}", rc=fmt_int(st.get("ratingCount", 0)),
@@ -526,7 +543,7 @@ def build_q4():
         backup = a["role"] == "backup"
         s += f"""        <article class="card plan" id="{a['slug']}">
           <div class="plan-head">{icon_tile(a, p, '')}
-            <div><h3>{a['name']}</h3><div class="chips">{role_chip(a)}{chip(*a['status'])}</div></div>
+            <div><h3>{a['name']}</h3><div class="chips">{role_chip(a)}</div></div>
           </div>
           <p class="plan-focus">{html.escape(q['headline'])}</p>
           <p class="why">{html.escape(why)}</p>
@@ -539,8 +556,8 @@ def build_q4():
           <div class="tags">""" + "".join(f'<span class="tag">{html.escape(x)}</span>' for x in q["measure"]) + """</div>
         </article>
 """
-    s += """      </div>
-    </section>
+      s += GROUP_CLOSE
+    s += """    </section>
 
     <section class="block">
       <h2>Quarter timeline</h2>
