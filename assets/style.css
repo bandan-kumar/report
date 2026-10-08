@@ -602,3 +602,100 @@ tbody td:first-child { font-weight: 700; }
 .rank.none { background: var(--surface-2); color: var(--muted); font-weight: 600; font-size: .8rem; }
 .kw-card .note { margin-top: 14px; }
 @media print { .kw-card { break-inside: avoid; } }
+
+/* ---------- Section jump bar ---------- */
+.jump {
+  position: sticky; top: 61px; z-index: 9;
+  background: color-mix(in srgb, var(--bg) 92%, transparent);
+  backdrop-filter: saturate(160%) blur(10px); -webkit-backdrop-filter: saturate(160%) blur(10px);
+  border-bottom: 1px solid var(--line);
+}
+.jump .wrap { display: flex; align-items: center; gap: 6px; padding: 8px 0; overflow-x: auto; scrollbar-width: none; }
+.jump .wrap::-webkit-scrollbar { display: none; }
+.jump a {
+  flex: none; padding: 6px 12px; border-radius: 999px; font-size: .85rem; font-weight: 600;
+  color: var(--muted); text-decoration: none; white-space: nowrap; transition: background .15s, color .15s;
+}
+.jump a:hover { color: var(--text); background: var(--surface-2); }
+.jump a[aria-current="true"] { color: var(--brand); background: var(--brand-soft); }
+.jump a.other { margin-left: auto; display: inline-flex; align-items: center; gap: 6px; color: var(--brand); }
+.jump a.other .icon { width: 1em; height: 1em; }
+.block { scroll-margin-top: 130px; }
+html { scroll-padding-top: 130px; }
+
+/* =====================================================================
+   Slide layout for print and PDF: 16:9 landscape, one section per slide.
+   Two slides fit on a portrait A4 sheet, and on screen it reads as a deck.
+   ===================================================================== */
+@page {
+  size: 13.333in 7.5in;
+  margin: 0.45in 0.55in 0.6in;
+  @bottom-left { content: "Bandan Kumar"; font: 9pt -apple-system, "Segoe UI", Arial, sans-serif; color: #6b7a90; }
+  @bottom-right { content: counter(page); font: 9pt -apple-system, "Segoe UI", Arial, sans-serif; color: #6b7a90; }
+}
+@page title { margin: 0; @bottom-left { content: none; } @bottom-right { content: none; } }
+
+@media print {
+  html { font-size: 22px; }
+  body { line-height: 1.4; }
+  .print-foot, .footer, .jump { display: none !important; }
+
+  /* Title slide */
+  .report-hero {
+    page: title; height: 7.5in; box-sizing: border-box; margin: 0; padding: 0 0.9in;
+    display: flex; align-items: center; break-after: page; break-inside: avoid;
+  }
+  .report-hero .wrap { width: 100%; }
+  .report-hero h1 { font-size: 3.6rem; }
+  .report-hero .period { font-size: 1.5rem; }
+  .report-hero .who { margin-top: 2.2rem; }
+
+  /* One section per slide */
+  main.wrap { width: 100%; }
+  .block { break-before: page; break-inside: avoid; margin: 0; padding: 0; }
+  .block > h2 { font-size: 1.9rem; }
+  .block > .sub { margin: 4px 0 14px; font-size: 1rem; }
+  .sub-section { break-before: page; margin-top: 0; }
+  .grid { gap: 12px; }
+  .card { padding: 14px 16px; box-shadow: none; }
+  .feature, .step, .rule, .glance-card, .row-card { padding: 14px 16px; }
+  .result, .tamper { margin-top: 12px; padding: 10px 16px; }
+
+  /* Wider grids use the landscape width */
+  .stats { grid-template-columns: repeat(4, 1fr); }
+  .stat .big { font-size: 2.3rem; }
+  .features, .features.wide { grid-template-columns: repeat(3, 1fr); }
+  .three { grid-template-columns: repeat(3, 1fr); }
+  .pipeline, .flow { grid-template-columns: repeat(5, 1fr); }
+  .compare { grid-template-columns: 1fr 1fr; }
+  .split { grid-template-columns: 1.6fr 1fr; }
+  .two-up { grid-template-columns: 1fr 1fr; }
+  .size-grid { grid-template-columns: .9fr 1.5fr auto; }
+  .size-grid.two-col { grid-template-columns: 1fr auto; }
+  .chart { height: 250px; }
+  .shot.phone { width: 120px; }
+  .size-card .big { font-size: 2.6rem; }
+  td, th { font-size: .95rem; }
+  tbody td { padding: 10px 14px; }
+
+  /* Screenshots: all eight in one row on their own slide */
+  .gallery { flex-wrap: nowrap; gap: 10px; justify-content: space-between; margin-top: 10px; }
+  .shot { flex: 1 1 0; min-width: 0; max-width: 12.5%; }
+  .shot figcaption { font-size: .75rem; margin-top: 6px; }
+  .size-grid .shot, .shot.phone { flex: none; max-width: none; }
+
+  /* Q4: each app plan gets its own slide, in two columns */
+  .apps:has(.plan) { display: block; }
+  .plan { break-before: page; break-inside: auto; column-count: 2; column-gap: 0.5in; margin: 0; }
+  .plan > * { break-inside: avoid; }
+  .group:first-of-type .plan:first-child, .group + .group .plan:first-child { break-before: auto; }
+  #plans .group + .group { break-before: page; margin-top: 0; }
+  #glance .group + .group, #funnel .group + .group { break-before: auto; margin-top: 18px; }
+  .plan { font-size: .84rem; }
+  .plan h3 { font-size: 1.3rem; }
+  .plan h4 { margin: 12px 0 6px; break-after: avoid; }
+  .plan .why { margin-bottom: 4px; }
+  .group-head { break-after: avoid; margin-bottom: 10px; }
+  .glance { grid-template-columns: repeat(3, 1fr); }
+  .apps:not(:has(.plan)) { grid-template-columns: repeat(3, 1fr); }
+}

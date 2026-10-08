@@ -107,8 +107,8 @@ HEAD = """<!doctype html>
   <meta name="description" content="{desc}">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="{fav}">
-  <link rel="stylesheet" href="{p}assets/style.css?v=8">
-  <script src="{p}assets/theme.js?v=7"></script>
+  <link rel="stylesheet" href="{p}assets/style.css?v=124">
+  <script src="{p}assets/theme.js?v=9"></script>
 </head>
 <body>
 {sprite}
@@ -518,8 +518,15 @@ def build_q4():
     </div>
   </header>
 
+  <nav class="jump no-print" aria-label="Sections">
+    <div class="wrap">
+      <a href="#funnel">Funnel</a><a href="#glance">At a glance</a><a href="#plans">App plans</a><a href="#timeline">Timeline</a><a href="#rhythm">Rhythm</a>
+      <a class="other" href="../q3-2026/">{icon(p, "arrow-left")} Q3 review</a>
+    </div>
+  </nav>
+
   <main class="wrap">
-    <section class="block">
+    <section class="block" id="funnel">
       <h2>The funnel I own</h2>
       <p class="sub">For DietPlan and Upkee: from store search to a paying, happy user. Each stage has one number to watch and something I can change.</p>
       <div class="grid flow">
@@ -536,7 +543,7 @@ def build_q4():
     s += """      </div>
     </section>
 
-    <section class="block">
+    <section class="block" id="glance">
       <h2>At a glance</h2>
       <p class="sub">One focus per app.</p>
 """
@@ -551,7 +558,7 @@ def build_q4():
         s += GROUP_CLOSE
     s += """    </section>
 
-    <section class="block">
+    <section class="block" id="plans">
       <h2>App plans</h2>
       <p class="sub">What I will do first, and what I will watch.</p>
 """
@@ -581,7 +588,7 @@ def build_q4():
       s += GROUP_CLOSE
     s += """    </section>
 
-    <section class="block">
+    <section class="block" id="timeline">
       <h2>Quarter timeline</h2>
       <p class="sub">Month by month: baseline first, then fix, then measure.</p>
       <div class="table-wrap">
@@ -598,7 +605,7 @@ def build_q4():
       </div>
     </section>
 
-    <section class="block">
+    <section class="block" id="rhythm">
       <h2>Operating rhythm</h2>
       <p class="sub">A small routine that fits alongside development.</p>
       <div class="grid three">
