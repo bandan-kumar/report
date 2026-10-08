@@ -56,17 +56,34 @@
   // Jump bar: mark the link for the section currently in view.
   document.addEventListener('DOMContentLoaded', function () {
     var links = [].slice.call(document.querySelectorAll('.jump a[href^="#"]'));
-    if (!links.length || !('IntersectionObserver' in window)) return;
-    var map = {};
-    links.forEach(function (a) { map[a.getAttribute('href').slice(1)] = a; });
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (e) {
-        if (!e.isIntersecting) return;
-        links.forEach(function (a) { a.removeAttribute('aria-current'); });
-        var a = map[e.target.id];
-        if (a) { a.setAttribute('aria-current', 'true'); a.scrollIntoView({ block: 'nearest', inline: 'center' }); }
+    if (!links.length) return;
+    var bar = document.querySelector('.jump .wrap');
+    var sections = links.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+    var current = -1, queued = false;
+
+    /* Scroll only the link bar sideways. scrollIntoView can also move the page, which fights the reader. */
+    function centerInBar(a) {
+      if (!bar || bar.scrollWidth <= bar.clientWidth) return;
+      var r = a.getBoundingClientRect(), b = bar.getBoundingClientRect();
+      var delta = (r.left + r.width / 2) - (b.left + b.width / 2);
+      if (Math.abs(delta) > 4) bar.scrollTo({ left: bar.scrollLeft + delta, behavior: 'smooth' });
+    }
+
+    function update() {
+      queued = false;
+      var line = window.innerHeight * 0.375, active = -1;
+      sections.forEach(function (el, i) { if (el && el.getBoundingClientRect().top <= line) active = i; });
+      if (active === current) return;
+      current = active;
+      links.forEach(function (a, i) {
+        if (i === active) { a.setAttribute('aria-current', 'true'); centerInBar(a); }
+        else a.removeAttribute('aria-current');
       });
-    }, { rootMargin: '-35% 0px -60% 0px' });
-    Object.keys(map).forEach(function (id) { var el = document.getElementById(id); if (el) io.observe(el); });
+    }
+
+    function schedule() { if (!queued) { queued = true; setTimeout(update, 60); } }
+    window.addEventListener('scroll', schedule, { passive: true });
+    window.addEventListener('resize', schedule);
+    update();
   });
 })();

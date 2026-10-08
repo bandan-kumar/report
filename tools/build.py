@@ -135,8 +135,8 @@ HEAD = """<!doctype html>
   <meta name="color-scheme" content="light dark">
   {meta}
   <link rel="icon" href="{fav}">
-  <link rel="stylesheet" href="{p}assets/style.css?v=131">
-  <script src="{p}assets/theme.js?v=9"></script>
+  <link rel="stylesheet" href="{p}assets/style.css?v=132">
+  <script src="{p}assets/theme.js?v=14"></script>
 </head>
 <body>
 {sprite}
