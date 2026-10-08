@@ -19,7 +19,7 @@ KEYWORDS = {
     ],
     "upkee": [
         "house cleaning schedule", "cleaning schedule", "cleaning schedule app", "house cleaning", "housework",
-        "house cleaning checklist free", "house cleaning app", "weekly cleaning schedule", "cleaning planner", "adhd cleaning checklist",
+        "house cleaning checklist free", "house cleaning app", "weekly cleaning schedule", "home cleaning schedule free", "home chores",
     ],
 }
 SEARCH_PAUSE = 3  # seconds between searches: Apple allows roughly 20 requests a minute
