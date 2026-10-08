@@ -25,7 +25,7 @@
   <meta name="twitter:image" content="https://bandan-kumar.github.io/report/assets/og/q3-2026.png">
   <!--/meta-->
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231e5fb0'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3EBK%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="../assets/style.css?v=126">
+  <link rel="stylesheet" href="../assets/style.css?v=130">
   <script src="../assets/theme.js?v=9"></script>
 </head>
 <body>
@@ -64,12 +64,18 @@
   <symbol id="send" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></g></symbol>
   <symbol id="smartphone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></g></symbol>
   <symbol id="message" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></g></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></g></symbol>
+  <symbol id="maximize" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></g></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></g></symbol>
+  <symbol id="chevron-left" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></g></symbol>
+  <symbol id="chevron-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></g></symbol>
 </svg>
 <!--/sprite-->
   <header class="topbar">
     <div class="wrap">
       <a class="btn" href="../" data-back><svg class="icon" aria-hidden="true"><use href="#arrow-left"/></svg> <span>Apps</span></a>
       <div class="actions">
+        <button class="btn" type="button" data-present title="Present full screen (P). Use the arrow keys to change slides."><svg class="icon" aria-hidden="true"><use href="#play"/></svg> <span class="label-long">Present</span></button>
         <a class="btn" href="Bandan-Kumar-Q3-2026-Review.pdf" download><svg class="icon" aria-hidden="true"><use href="#download"/></svg> <span class="label-long">Download</span> PDF</a>
         <button class="btn" type="button" data-print><svg class="icon" aria-hidden="true"><use href="#printer"/></svg> <span class="label-long">Print</span></button>
         <button class="btn icon-only" type="button" data-theme-toggle aria-label="Switch theme"><svg class="icon" aria-hidden="true"><use href="#moon"/></svg></button>
@@ -88,7 +94,7 @@
 
   <nav class="jump no-print" aria-label="Sections">
     <div class="wrap">
-      <a href="#glance">At a glance</a><a href="#delivery">Delivery</a><a href="#dietplan">DietPlan</a><a href="#data">Data</a><a href="#size">App size</a><a href="#ai">AI</a><a href="#caloric">Caloric</a><a href="#quality">Quality</a><a href="#growth">Growth</a><a href="#challenges">Challenges</a>
+      <a href="#glance">At a glance</a><a href="#delivery">Delivery</a><a href="#dietplan">DietPlan</a><a href="#screens">Screens</a><a href="#data">Data</a><a href="#size">App size</a><a href="#ai">AI</a><a href="#caloric">Caloric</a><a href="#quality">Quality</a><a href="#growth">Growth</a><a href="#challenges">Challenges</a>
       <a class="other" href="../q4-2026/">Q4 plan <svg class="icon" aria-hidden="true"><use href="#arrow-right"/></svg></a>
     </div>
   </nav>
@@ -146,7 +152,11 @@
       </div>
       <p class="result"><b>Result:</b> Feature-complete app built end to end, with only the premium screens left before release.</p>
 
-      <h2 class="sub-section">DietPlan in Action</h2>
+    </section>
+
+    <!-- DietPlan screens -->
+    <section class="block" id="screens">
+      <h2>DietPlan in Action</h2>
       <p class="sub">Real screens from the app.</p>
       <div class="gallery" tabindex="0" aria-label="DietPlan screenshots, scroll sideways">
         <figure class="shot"><img src="../assets/img/dietplan-onboarding.png" alt="Onboarding screen asking 'What is your gender?'" loading="lazy" width="460" height="995"><figcaption>Onboarding</figcaption></figure>
@@ -339,5 +349,6 @@
   <footer class="footer no-print">
     <div class="wrap">© 2026 Bandan Kumar</div>
   </footer>
+  <script src="../assets/present.js?v=4" defer></script>
 </body>
 </html>

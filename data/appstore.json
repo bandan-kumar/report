@@ -7,7 +7,7 @@
       "name": "Diet Plan: Daily Meal Planner",
       "url": "https://apps.apple.com/us/app/diet-plan-daily-meal-planner/id719586528",
       "rating": 4.7,
-      "ratingCount": 1925,
+      "ratingCount": 1924,
       "version": "5.4",
       "updated": "2026-08-19",
       "firstReleased": "2013-10-25",
@@ -41,6 +41,11 @@
           "https://play-lh.googleusercontent.com/PfvA_5u-8kANHRMso_F8ZwyvG0x-2MPVIUKTwLMIPCt_hUCF_pbdt1rMnLSF7lZw3eGUJ9grjrBZks3kRZNuKQ=w360-h640"
         ]
       },
+      "android": {
+        "rating": 4.2,
+        "reviews": "850",
+        "installs": "100K+"
+      },
       "keywords": [
         {
           "term": "diet plan",
@@ -48,7 +53,7 @@
         },
         {
           "term": "7 day diet plan",
-          "rank": 11
+          "rank": 12
         },
         {
           "term": "diet planner",
@@ -60,7 +65,7 @@
         },
         {
           "term": "weight loss plan",
-          "rank": 32
+          "rank": 33
         },
         {
           "term": "diet plan weight loss",
@@ -82,7 +87,21 @@
           "term": "meal planner",
           "rank": 82
         }
-      ]
+      ],
+      "compare": {
+        "n": 29,
+        "phrases": [
+          "diet plan",
+          "meal planner",
+          "weight loss diet"
+        ],
+        "rating": 4.72,
+        "ratingCount": 24577,
+        "daysSinceUpdate": 7,
+        "languages": 1,
+        "sizeMB": 161,
+        "updatedWithin14Days": 17
+      }
     },
     "upkee": {
       "id": 6757587275,
@@ -135,7 +154,7 @@
         },
         {
           "term": "house cleaning",
-          "rank": 41
+          "rank": 43
         },
         {
           "term": "housework",
@@ -161,7 +180,20 @@
           "term": "home chores",
           "rank": 109
         }
-      ]
+      ],
+      "compare": {
+        "n": 18,
+        "phrases": [
+          "house cleaning schedule",
+          "cleaning schedule"
+        ],
+        "rating": 4.71,
+        "ratingCount": 1169,
+        "daysSinceUpdate": 41,
+        "languages": 4.5,
+        "sizeMB": 82,
+        "updatedWithin14Days": 5
+      }
     },
     "caloric": {
       "id": 6499521146,
@@ -200,6 +232,11 @@
           "https://play-lh.googleusercontent.com/ezbegocVyep-SPElx1Kh2lNecCfw3PAuppgU85qXqN8d_SKsSl1GvICnWqEpo3sa1UCl-fdg1JNXEKP-XsqyYMc=w360-h640",
           "https://play-lh.googleusercontent.com/ebSy_f2NZw9YFtwH89C_TKsBahfNDP_y6rI-QrUC9HPabqy7jYf_R2D9AaUO9AcmrK-Xl3EnVEZ2nMHcdmi_=w360-h640"
         ]
+      },
+      "android": {
+        "rating": 4.4,
+        "reviews": "632",
+        "installs": "100K+"
       }
     },
     "locateus": {
@@ -239,6 +276,11 @@
           "https://play-lh.googleusercontent.com/15KPBVtkRJo-8PNTYcQk6IDmJIAFA_a2R9B8wfkejfPkI1s5Y3144xVblm6qR6M2V_VQfuRdW_yazIm0pPzY=w360-h640",
           "https://play-lh.googleusercontent.com/upVz8I8EzFZo8Ad4FWpblycZ7OVr-tKA-V8HHBe6Ef6fsx0BtTY7U7Zngrf60YujBh8QL4gHZdtHo22w38rKqA=w360-h640"
         ]
+      },
+      "android": {
+        "rating": 4.4,
+        "reviews": "554",
+        "installs": "10K+"
       }
     },
     "keto": {
@@ -280,6 +322,11 @@
           "https://play-lh.googleusercontent.com/8HtkkfJysqvog0rqaSYypeHLJWOAEMeG_RGsLe0xTOizz_VbEeYK5Xp953wKEyUiQqcrK5StYdNoDctHTKbflck=w360-h640",
           "https://play-lh.googleusercontent.com/lbWE3tKd5iyu4JklG955vA1QKFjEgUpoEEkLtHtcxSyIKqg0lMtOKkcumTecoDwHDZJxJeX0htF4vpy1H516MA=w360-h640"
         ]
+      },
+      "android": {
+        "rating": 4.3,
+        "reviews": "25.9K",
+        "installs": "1M+"
       }
     }
   }

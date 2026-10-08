@@ -135,7 +135,7 @@ HEAD = """<!doctype html>
   <meta name="color-scheme" content="light dark">
   {meta}
   <link rel="icon" href="{fav}">
-  <link rel="stylesheet" href="{p}assets/style.css?v=126">
+  <link rel="stylesheet" href="{p}assets/style.css?v=130">
   <script src="{p}assets/theme.js?v=9"></script>
 </head>
 <body>
@@ -305,6 +305,183 @@ def build_index():
 """
     open(f"{ROOT}/index.html", "w").write(s)
 
+BASELINE_DATE = "2026-10-08"  # the starting point for the quarter; later numbers are compared with it
+
+
+def _load_history():
+    try:
+        with open(os.path.join(ROOT, "data", "history.json")) as f:
+            return json.load(f)
+    except (OSError, ValueError):
+        return []
+
+
+HISTORY = _load_history()
+
+
+def baseline_entry():
+    for h in HISTORY:
+        if h["date"] == BASELINE_DATE:
+            return h
+    return HISTORY[0] if HISTORY else None
+
+
+def _verdict(kind, you, med):
+    """('Ahead' | 'On par' | 'Behind', css class) for one measure, or ('', '') when not a judgement."""
+    if kind == "rating":
+        if abs(you - med) <= 0.05:
+            return "On par", "on-par"
+        return ("Ahead", "ahead") if you > med else ("Behind", "behind")
+    if kind == "higher":
+        if you == med:
+            return "On par", "on-par"
+        return ("Ahead", "ahead") if you > med else ("Behind", "behind")
+    if kind == "lower":
+        if you == med:
+            return "On par", "on-par"
+        return ("Ahead", "ahead") if you < med else ("Behind", "behind")
+    return "", ""
+
+
+def compare_block(a, with_title=False):
+    """Table of one app against the median of the apps ranking beside it in search."""
+    st = a.get("store") or {}
+    c = st.get("compare")
+    if not c:
+        return ""
+    days_you = (date.fromisoformat(STORE["fetched"]) - date.fromisoformat(st["updated"])).days
+    rows = [
+        ("Rating", f"{st['rating']:.1f} ★", f"{c['rating']:.2f} ★", _verdict("rating", st["rating"], c["rating"]), "rating"),
+        ("Number of ratings", fmt_int(st["ratingCount"]), fmt_int(c["ratingCount"]), _verdict("higher", st["ratingCount"], c["ratingCount"]), "number of ratings"),
+        ("Days since last update", str(days_you), str(c["daysSinceUpdate"]), _verdict("lower", days_you, c["daysSinceUpdate"]), "update recency"),
+        ("Store languages", str(len(st["languages"])), f"{c['languages']:g}", _verdict("higher", len(st["languages"]), c["languages"]), "languages"),
+        ("App size", f"{st['sizeMB']:g} MB", f"{c['sizeMB']} MB", ("", ""), ""),
+    ]
+    name = a["name"]
+    body = "".join(
+        f'            <tr><td data-label="Measure">{m}</td><td data-label="{name}"><b>{y}</b></td>'
+        f'<td data-label="Median of {c["n"]} apps">{md}</td>'
+        f'<td data-label="Compared">' + (f'<span class="verdict {v[1]}">{v[0]}</span>' if v[0] else "") + "</td></tr>\n"
+        for m, y, md, v, _ in rows)
+    ahead = [r[4] for r in rows if r[3][1] == "ahead"]
+    behind = [r[4] for r in rows if r[3][1] == "behind"]
+    parts = []
+    if ahead:
+        parts.append("Ahead on " + ", ".join(ahead) + ".")
+    if behind:
+        parts.append("Behind on " + ", ".join(behind) + ".")
+    phrases = ", ".join(f"“{x}”" for x in c["phrases"])
+    title = f"          <h3>{name}</h3>\n" if with_title else ""
+    return (f'        <div class="cmp-block">\n{title}'
+            f'          <div class="table-wrap"><table class="cmp">\n            <thead><tr><th>Measure</th><th>{name}</th><th>Median of {c["n"]} apps</th><th>Compared</th></tr></thead>\n'
+            f'            <tbody>\n{body}            </tbody>\n          </table></div>\n'
+            f'          <p class="takeaway">{" ".join(parts)}</p>\n'
+            f'          <p class="note">The apps ranking beside {name} in US App Store search for {phrases}. They are search neighbours, not necessarily direct competitors. As of {fmt_date(STORE["fetched"])}.</p>\n'
+            "        </div>\n")
+
+
+def platform_block(a):
+    """iOS and Android side by side for one app."""
+    st = a.get("store") or {}
+    an = st.get("android")
+    if not an and not a.get("android"):
+        return ""
+    ios_rating = f"{st['rating']:.1f} ★" + f" <span class='sub-note'>({fmt_int(st['ratingCount'])} ratings)</span>"
+    if an:
+        and_rating = f"{an['rating']:.1f} ★" + (f" <span class='sub-note'>({an['reviews']} reviews)</span>" if an.get("reviews") else "")
+        and_installs = an["installs"]
+        gap = st["rating"] - an["rating"]
+        note = (f"Android is rated {abs(gap):.1f} {'lower' if gap > 0 else 'higher'} than iOS." if abs(gap) >= 0.05 else "Ratings are level across platforms.")
+    else:
+        and_rating = and_installs = '<span class="muted">In development</span>'
+        note = ""
+    rows = (f'            <tr><td data-label="Measure">Rating</td><td data-label="iOS"><b>{ios_rating}</b></td><td data-label="Android"><b>{and_rating}</b></td></tr>\n'
+            f'            <tr><td data-label="Measure">Installs</td><td data-label="iOS"><span class="muted">Not public</span></td><td data-label="Android"><b>{and_installs}</b></td></tr>\n')
+    return (f'        <div class="table-wrap"><table class="cmp">\n            <thead><tr><th>Measure</th><th>iOS</th><th>Android</th></tr></thead>\n'
+            f'            <tbody>\n{rows}            </tbody>\n          </table></div>\n'
+            + (f'        <p class="takeaway">{note}</p>\n' if note else "")
+            + f'        <p class="note">Public App Store and Google Play pages, US, as of {fmt_date(STORE["fetched"])}. Google Play shows install brackets and review counts, not rating counts.</p>\n')
+
+
+def _delta(now, then, kind):
+    """Small text under a value: how it moved since the baseline."""
+    if then is None or now is None:
+        return ""
+    if kind == "rank":      # lower is better
+        if now == then:
+            return "no change"
+        return f"{'up' if now < then else 'down'} {abs(now - then)} from #{then}"
+    diff = now - then
+    if kind == "rating":
+        return "no change" if abs(diff) < 0.005 else f"{diff:+.1f} from {then:.1f}"
+    return "no change" if diff == 0 else f"{diff:+,} from {then:,}"
+
+
+COMPARE_SLUGS = ("dietplan", "upkee")
+
+
+def platform_sentence():
+    both = [a for a in APPS if (a.get("store") or {}).get("android")]
+    lower = [a for a in both if a["store"]["android"]["rating"] < a["store"]["rating"]]
+    if both and len(lower) == len(both):
+        return "The same apps on both stores. Android is rated lower than iOS on every app that has both."
+    if lower:
+        return f"The same apps on both stores. Android is rated lower than iOS on {len(lower)} of {len(both)} apps."
+    return "The same apps on both stores."
+
+
+def platform_table():
+    """One row per app: iOS rating, Android rating, the gap and the Android install bracket."""
+    rows = ""
+    for a in APPS:
+        st = a.get("store") or {}
+        an = st.get("android")
+        ios = f'<b>{st["rating"]:.1f} ★</b>'
+        if an:
+            gap = st["rating"] - an["rating"]
+            cells = (f'<td data-label="Android"><b>{an["rating"]:.1f} ★</b></td>'
+                     f'<td data-label="Gap">{gap:+.1f}</td>'
+                     f'<td data-label="Android installs">{an["installs"]}</td>')
+        else:
+            cells = ('<td data-label="Android"><span class="muted">In development</span></td>'
+                     '<td data-label="Gap"><span class="muted">—</span></td><td data-label="Android installs"><span class="muted">—</span></td>')
+        rows += f'            <tr><td data-label="App">{a["name"]}</td><td data-label="iOS">{ios}</td>{cells}</tr>\n'
+    return ('      <div class="table-wrap"><table class="cmp">\n        <thead><tr><th>App</th><th>iOS rating</th><th>Android rating</th><th>iOS minus Android</th><th>Android installs</th></tr></thead>\n'
+            f'        <tbody>\n{rows}        </tbody>\n      </table></div>\n'
+            f'      <p class="note">Public App Store and Google Play pages, US, as of {fmt_date(STORE["fetched"])}. Google Play shows install brackets, such as 100K+, and not exact counts.</p>\n')
+
+
+def baseline_block():
+    """All five apps: today's numbers with the change since the baseline date."""
+    base = baseline_entry()
+    if not base:
+        return ""
+    rows = ""
+    for a in APPS:
+        st = a.get("store") or {}
+        b = base["apps"].get(a["slug"], {})
+        an = st.get("android")
+        ranks_now = [(k["rank"], k["term"]) for k in st.get("keywords", []) if k["rank"]]
+        best_now = min(ranks_now) if ranks_now else None
+        ranks_then = [v for v in (b.get("ranks") or {}).values() if v]
+        best_then = min(ranks_then) if ranks_then else None
+        ios_cell = f'<b>{st["rating"]:.1f} ★</b><span class="delta">{_delta(st["rating"], b.get("rating"), "rating")}</span>'
+        cnt_cell = f'<b>{fmt_int(st["ratingCount"])}</b><span class="delta">{_delta(st["ratingCount"], b.get("ratingCount"), "count")}</span>'
+        if an:
+            and_cell = f'<b>{an["rating"]:.1f} ★</b><span class="delta">{_delta(an["rating"], (b.get("android") or {}).get("rating"), "rating")}</span>'
+        else:
+            and_cell = '<span class="muted">In development</span>' if a.get("android") else '<span class="muted">—</span>'
+        if best_now:
+            rank_cell = f'<b>#{best_now[0]}</b> <span class="sub-note">{html.escape(best_now[1])}</span><span class="delta">{_delta(best_now[0], best_then, "rank")}</span>'
+        else:
+            rank_cell = '<span class="muted">Not tracked</span>'
+        rows += (f'            <tr><td data-label="App">{a["name"]}</td><td data-label="iOS rating">{ios_cell}</td><td data-label="iOS ratings">{cnt_cell}</td>'
+                 f'<td data-label="Android rating">{and_cell}</td><td data-label="Best search rank">{rank_cell}</td></tr>\n')
+    return (f'      <div class="table-wrap"><table class="cmp base">\n        <thead><tr><th>App</th><th>iOS rating</th><th>iOS ratings</th><th>Android rating</th><th>Best search rank</th></tr></thead>\n'
+            f'        <tbody>\n{rows}        </tbody>\n      </table></div>\n'
+            f'      <p class="note">Baseline: {fmt_date(base["date"])}. Under each value, how it has moved since then. Search rank is the best of the tracked phrases for the two primary apps.</p>\n')
+
+
 def build_app(a):
     p = "../../"
     _t = f"{a['name']} · Review · Bandan Kumar"
@@ -351,6 +528,10 @@ def build_app(a):
               '          <p class="note">Downloads, impressions and conversion are not public, so they are not shown here.</p>\n'
               '        </div>\n'
               '      </section>\n')
+    plat = platform_block(a) if st else ""
+    if plat:
+        s += ('      <section class="block" id="platforms">\n        <h2>iOS and Android</h2>\n'
+              f'        <p class="sub">{a["name"]} on both platforms.</p>\n' + plat + "      </section>\n")
     tracked = (st or {}).get("keywords") or []
     kws = sorted([k for k in tracked if k["rank"]], key=lambda k: k["rank"])[:5]
     if kws:
@@ -363,6 +544,10 @@ def build_app(a):
               f'        <div class="card kw-card">\n          <ul class="kw-list">\n{rows}          </ul>\n'
               f'          <p class="note">Approximate: Apple\'s public search order, US store, top 200 results, as of {fmt_date(STORE["fetched"])}.</p>\n'
               '        </div>\n      </section>\n')
+    cmp_html = compare_block(a) if st else ""
+    if cmp_html:
+        s += ('      <section class="block" id="compare">\n        <h2>How it compares</h2>\n'
+              f'        <p class="sub">{a["name"]} against the apps that rank beside it in search.</p>\n' + cmp_html + "      </section>\n")
     shots = (st or {}).get("screenshots", {})
     if shots.get("ios") or shots.get("android"):
         s += '      <section class="block">\n        <h2>Store screenshots</h2>\n        <p class="sub">As shown on the store listings.</p>\n'
@@ -538,6 +723,7 @@ def build_q4():
     <div class="wrap">
       <a class="btn" href="{p}" data-back>{icon(p, "arrow-left")} <span>Apps</span></a>
       <div class="actions">
+        <button class="btn" type="button" data-present title="Present full screen (P). Use the arrow keys to change slides.">{icon(p, "play")} <span class="label-long">Present</span></button>
         <a class="btn" href="Bandan-Kumar-Q4-2026-Planning.pdf" download>{icon(p, "download")} <span class="label-long">Download</span> PDF</a>
         <button class="btn" type="button" data-print>{icon(p, "printer")} <span class="label-long">Print</span></button>
         <button class="btn icon-only" type="button" data-theme-toggle aria-label="Switch theme">{icon(p, "moon")}</button>
@@ -556,7 +742,7 @@ def build_q4():
 
   <nav class="jump no-print" aria-label="Sections">
     <div class="wrap">
-      <a href="#funnel">Funnel</a><a href="#glance">At a glance</a><a href="#plans">App plans</a><a href="#timeline">Timeline</a><a href="#rhythm">Rhythm</a>
+      <a href="#funnel">Funnel</a><a href="#baseline">Starting point</a><a href="#compare">Compare</a><a href="#platforms">Platforms</a><a href="#glance">At a glance</a><a href="#plans">App plans</a><a href="#timeline">Timeline</a><a href="#rhythm">Rhythm</a>
       <a class="other" href="../q3-2026/">{icon(p, "arrow-left")} Q3 review</a>
     </div>
   </nav>
@@ -579,6 +765,23 @@ def build_q4():
     s += """      </div>
     </section>
 
+    <section class="block" id="baseline">
+      <h2>Starting point</h2>
+      <p class="sub">Where every app stands now. Changes through the quarter show under each value.</p>
+""" + baseline_block() + """    </section>
+
+    <section class="block" id="compare">
+      <h2>How we compare</h2>
+      <p class="sub">DietPlan and Upkee against the apps that rank beside them in App Store search.</p>
+      <div class="grid two-up cmp-grid">
+""" + "".join(compare_block(x, with_title=True) for x in APPS if x["slug"] in COMPARE_SLUGS) + """      </div>
+    </section>
+
+    <section class="block" id="platforms">
+      <h2>iOS and Android</h2>
+      <p class="sub">""" + platform_sentence() + """</p>
+""" + platform_table() + """    </section>
+
     <section class="block" id="glance">
       <h2>At a glance</h2>
       <p class="sub">One focus per app.</p>
@@ -594,7 +797,7 @@ def build_q4():
         s += GROUP_CLOSE
     s += """    </section>
 
-    <section class="block" id="plans">
+    <section class="block" id="plans" data-slides=".plan">
       <h2>App plans</h2>
       <p class="sub">What I will do first, and what I will watch.</p>
 """
@@ -666,6 +869,7 @@ def build_q4():
   <footer class="footer no-print">
     <div class="wrap">© 2026 Bandan Kumar · App Store figures as of """ + fmt_date(STORE["fetched"]) + """</div>
   </footer>
+  <script src="../assets/present.js?v=4" defer></script>
 </body>
 </html>
 """

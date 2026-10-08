@@ -23,7 +23,7 @@
   <meta name="twitter:description" content="Q4 2026 planning: focus, first actions and the numbers to watch for DietPlan and Upkee, plus backup cover for three more apps.">
   <meta name="twitter:image" content="https://bandan-kumar.github.io/report/assets/og/q4-2026.png">
   <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='9' fill='%231e5fb0'/%3E%3Ctext x='16' y='22' font-size='16' font-weight='800' text-anchor='middle' fill='white' font-family='Arial'%3EBK%3C/text%3E%3C/svg%3E">
-  <link rel="stylesheet" href="../assets/style.css?v=126">
+  <link rel="stylesheet" href="../assets/style.css?v=130">
   <script src="../assets/theme.js?v=9"></script>
 </head>
 <body>
@@ -61,11 +61,17 @@
   <symbol id="send" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></g></symbol>
   <symbol id="smartphone" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="5" y="2" width="14" height="20" rx="2"/><path d="M12 18h.01"/></g></symbol>
   <symbol id="message" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></g></symbol>
+  <symbol id="play" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="5 3 19 12 5 21 5 3"/></g></symbol>
+  <symbol id="maximize" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/></g></symbol>
+  <symbol id="x" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6L6 18M6 6l12 12"/></g></symbol>
+  <symbol id="chevron-left" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M15 18l-6-6 6-6"/></g></symbol>
+  <symbol id="chevron-right" viewBox="0 0 24 24"><g fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 18l6-6-6-6"/></g></symbol>
 </svg>
   <header class="topbar">
     <div class="wrap">
       <a class="btn" href="../" data-back><svg class="icon" aria-hidden="true"><use href="#arrow-left"/></svg> <span>Apps</span></a>
       <div class="actions">
+        <button class="btn" type="button" data-present title="Present full screen (P). Use the arrow keys to change slides."><svg class="icon" aria-hidden="true"><use href="#play"/></svg> <span class="label-long">Present</span></button>
         <a class="btn" href="Bandan-Kumar-Q4-2026-Planning.pdf" download><svg class="icon" aria-hidden="true"><use href="#download"/></svg> <span class="label-long">Download</span> PDF</a>
         <button class="btn" type="button" data-print><svg class="icon" aria-hidden="true"><use href="#printer"/></svg> <span class="label-long">Print</span></button>
         <button class="btn icon-only" type="button" data-theme-toggle aria-label="Switch theme"><svg class="icon" aria-hidden="true"><use href="#moon"/></svg></button>
@@ -84,7 +90,7 @@
 
   <nav class="jump no-print" aria-label="Sections">
     <div class="wrap">
-      <a href="#funnel">Funnel</a><a href="#glance">At a glance</a><a href="#plans">App plans</a><a href="#timeline">Timeline</a><a href="#rhythm">Rhythm</a>
+      <a href="#funnel">Funnel</a><a href="#baseline">Starting point</a><a href="#compare">Compare</a><a href="#platforms">Platforms</a><a href="#glance">At a glance</a><a href="#plans">App plans</a><a href="#timeline">Timeline</a><a href="#rhythm">Rhythm</a>
       <a class="other" href="../q3-2026/"><svg class="icon" aria-hidden="true"><use href="#arrow-left"/></svg> Q3 review</a>
     </div>
   </nav>
@@ -132,6 +138,75 @@
       </div>
     </section>
 
+    <section class="block" id="baseline">
+      <h2>Starting point</h2>
+      <p class="sub">Where every app stands now. Changes through the quarter show under each value.</p>
+      <div class="table-wrap"><table class="cmp base">
+        <thead><tr><th>App</th><th>iOS rating</th><th>iOS ratings</th><th>Android rating</th><th>Best search rank</th></tr></thead>
+        <tbody>
+            <tr><td data-label="App">DietPlan</td><td data-label="iOS rating"><b>4.7 ★</b><span class="delta">no change</span></td><td data-label="iOS ratings"><b>1,924</b><span class="delta">no change</span></td><td data-label="Android rating"><b>4.2 ★</b><span class="delta">no change</span></td><td data-label="Best search rank"><b>#3</b> <span class="sub-note">diet plan</span><span class="delta">no change</span></td></tr>
+            <tr><td data-label="App">Upkee</td><td data-label="iOS rating"><b>5.0 ★</b><span class="delta">no change</span></td><td data-label="iOS ratings"><b>3</b><span class="delta">no change</span></td><td data-label="Android rating"><span class="muted">In development</span></td><td data-label="Best search rank"><b>#18</b> <span class="sub-note">house cleaning schedule</span><span class="delta">no change</span></td></tr>
+            <tr><td data-label="App">Caloric</td><td data-label="iOS rating"><b>4.5 ★</b><span class="delta">no change</span></td><td data-label="iOS ratings"><b>176</b><span class="delta">no change</span></td><td data-label="Android rating"><b>4.4 ★</b><span class="delta">no change</span></td><td data-label="Best search rank"><span class="muted">Not tracked</span></td></tr>
+            <tr><td data-label="App">LocateUs</td><td data-label="iOS rating"><b>5.0 ★</b><span class="delta">no change</span></td><td data-label="iOS ratings"><b>4</b><span class="delta">no change</span></td><td data-label="Android rating"><b>4.4 ★</b><span class="delta">no change</span></td><td data-label="Best search rank"><span class="muted">Not tracked</span></td></tr>
+            <tr><td data-label="App">Keto</td><td data-label="iOS rating"><b>4.7 ★</b><span class="delta">no change</span></td><td data-label="iOS ratings"><b>9,400</b><span class="delta">no change</span></td><td data-label="Android rating"><b>4.3 ★</b><span class="delta">no change</span></td><td data-label="Best search rank"><span class="muted">Not tracked</span></td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">Baseline: 8 Oct 2026. Under each value, how it has moved since then. Search rank is the best of the tracked phrases for the two primary apps.</p>
+    </section>
+
+    <section class="block" id="compare">
+      <h2>How we compare</h2>
+      <p class="sub">DietPlan and Upkee against the apps that rank beside them in App Store search.</p>
+      <div class="grid two-up cmp-grid">
+        <div class="cmp-block">
+          <h3>DietPlan</h3>
+          <div class="table-wrap"><table class="cmp">
+            <thead><tr><th>Measure</th><th>DietPlan</th><th>Median of 29 apps</th><th>Compared</th></tr></thead>
+            <tbody>
+            <tr><td data-label="Measure">Rating</td><td data-label="DietPlan"><b>4.7 ★</b></td><td data-label="Median of 29 apps">4.72 ★</td><td data-label="Compared"><span class="verdict on-par">On par</span></td></tr>
+            <tr><td data-label="Measure">Number of ratings</td><td data-label="DietPlan"><b>1,924</b></td><td data-label="Median of 29 apps">24,577</td><td data-label="Compared"><span class="verdict behind">Behind</span></td></tr>
+            <tr><td data-label="Measure">Days since last update</td><td data-label="DietPlan"><b>50</b></td><td data-label="Median of 29 apps">7</td><td data-label="Compared"><span class="verdict behind">Behind</span></td></tr>
+            <tr><td data-label="Measure">Store languages</td><td data-label="DietPlan"><b>5</b></td><td data-label="Median of 29 apps">1</td><td data-label="Compared"><span class="verdict ahead">Ahead</span></td></tr>
+            <tr><td data-label="Measure">App size</td><td data-label="DietPlan"><b>180.1 MB</b></td><td data-label="Median of 29 apps">161 MB</td><td data-label="Compared"></td></tr>
+            </tbody>
+          </table></div>
+          <p class="takeaway">Ahead on languages. Behind on number of ratings, update recency.</p>
+          <p class="note">The apps ranking beside DietPlan in US App Store search for “diet plan”, “meal planner”, “weight loss diet”. They are search neighbours, not necessarily direct competitors. As of 8 Oct 2026.</p>
+        </div>
+        <div class="cmp-block">
+          <h3>Upkee</h3>
+          <div class="table-wrap"><table class="cmp">
+            <thead><tr><th>Measure</th><th>Upkee</th><th>Median of 18 apps</th><th>Compared</th></tr></thead>
+            <tbody>
+            <tr><td data-label="Measure">Rating</td><td data-label="Upkee"><b>5.0 ★</b></td><td data-label="Median of 18 apps">4.71 ★</td><td data-label="Compared"><span class="verdict ahead">Ahead</span></td></tr>
+            <tr><td data-label="Measure">Number of ratings</td><td data-label="Upkee"><b>3</b></td><td data-label="Median of 18 apps">1,169</td><td data-label="Compared"><span class="verdict behind">Behind</span></td></tr>
+            <tr><td data-label="Measure">Days since last update</td><td data-label="Upkee"><b>17</b></td><td data-label="Median of 18 apps">41</td><td data-label="Compared"><span class="verdict ahead">Ahead</span></td></tr>
+            <tr><td data-label="Measure">Store languages</td><td data-label="Upkee"><b>8</b></td><td data-label="Median of 18 apps">4.5</td><td data-label="Compared"><span class="verdict ahead">Ahead</span></td></tr>
+            <tr><td data-label="Measure">App size</td><td data-label="Upkee"><b>106.3 MB</b></td><td data-label="Median of 18 apps">82 MB</td><td data-label="Compared"></td></tr>
+            </tbody>
+          </table></div>
+          <p class="takeaway">Ahead on rating, update recency, languages. Behind on number of ratings.</p>
+          <p class="note">The apps ranking beside Upkee in US App Store search for “house cleaning schedule”, “cleaning schedule”. They are search neighbours, not necessarily direct competitors. As of 8 Oct 2026.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="block" id="platforms">
+      <h2>iOS and Android</h2>
+      <p class="sub">The same apps on both stores. Android is rated lower than iOS on every app that has both.</p>
+      <div class="table-wrap"><table class="cmp">
+        <thead><tr><th>App</th><th>iOS rating</th><th>Android rating</th><th>iOS minus Android</th><th>Android installs</th></tr></thead>
+        <tbody>
+            <tr><td data-label="App">DietPlan</td><td data-label="iOS"><b>4.7 ★</b></td><td data-label="Android"><b>4.2 ★</b></td><td data-label="Gap">+0.5</td><td data-label="Android installs">100K+</td></tr>
+            <tr><td data-label="App">Upkee</td><td data-label="iOS"><b>5.0 ★</b></td><td data-label="Android"><span class="muted">In development</span></td><td data-label="Gap"><span class="muted">—</span></td><td data-label="Android installs"><span class="muted">—</span></td></tr>
+            <tr><td data-label="App">Caloric</td><td data-label="iOS"><b>4.5 ★</b></td><td data-label="Android"><b>4.4 ★</b></td><td data-label="Gap">+0.1</td><td data-label="Android installs">100K+</td></tr>
+            <tr><td data-label="App">LocateUs</td><td data-label="iOS"><b>5.0 ★</b></td><td data-label="Android"><b>4.4 ★</b></td><td data-label="Gap">+0.6</td><td data-label="Android installs">10K+</td></tr>
+            <tr><td data-label="App">Keto</td><td data-label="iOS"><b>4.7 ★</b></td><td data-label="Android"><b>4.3 ★</b></td><td data-label="Gap">+0.4</td><td data-label="Android installs">1M+</td></tr>
+        </tbody>
+      </table></div>
+      <p class="note">Public App Store and Google Play pages, US, as of 8 Oct 2026. Google Play shows install brackets, such as 100K+, and not exact counts.</p>
+    </section>
+
     <section class="block" id="glance">
       <h2>At a glance</h2>
       <p class="sub">One focus per app.</p>
@@ -167,7 +242,7 @@
       </div>
     </section>
 
-    <section class="block" id="plans">
+    <section class="block" id="plans" data-slides=".plan">
       <h2>App plans</h2>
       <p class="sub">What I will do first, and what I will watch.</p>
       <div class="group">
@@ -178,7 +253,7 @@
             <div><h3>DietPlan</h3><div class="chips"><span class="chip role">Primary · Autonomous</span></div></div>
           </div>
           <p class="plan-focus">Launch v2.0 with a refreshed store page and a good first-run experience.</p>
-          <p class="why">The live listing shows 4.7★ from 1,925 ratings in 5 store languages. v2.0 is feature-complete with 9 languages and a new UI, and the current store page shows none of that.</p>
+          <p class="why">The live listing shows 4.7★ from 1,924 ratings in 5 store languages. v2.0 is feature-complete with 9 languages and a new UI, and the current store page shows none of that.</p>
           <h4>First actions</h4>
           <ul class="bullets">
             <li>Launch v2.0 on the App Store, including the AI meal plans.</li>
@@ -310,5 +385,6 @@
   <footer class="footer no-print">
     <div class="wrap">© 2026 Bandan Kumar · App Store figures as of 8 Oct 2026</div>
   </footer>
+  <script src="../assets/present.js?v=4" defer></script>
 </body>
 </html>

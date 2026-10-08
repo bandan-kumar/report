@@ -1,6 +1,6 @@
-"""Refresh data/appstore.json from the public App Store lookup API (no key needed)."""
-import json, os, re, struct, time, urllib.parse, urllib.request
-from datetime import datetime, timezone
+"""Refresh data/appstore.json from public App Store and Google Play data (no keys needed)."""
+import json, os, re, statistics, struct, time, urllib.parse, urllib.request
+from datetime import date, datetime, timezone
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 IDS = {
@@ -22,6 +22,12 @@ KEYWORDS = {
         "house cleaning checklist free", "house cleaning app", "weekly cleaning schedule", "home cleaning schedule free", "home chores",
     ],
 }
+# The phrases whose search neighbours count as "competitors". Only medians are stored, never app names.
+COMPARE = {
+    "dietplan": ["diet plan", "meal planner", "weight loss diet"],
+    "upkee": ["house cleaning schedule", "cleaning schedule"],
+}
+COMPARE_TOP = 12
 SEARCH_PAUSE = 3  # seconds between searches: Apple allows roughly 20 requests a minute
 HISTORY_DAYS = 365
 
@@ -32,6 +38,8 @@ PLAY_IDS = {
     "keto": "com.diet.pixsterstudio.ketodietican",
 }
 
+_SEARCHES = {}  # phrase -> results, so a phrase used for ranking and comparing is searched once
+
 
 def fetch(app_id):
     url = f"https://itunes.apple.com/lookup?id={app_id}&country={COUNTRY}"
@@ -40,21 +48,53 @@ def fetch(app_id):
         return json.load(r)["results"][0]
 
 
-def search_rank(term, app_id):
-    """Position of the app in App Store search results for `term` (US, top 200), or None if absent."""
+def search_results(term):
+    """Top 200 App Store search results for `term` (US). Cached for the run, retried on failure."""
+    if term in _SEARCHES:
+        return _SEARCHES[term]
     query = urllib.parse.urlencode({"term": term, "entity": "software", "country": COUNTRY, "limit": 200})
     req = urllib.request.Request(f"https://itunes.apple.com/search?{query}", headers={"User-Agent": "Mozilla/5.0"})
     for attempt in range(3):
         try:
             with urllib.request.urlopen(req, timeout=30) as resp:
                 results = json.load(resp)["results"]
-            for position, item in enumerate(results, 1):
-                if item.get("trackId") == app_id:
-                    return position
-            return None
+            _SEARCHES[term] = results
+            time.sleep(SEARCH_PAUSE)
+            return results
         except Exception:
             time.sleep(10 * (attempt + 1))
     raise RuntimeError(f"search failed for {term!r}")
+
+
+def search_rank(term, app_id):
+    """Position of the app in App Store search results for `term`, or None if it is not in the top 200."""
+    for position, item in enumerate(search_results(term), 1):
+        if item.get("trackId") == app_id:
+            return position
+    return None
+
+
+def competitor_medians(slug):
+    """Medians across the apps ranking beside this one for its main phrases (no names kept)."""
+    seen = {}
+    for term in COMPARE[slug]:
+        for item in search_results(term)[:COMPARE_TOP]:
+            if item.get("trackId") != IDS[slug]:
+                seen[item["trackId"]] = item
+    items = list(seen.values())
+    today = date.today()
+    days = [(today - date.fromisoformat(i["currentVersionReleaseDate"][:10])).days for i in items]
+    rated = [i for i in items if i.get("userRatingCount", 0) >= 50]
+    return {
+        "n": len(items),
+        "phrases": COMPARE[slug],
+        "rating": round(statistics.median(i["averageUserRating"] for i in rated), 2) if rated else None,
+        "ratingCount": int(statistics.median(i.get("userRatingCount", 0) for i in items)),
+        "daysSinceUpdate": int(statistics.median(days)),
+        "languages": statistics.median(len(i.get("languageCodesISO2A", [])) for i in items),
+        "sizeMB": round(statistics.median(int(i.get("fileSizeBytes", 0)) / 1e6 for i in items)),
+        "updatedWithin14Days": sum(d <= 14 for d in days),
+    }
 
 
 def ios_screenshots(r):
@@ -88,12 +128,15 @@ def is_phone_shot(url):
     return bool(size) and size[1] / size[0] >= 1.6
 
 
-def play_screenshots(package):
-    """Screenshot URLs from the public Google Play page. Returns [] if the page layout changes."""
+def play_page(package):
     url = f"https://play.google.com/store/apps/details?id={package}&hl=en&gl={COUNTRY}"
     req = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0"})
     with urllib.request.urlopen(req, timeout=30) as resp:
-        page = resp.read().decode("utf-8", "replace")
+        return resp.read().decode("utf-8", "replace")
+
+
+def play_screenshots(page):
+    """Phone screenshot URLs from a Google Play page. Returns [] if the page layout changes."""
     seen, out = set(), []
     for tag in re.findall(r'<img[^>]+alt="Screenshot image"[^>]*>', page):
         m = re.search(r'(?:src|data-src)="(https://play-lh\.googleusercontent\.com/[^"=]+)=', tag)
@@ -103,6 +146,20 @@ def play_screenshots(package):
             if is_phone_shot(shot):
                 out.append(shot)
     return out
+
+
+def play_stats(page):
+    """Rating, review count text and install bracket from a Google Play page; None where not found."""
+    rating = re.search(r"Rated ([0-9.]+) stars out of five", page)
+    installs = re.search(r">([0-9][0-9.,]*[KMB]?\+)<", page)
+    reviews = re.search(r"([0-9][0-9.,]*[KM]?) reviews", page)
+    if not (rating and installs):
+        return None
+    return {
+        "rating": float(rating.group(1)),
+        "reviews": reviews.group(1) if reviews else None,
+        "installs": installs.group(1),
+    }
 
 
 def update_history(out):
@@ -115,10 +172,13 @@ def update_history(out):
         history = []
     entry = {"date": out["fetched"], "apps": {}}
     for slug, a in out["apps"].items():
-        entry["apps"][slug] = {
+        row = {
             "rating": a["rating"], "ratingCount": a["ratingCount"], "version": a["version"],
             "ranks": {k["term"]: k["rank"] for k in a.get("keywords", [])},
         }
+        if a.get("android"):
+            row["android"] = a["android"]
+        entry["apps"][slug] = row
     history = [h for h in history if h.get("date") != entry["date"]] + [entry]
     with open(path, "w") as f:
         json.dump(history[-HISTORY_DAYS:], f, indent=1)
@@ -152,12 +212,17 @@ def main():
             "screenshots": {"ios": ios_screenshots(r), "android": []},
         }
         if slug in PLAY_IDS:
+            old = previous.get(slug, {})
             try:
-                apps[slug]["screenshots"]["android"] = play_screenshots(PLAY_IDS[slug])
-            except Exception as e:  # keep the last good set if Google Play is unreachable or changes
+                page = play_page(PLAY_IDS[slug])
+                apps[slug]["screenshots"]["android"] = play_screenshots(page)
+                apps[slug]["android"] = play_stats(page)
+            except Exception as e:  # keep the last good values if Google Play is unreachable or changes
                 print("play fetch failed for", slug, e)
             if not apps[slug]["screenshots"]["android"]:
-                apps[slug]["screenshots"]["android"] = previous.get(slug, {}).get("screenshots", {}).get("android", [])
+                apps[slug]["screenshots"]["android"] = old.get("screenshots", {}).get("android", [])
+            if not apps[slug].get("android") and old.get("android"):
+                apps[slug]["android"] = old["android"]
     for slug, terms in KEYWORDS.items():
         last = {k["term"]: k["rank"] for k in previous.get(slug, {}).get("keywords", [])}
         ranked = []
@@ -168,8 +233,14 @@ def main():
                 print("rank lookup failed for", slug, term, e)
                 rank = last.get(term)
             ranked.append({"term": term, "rank": rank})
-            time.sleep(SEARCH_PAUSE)
         apps[slug]["keywords"] = ranked
+    for slug in COMPARE:
+        try:
+            apps[slug]["compare"] = competitor_medians(slug)
+        except Exception as e:
+            print("comparison failed for", slug, e)
+            if previous.get(slug, {}).get("compare"):
+                apps[slug]["compare"] = previous[slug]["compare"]
 
     out = {"fetched": datetime.now(timezone.utc).strftime("%Y-%m-%d"), "country": COUNTRY, "apps": apps}
     os.makedirs(os.path.join(ROOT, "data"), exist_ok=True)
