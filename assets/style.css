@@ -730,7 +730,8 @@ html.presenting, html.presenting body { overflow: hidden; }
 .deck-stage .report-hero { width: 100%; height: 100%; display: flex; align-items: center; padding: 0 8vw; }
 .deck-stage .report-hero .wrap { width: 100%; margin: 0; }
 .deck-stage .report-hero h1 { font-size: clamp(2.6rem, 7vw, 5rem); }
-.deck-slide { width: min(1180px, calc(100vw - 64px)); flex: none; margin: 0 !important; scroll-margin-top: 0; }
+.deck-slide { width: 1180px; flex: none; margin: 0 !important; scroll-margin-top: 0; }
+@media (max-width: 639px) { .deck-slide { width: calc(100vw - 64px); } }
 .deck-stage.scroll { align-items: flex-start; overflow-y: auto; }
 .deck-slide > h2 { font-size: 2.1rem; }
 .deck-slide .gallery { flex-wrap: nowrap; overflow: visible; justify-content: space-between; gap: 12px; padding: 0; }
@@ -765,3 +766,20 @@ html.presenting, html.presenting body { overflow: hidden; }
   .takeaway { margin-top: 8px; font-size: .9rem; }
   .verdict { padding: 1px 8px; font-size: .72rem; }
 }
+
+/* Slides keep their wide layout on any screen wider than a phone, whatever the window width. */
+@media (min-width: 640px) {
+  .deck-slide .split { grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr); }
+  .deck-slide .size-grid { grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr) auto; }
+  .deck-slide .size-grid.two-col { grid-template-columns: minmax(0, 1fr) auto; }
+  .deck-slide .size-grid .shot { justify-self: auto; }
+  .deck-slide .pipeline, .deck-slide .flow { grid-template-columns: repeat(5, 1fr); }
+  .deck-slide .pipeline .step:last-child, .deck-slide .flow .step:last-child { grid-column: auto; }
+  .deck-slide .flow .step:not(:last-child)::after { display: block; }
+  .deck-slide .compare { grid-template-columns: 1fr 1fr; }
+  .deck-slide .two-up { grid-template-columns: 1fr 1fr; }
+  .deck-slide .features.wide { grid-template-columns: repeat(2, 1fr); }
+  .deck-slide .cmp-grid { grid-template-columns: 1fr 1fr; }
+}
+.deck-bar button[aria-disabled="true"] { opacity: .35; cursor: default; }
+.deck-bar button[aria-disabled="true"]:hover { background: transparent; }

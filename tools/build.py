@@ -135,7 +135,7 @@ HEAD = """<!doctype html>
   <meta name="color-scheme" content="light dark">
   {meta}
   <link rel="icon" href="{fav}">
-  <link rel="stylesheet" href="{p}assets/style.css?v=130">
+  <link rel="stylesheet" href="{p}assets/style.css?v=131">
   <script src="{p}assets/theme.js?v=9"></script>
 </head>
 <body>
@@ -869,7 +869,7 @@ def build_q4():
   <footer class="footer no-print">
     <div class="wrap">© 2026 Bandan Kumar · App Store figures as of """ + fmt_date(STORE["fetched"]) + """</div>
   </footer>
-  <script src="../assets/present.js?v=4" defer></script>
+  <script src="../assets/present.js?v=5" defer></script>
 </body>
 </html>
 """

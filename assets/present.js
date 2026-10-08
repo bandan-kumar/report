@@ -6,7 +6,7 @@
   var openBtn = document.querySelector('[data-present]');
   if (!openBtn) return;
 
-  var deck, stage, countEl, fillEl, liveEl;
+  var deck, stage, countEl, fillEl, liveEl, prevBtn, nextBtn;
   var slides = [];
   var index = 0;
   var scrollBefore = 0;
@@ -93,6 +93,8 @@
     countEl = deck.querySelector('.deck-count');
     fillEl = deck.querySelector('.deck-progress i');
     liveEl = deck.querySelector('[aria-live]');
+    prevBtn = deck.querySelector('[data-deck="prev"]');
+    nextBtn = deck.querySelector('[data-deck="next"]');
 
     deck.addEventListener('click', function (e) {
       var btn = e.target.closest('[data-deck]');
@@ -130,13 +132,16 @@
     var availH = stage.clientHeight - parseFloat(cs.paddingTop) - parseFloat(cs.paddingBottom);
     var availW = stage.clientWidth - parseFloat(cs.paddingLeft) - parseFloat(cs.paddingRight);
     var scale = Math.min(availH / el.offsetHeight, availW / el.offsetWidth, 1.3);
-    var applied = Math.max(0.45, Math.floor(scale * 100) / 100);
+    var floor = window.innerWidth >= 640 ? 0.2 : 0.45;
+    var applied = Math.max(floor, Math.floor(scale * 100) / 100);
     el.style.zoom = String(applied);
     if (el.offsetHeight * applied > availH + 2) stage.classList.add('scroll');
   }
 
-  function go(i) {
-    index = Math.max(0, Math.min(slides.length - 1, i));
+  function go(i, force) {
+    var next = Math.max(0, Math.min(slides.length - 1, i));
+    if (next === index && !force) return;     // already at the first or last slide: nothing to redraw
+    index = next;
     var slide = slides[index];
     stage.className = 'deck-stage' + (slide.hero ? ' is-hero' : '');
     stage.scrollTop = 0;
@@ -145,6 +150,8 @@
     countEl.textContent = (index + 1) + ' / ' + slides.length;
     fillEl.style.width = ((index + 1) / slides.length * 100) + '%';
     liveEl.textContent = 'Slide ' + (index + 1) + ' of ' + slides.length;
+    prevBtn.setAttribute('aria-disabled', String(index === 0));
+    nextBtn.setAttribute('aria-disabled', String(index === slides.length - 1));
   }
 
   /* Start on the section that fills most of the screen, so you begin from where you are reading. */
@@ -165,7 +172,7 @@
     var start = startIndex();               // measure before the page is locked
     document.documentElement.classList.add('presenting');
     deck.hidden = false;
-    go(start);
+    go(start, true);
     deck.focus();
   }
 
