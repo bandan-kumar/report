@@ -28,7 +28,7 @@ APPS = [
          status=("live", "Live"),
          platform="iOS",
          summary="AI meal plans, recipes, weight tracking and reminders. An older version is already live. The rebuilt version was feature-complete on 8 Sep 2026 and is waiting on the premium screens before its App Store release.",
-         metrics=[("14", "modules & features"), ("89.3 MB", "app size, down from ~140"), ("23/23", "QA items resolved")],
+         metrics=[("14", "modules & features"), ("103 MB", "app size, down from 180"), ("23/23", "QA items resolved")],
          tags=["Firebase", "Gemini", "HealthKit", "App Attest"],
          reviews=[("q3-2026/#dietplan", "Q3 2026", "Built end to end in about seven weeks, with an AI backend secured by App Attest.")],
          q3=[
@@ -36,7 +36,7 @@ APPS = [
             "Rebuilt the meal and recipe dataset from the EatThisMuch API plus generated dishes. The main catalog ships inside the app.",
             "Built the upgrade path from v1, so existing users keep their profile, weight log, plan and reminders.",
             "Added iPad window support, automated tests for the database and user data, and automatic translation of new strings.",
-            "Cut the app size from about 140 MB to 89.3 MB with On-Demand Resources and a split database.",
+            "Cut the app size from 180 MB to 103 MB with On-Demand Resources and a split database.",
             "Added AI meal plans on a dedicated Cloud Function, protected by App Attest, a model allow-list, token limits and daily cost logs.",
             "Closed all 23 QA items and all 23 team-lead review points.",
          ],
