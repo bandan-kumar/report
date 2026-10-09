@@ -625,14 +625,14 @@ Q4 = {
         headline="Launch v2.0 with a refreshed store page and a good first-run experience.",
         why="The live listing shows {rt}★ from {rc} ratings in {nl} store languages. v2.0 is feature-complete with 9 languages and a new UI, and the current store page shows none of that.",
         actions=[
-            "Launch v2.0 on the App Store, including the AI meal plans.",
             "Integrate the premium screens once design is final.",
             "Refresh the store page for launch: screenshots from the v2.0 UI, and localized metadata for Hindi, Japanese, Portuguese and Russian.",
+            "Go live with v2.0 on the App Store, including the AI meal plans.",
             "Read the onboarding funnel from day one using the Q3 analytics events, and fix the biggest drop-off.",
         ],
         test="Screenshot A/B test on the store page. Primary metric: conversion rate.",
         measure=["Onboarding completion", "Conversion rate", "Paywall conversion", "Rating after launch"],
-        months=["Premium screens, ASO baseline", "Launch v2.0 with the refreshed store page", "Screenshot test result, first onboarding and paywall read"],
+        months=["Premium screens, ASO baseline", "Go live with v2.0 and the refreshed store page", "Screenshot test result, first onboarding and paywall read"],
     ),
     "upkee": dict(
         headline="Build up ratings and get the onboarding funnel measured.",
