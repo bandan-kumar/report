@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-09",
+  "fetched": "2026-10-10",
   "country": "us",
   "apps": {
     "dietplan": {
@@ -49,58 +49,58 @@
       "keywords": [
         {
           "term": "diet plan",
-          "rank": 3
+          "rank": 2
         },
         {
           "term": "7 day diet plan",
-          "rank": 11
+          "rank": 12
         },
         {
           "term": "diet planner",
-          "rank": 11
+          "rank": 12
         },
         {
           "term": "weight loss diet",
-          "rank": 9
+          "rank": 14
         },
         {
           "term": "weight loss plan",
-          "rank": 46
+          "rank": 40
         },
         {
           "term": "diet plan weight loss",
-          "rank": 17
+          "rank": 16
         },
         {
           "term": "meal planner for weight loss",
-          "rank": 10
-        },
-        {
-          "term": "healthy meal planner",
-          "rank": 24
-        },
-        {
-          "term": "weight loss planner",
           "rank": 20
         },
         {
+          "term": "healthy meal planner",
+          "rank": 22
+        },
+        {
+          "term": "weight loss planner",
+          "rank": null
+        },
+        {
           "term": "meal planner",
-          "rank": 82
+          "rank": 85
         }
       ],
       "compare": {
-        "n": 30,
+        "n": 29,
         "phrases": [
           "diet plan",
           "meal planner",
           "weight loss diet"
         ],
         "rating": 4.72,
-        "ratingCount": 22434,
-        "daysSinceUpdate": 7,
-        "languages": 1.0,
-        "sizeMB": 152,
-        "updatedWithin14Days": 18
+        "ratingCount": 24577,
+        "daysSinceUpdate": 8,
+        "languages": 1,
+        "sizeMB": 161,
+        "updatedWithin14Days": 19
       }
     },
     "upkee": {
@@ -142,11 +142,11 @@
       "keywords": [
         {
           "term": "house cleaning schedule",
-          "rank": 18
+          "rank": 17
         },
         {
           "term": "cleaning schedule",
-          "rank": 28
+          "rank": 27
         },
         {
           "term": "cleaning schedule app",
@@ -154,7 +154,7 @@
         },
         {
           "term": "house cleaning",
-          "rank": 38
+          "rank": 41
         },
         {
           "term": "housework",
@@ -162,37 +162,37 @@
         },
         {
           "term": "house cleaning checklist free",
-          "rank": 35
+          "rank": 32
         },
         {
           "term": "house cleaning app",
-          "rank": 47
-        },
-        {
-          "term": "weekly cleaning schedule",
-          "rank": 52
-        },
-        {
-          "term": "home cleaning schedule free",
           "rank": 42
         },
         {
+          "term": "weekly cleaning schedule",
+          "rank": 57
+        },
+        {
+          "term": "home cleaning schedule free",
+          "rank": 41
+        },
+        {
           "term": "home chores",
-          "rank": 111
+          "rank": 103
         }
       ],
       "compare": {
-        "n": 17,
+        "n": 18,
         "phrases": [
           "house cleaning schedule",
           "cleaning schedule"
         ],
-        "rating": 4.74,
-        "ratingCount": 1051,
+        "rating": 4.73,
+        "ratingCount": 738,
         "daysSinceUpdate": 41,
-        "languages": 8,
-        "sizeMB": 72,
-        "updatedWithin14Days": 5
+        "languages": 7.0,
+        "sizeMB": 76,
+        "updatedWithin14Days": 6
       }
     },
     "caloric": {
@@ -267,19 +267,18 @@
           "https://is1-ssl.mzstatic.com/image/thumb/PurpleSource221/v4/91/67/63/91676351-7a52-02f3-5b8b-389d66fb22e5/iPhone__7.jpg/392x696bb.jpg"
         ],
         "android": [
-          "https://play-lh.googleusercontent.com/ruHu3rzVRpXQeFaYeYozRP12AyoSbeYfKneQHIGXU4K2XBW30UkymQE9BQXR9qEdHZ1o6lSCj7cEl_iQDfHvVg=w360-h640",
-          "https://play-lh.googleusercontent.com/r_UBjdfCHMvBTymNN3kvE-Uk1XTtsEkydou2NHkGB5TbRo6ZGJqHhEZkDX02zCm63LvhmdgtDDTH4feq1Url-A=w360-h640",
-          "https://play-lh.googleusercontent.com/WtYMKWZJHenfL9bRTqQtVOHkR8y5xu-6xC55K-pOeOSqnuhNR2EVuVXLVmLlBFi8IklYmbOKoQLMRYGPy4PdPW8=w360-h640",
-          "https://play-lh.googleusercontent.com/gxsWwPsnEudmqsPCehQDRawKBud4JEvaFGRvSisXPuFG9cIK2TPZkIOgLGcXg9WkGknQFHFXVrEWghEoI-gcsg=w360-h640",
-          "https://play-lh.googleusercontent.com/x-flqQjYbGFnIF81QuFrX3-Xu4KwYrgZ0zoVa57ThZGRBYaRSJgmDzKtGed1vbkrc16-fddRb6y09iPRHEZIxY4=w360-h640",
-          "https://play-lh.googleusercontent.com/W50MUPmn0Qlkst5yPUkySSX7PPQboFN02VexfJ3F-59htwFi9v-npu4IyvKEWGWIK1H40Oo41qC5vurj-h0L=w360-h640",
-          "https://play-lh.googleusercontent.com/15KPBVtkRJo-8PNTYcQk6IDmJIAFA_a2R9B8wfkejfPkI1s5Y3144xVblm6qR6M2V_VQfuRdW_yazIm0pPzY=w360-h640",
-          "https://play-lh.googleusercontent.com/upVz8I8EzFZo8Ad4FWpblycZ7OVr-tKA-V8HHBe6Ef6fsx0BtTY7U7Zngrf60YujBh8QL4gHZdtHo22w38rKqA=w360-h640"
+          "https://play-lh.googleusercontent.com/4TjknhyZDRL67Q_BlHY64FP0LYmemfL-0spZ3mc804igChx-nhh3NDXx1lsbhexr8JNREo67RtDYnmKMKhUMyw=w360-h640",
+          "https://play-lh.googleusercontent.com/dsD6LSiCNvk4D-H0n1kwHDZf82-3LRhOp1TL9gHJFp8aVcPMYIXZRGiN3yF35dP480owKpq3H7unbWwu9bm-CkE=w360-h640",
+          "https://play-lh.googleusercontent.com/Pz7QkqqMrMnD5FcqBAU71w0oeFN_G-9q5hso64anjMkqiQR87B6uZ3uts4L3kGboVX-oWHyB9VqU_NccYl4VvZg=w360-h640",
+          "https://play-lh.googleusercontent.com/Vo6tiIVNa1ZHWeTpWlr4D9DHkGjVHuNrUtxp5uUDJsGTEdWLgiZWp-v-jnFKljDRSn1-jOEJjdMwaCJKgRAuRHc=w360-h640",
+          "https://play-lh.googleusercontent.com/OCWMnbgynUkzjSMZ4-YGzHBsL-xSddX1cGB5wfsNdGdyrlKW70q0-s1QoLTIA6slze3VO2IyvIYYDMevWPOk=w360-h640",
+          "https://play-lh.googleusercontent.com/1tOeG9YGFYxrxfgx32g8PgowDKE-OlhuoF2MijdZmdf3M9T3R9q2dtoCPW1tYbiYSCqneWQJihk9qqD-h_2G5A=w360-h640",
+          "https://play-lh.googleusercontent.com/WZuFMya00YfmyHjCQFAwCMHu-3CkJFmzr6OA-pn6BVj-pZ3fGNd2_CjDcMFkrECCTY3LfVM_Zud4PspRwNeG=w360-h640"
         ]
       },
       "android": {
         "rating": 4.4,
-        "reviews": "557",
+        "reviews": "560",
         "installs": "10K+"
       }
     },
