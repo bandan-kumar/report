@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-16",
+  "fetched": "2026-10-17",
   "country": "us",
   "apps": {
     "dietplan": {
@@ -7,7 +7,7 @@
       "name": "Diet Plan: Daily Meal Planner",
       "url": "https://apps.apple.com/us/app/diet-plan-daily-meal-planner/id719586528",
       "rating": 4.7,
-      "ratingCount": 1923,
+      "ratingCount": 1924,
       "version": "5.4",
       "updated": "2026-08-19",
       "firstReleased": "2013-10-25",
@@ -53,19 +53,19 @@
         },
         {
           "term": "7 day diet plan",
-          "rank": 14
-        },
-        {
-          "term": "diet planner",
           "rank": 13
         },
         {
+          "term": "diet planner",
+          "rank": 14
+        },
+        {
           "term": "weight loss diet",
-          "rank": 16
+          "rank": 15
         },
         {
           "term": "weight loss plan",
-          "rank": 33
+          "rank": 32
         },
         {
           "term": "diet plan weight loss",
@@ -73,7 +73,7 @@
         },
         {
           "term": "meal planner for weight loss",
-          "rank": 22
+          "rank": 23
         },
         {
           "term": "healthy meal planner",
@@ -81,11 +81,11 @@
         },
         {
           "term": "weight loss planner",
-          "rank": 22
+          "rank": 19
         },
         {
           "term": "meal planner",
-          "rank": 107
+          "rank": 104
         }
       ],
       "compare": {
@@ -96,10 +96,10 @@
           "weight loss diet"
         ],
         "rating": 4.75,
-        "ratingCount": 17736,
-        "daysSinceUpdate": 10,
+        "ratingCount": 21364,
+        "daysSinceUpdate": 9,
         "languages": 1.0,
-        "sizeMB": 128,
+        "sizeMB": 139,
         "updatedWithin14Days": 18
       }
     },
@@ -142,31 +142,31 @@
       "keywords": [
         {
           "term": "house cleaning schedule",
-          "rank": 18
+          "rank": 20
         },
         {
           "term": "cleaning schedule",
-          "rank": 29
+          "rank": 31
         },
         {
           "term": "cleaning schedule app",
-          "rank": 39
+          "rank": 42
         },
         {
           "term": "house cleaning",
-          "rank": 46
+          "rank": 41
         },
         {
           "term": "housework",
-          "rank": 45
+          "rank": 68
         },
         {
           "term": "house cleaning checklist free",
-          "rank": 37
+          "rank": 36
         },
         {
           "term": "house cleaning app",
-          "rank": 53
+          "rank": 58
         },
         {
           "term": "weekly cleaning schedule",
@@ -174,11 +174,11 @@
         },
         {
           "term": "home cleaning schedule free",
-          "rank": 41
+          "rank": 49
         },
         {
           "term": "home chores",
-          "rank": 113
+          "rank": 116
         }
       ],
       "compare": {
@@ -187,12 +187,12 @@
           "house cleaning schedule",
           "cleaning schedule"
         ],
-        "rating": 4.73,
-        "ratingCount": 737,
-        "daysSinceUpdate": 9,
-        "languages": 7.0,
+        "rating": 4.71,
+        "ratingCount": 1170,
+        "daysSinceUpdate": 13,
+        "languages": 6.5,
         "sizeMB": 75,
-        "updatedWithin14Days": 10
+        "updatedWithin14Days": 9
       }
     },
     "caloric": {
@@ -278,7 +278,7 @@
       },
       "android": {
         "rating": 4.4,
-        "reviews": "588",
+        "reviews": "591",
         "installs": "10K+"
       }
     },
@@ -287,7 +287,7 @@
       "name": "Keto Diet App: Keto Manager",
       "url": "https://apps.apple.com/us/app/keto-diet-app-keto-manager/id1475764462",
       "rating": 4.67,
-      "ratingCount": 9401,
+      "ratingCount": 9402,
       "version": "5.1.6",
       "updated": "2026-08-18",
       "firstReleased": "2019-11-08",
