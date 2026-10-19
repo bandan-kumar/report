@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-18",
+  "fetched": "2026-10-19",
   "country": "us",
   "apps": {
     "dietplan": {
@@ -57,15 +57,15 @@
         },
         {
           "term": "diet planner",
-          "rank": 12
+          "rank": 11
         },
         {
           "term": "weight loss diet",
-          "rank": 16
+          "rank": 17
         },
         {
           "term": "weight loss plan",
-          "rank": 35
+          "rank": 38
         },
         {
           "term": "diet plan weight loss",
@@ -77,7 +77,7 @@
         },
         {
           "term": "healthy meal planner",
-          "rank": 24
+          "rank": 22
         },
         {
           "term": "weight loss planner",
@@ -85,22 +85,22 @@
         },
         {
           "term": "meal planner",
-          "rank": 98
+          "rank": 104
         }
       ],
       "compare": {
-        "n": 30,
+        "n": 29,
         "phrases": [
           "diet plan",
           "meal planner",
           "weight loss diet"
         ],
-        "rating": 4.74,
-        "ratingCount": 17736,
-        "daysSinceUpdate": 10,
-        "languages": 1.0,
-        "sizeMB": 128,
-        "updatedWithin14Days": 17
+        "rating": 4.76,
+        "ratingCount": 22167,
+        "daysSinceUpdate": 11,
+        "languages": 1,
+        "sizeMB": 147,
+        "updatedWithin14Days": 18
       }
     },
     "upkee": {
@@ -142,7 +142,7 @@
       "keywords": [
         {
           "term": "house cleaning schedule",
-          "rank": 19
+          "rank": 20
         },
         {
           "term": "cleaning schedule",
@@ -150,27 +150,27 @@
         },
         {
           "term": "cleaning schedule app",
-          "rank": 42
+          "rank": 45
         },
         {
           "term": "house cleaning",
-          "rank": 40
+          "rank": 44
         },
         {
           "term": "housework",
-          "rank": 75
+          "rank": 54
         },
         {
           "term": "house cleaning checklist free",
-          "rank": 38
+          "rank": 39
         },
         {
           "term": "house cleaning app",
-          "rank": 50
+          "rank": 49
         },
         {
           "term": "weekly cleaning schedule",
-          "rank": 54
+          "rank": 41
         },
         {
           "term": "home cleaning schedule free",
@@ -178,7 +178,7 @@
         },
         {
           "term": "home chores",
-          "rank": 111
+          "rank": 115
         }
       ],
       "compare": {
@@ -189,7 +189,7 @@
         ],
         "rating": 4.72,
         "ratingCount": 1170,
-        "daysSinceUpdate": 25,
+        "daysSinceUpdate": 26,
         "languages": 6.5,
         "sizeMB": 69,
         "updatedWithin14Days": 8
@@ -244,7 +244,7 @@
       "name": "Find My Location : LocateUs",
       "url": "https://apps.apple.com/us/app/find-my-location-locateus/id6739027332",
       "rating": 5,
-      "ratingCount": 4,
+      "ratingCount": 5,
       "version": "1.03",
       "updated": "2026-08-08",
       "firstReleased": "2025-09-12",
@@ -278,7 +278,7 @@
       },
       "android": {
         "rating": 4.4,
-        "reviews": "591",
+        "reviews": "593",
         "installs": "10K+"
       }
     },
@@ -287,7 +287,7 @@
       "name": "Keto Diet App: Keto Manager",
       "url": "https://apps.apple.com/us/app/keto-diet-app-keto-manager/id1475764462",
       "rating": 4.67,
-      "ratingCount": 9402,
+      "ratingCount": 9401,
       "version": "5.1.6",
       "updated": "2026-08-18",
       "firstReleased": "2019-11-08",
