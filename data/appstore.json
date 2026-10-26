@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-10-25",
+  "fetched": "2026-10-26",
   "country": "us",
   "apps": {
     "dietplan": {
@@ -85,22 +85,22 @@
         },
         {
           "term": "meal planner",
-          "rank": 110
+          "rank": 108
         }
       ],
       "compare": {
-        "n": 30,
+        "n": 31,
         "phrases": [
           "diet plan",
           "meal planner",
           "weight loss diet"
         ],
-        "rating": 4.76,
-        "ratingCount": 17740,
-        "daysSinceUpdate": 11,
-        "languages": 1.0,
-        "sizeMB": 142,
-        "updatedWithin14Days": 17
+        "rating": 4.74,
+        "ratingCount": 14910,
+        "daysSinceUpdate": 14,
+        "languages": 1,
+        "sizeMB": 136,
+        "updatedWithin14Days": 16
       }
     },
     "upkee": {
@@ -187,12 +187,12 @@
           "house cleaning schedule",
           "cleaning schedule"
         ],
-        "rating": 4.75,
+        "rating": 4.72,
         "ratingCount": 1289,
-        "daysSinceUpdate": 43,
-        "languages": 5,
-        "sizeMB": 61,
-        "updatedWithin14Days": 7
+        "daysSinceUpdate": 24,
+        "languages": 8,
+        "sizeMB": 66,
+        "updatedWithin14Days": 8
       }
     },
     "caloric": {
@@ -278,7 +278,7 @@
       },
       "android": {
         "rating": 4.4,
-        "reviews": "601",
+        "reviews": "602",
         "installs": "10K+"
       }
     },
