@@ -1769,5 +1769,82 @@
     }
    }
   }
+ },
+ {
+  "date": "2026-10-31",
+  "apps": {
+   "dietplan": {
+    "rating": 4.7,
+    "ratingCount": 1925,
+    "version": "5.4",
+    "ranks": {
+     "diet plan": 2,
+     "7 day diet plan": 12,
+     "diet planner": 12,
+     "weight loss diet": 17,
+     "weight loss plan": 28,
+     "diet plan weight loss": 17,
+     "meal planner for weight loss": 19,
+     "healthy meal planner": 19,
+     "weight loss planner": 18,
+     "meal planner": 111
+    },
+    "android": {
+     "rating": 4.1,
+     "reviews": "853",
+     "installs": "100K+"
+    }
+   },
+   "upkee": {
+    "rating": 5,
+    "ratingCount": 3,
+    "version": "1.0.2",
+    "ranks": {
+     "house cleaning schedule": 18,
+     "cleaning schedule": 26,
+     "cleaning schedule app": 36,
+     "house cleaning": 104,
+     "housework": 149,
+     "house cleaning checklist free": 36,
+     "house cleaning app": 20,
+     "weekly cleaning schedule": 49,
+     "home cleaning schedule free": 43,
+     "home chores": 104
+    }
+   },
+   "caloric": {
+    "rating": 4.51,
+    "ratingCount": 177,
+    "version": "1.7.1",
+    "ranks": {},
+    "android": {
+     "rating": 4.4,
+     "reviews": "633",
+     "installs": "100K+"
+    }
+   },
+   "locateus": {
+    "rating": 5,
+    "ratingCount": 5,
+    "version": "1.03",
+    "ranks": {},
+    "android": {
+     "rating": 4.4,
+     "reviews": "612",
+     "installs": "10K+"
+    }
+   },
+   "keto": {
+    "rating": 4.67,
+    "ratingCount": 9402,
+    "version": "5.1.6",
+    "ranks": {},
+    "android": {
+     "rating": 4.3,
+     "reviews": "26K",
+     "installs": "1M+"
+    }
+   }
+  }
  }
 ]
