@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-11-06",
+  "fetched": "2026-11-07",
   "country": "us",
   "apps": {
     "dietplan": {
@@ -7,7 +7,7 @@
       "name": "Diet Plan: Daily Meal Planner",
       "url": "https://apps.apple.com/us/app/diet-plan-daily-meal-planner/id719586528",
       "rating": 4.7,
-      "ratingCount": 1925,
+      "ratingCount": 1924,
       "version": "5.4",
       "updated": "2026-08-19",
       "firstReleased": "2013-10-25",
@@ -57,11 +57,11 @@
         },
         {
           "term": "diet planner",
-          "rank": 12
+          "rank": 10
         },
         {
           "term": "weight loss diet",
-          "rank": 17
+          "rank": 20
         },
         {
           "term": "weight loss plan",
@@ -69,23 +69,23 @@
         },
         {
           "term": "diet plan weight loss",
-          "rank": 14
+          "rank": 16
         },
         {
           "term": "meal planner for weight loss",
-          "rank": 20
+          "rank": 21
         },
         {
           "term": "healthy meal planner",
-          "rank": 22
+          "rank": 21
         },
         {
           "term": "weight loss planner",
-          "rank": 20
+          "rank": 25
         },
         {
           "term": "meal planner",
-          "rank": 83
+          "rank": 90
         }
       ],
       "compare": {
@@ -96,11 +96,11 @@
           "weight loss diet"
         ],
         "rating": 4.73,
-        "ratingCount": 12876,
-        "daysSinceUpdate": 25,
+        "ratingCount": 11378,
+        "daysSinceUpdate": 27,
         "languages": 1,
         "sizeMB": 124,
-        "updatedWithin14Days": 14
+        "updatedWithin14Days": 13
       }
     },
     "upkee": {
@@ -150,31 +150,31 @@
         },
         {
           "term": "cleaning schedule app",
-          "rank": 36
+          "rank": 28
         },
         {
           "term": "house cleaning",
-          "rank": 70
+          "rank": 73
         },
         {
           "term": "housework",
-          "rank": 179
+          "rank": null
         },
         {
           "term": "house cleaning checklist free",
-          "rank": 44
+          "rank": 51
         },
         {
           "term": "house cleaning app",
-          "rank": 15
+          "rank": 16
         },
         {
           "term": "weekly cleaning schedule",
-          "rank": 81
+          "rank": 62
         },
         {
           "term": "home cleaning schedule free",
-          "rank": 64
+          "rank": 48
         },
         {
           "term": "home chores",
@@ -189,7 +189,7 @@
         ],
         "rating": 4.77,
         "ratingCount": 748,
-        "daysSinceUpdate": 17,
+        "daysSinceUpdate": 18,
         "languages": 8.0,
         "sizeMB": 64,
         "updatedWithin14Days": 7
