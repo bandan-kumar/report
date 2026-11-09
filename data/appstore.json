@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-11-08",
+  "fetched": "2026-11-09",
   "country": "us",
   "apps": {
     "dietplan": {
@@ -43,13 +43,13 @@
       },
       "android": {
         "rating": 4.1,
-        "reviews": "857",
+        "reviews": "858",
         "installs": "100K+"
       },
       "keywords": [
         {
           "term": "diet plan",
-          "rank": 2
+          "rank": 3
         },
         {
           "term": "7 day diet plan",
@@ -57,15 +57,15 @@
         },
         {
           "term": "diet planner",
-          "rank": null
+          "rank": 11
         },
         {
           "term": "weight loss diet",
-          "rank": 31
+          "rank": 30
         },
         {
           "term": "weight loss plan",
-          "rank": 32
+          "rank": 34
         },
         {
           "term": "diet plan weight loss",
@@ -73,7 +73,7 @@
         },
         {
           "term": "meal planner for weight loss",
-          "rank": 21
+          "rank": 19
         },
         {
           "term": "healthy meal planner",
@@ -81,11 +81,11 @@
         },
         {
           "term": "weight loss planner",
-          "rank": 24
+          "rank": 25
         },
         {
           "term": "meal planner",
-          "rank": 98
+          "rank": 112
         }
       ],
       "compare": {
@@ -96,11 +96,11 @@
           "weight loss diet"
         ],
         "rating": 4.73,
-        "ratingCount": 12207,
-        "daysSinceUpdate": 28,
+        "ratingCount": 14913,
+        "daysSinceUpdate": 20,
         "languages": 1,
-        "sizeMB": 124,
-        "updatedWithin14Days": 13
+        "sizeMB": 156,
+        "updatedWithin14Days": 15
       }
     },
     "upkee": {
@@ -150,11 +150,11 @@
         },
         {
           "term": "cleaning schedule app",
-          "rank": 25
+          "rank": 26
         },
         {
           "term": "house cleaning",
-          "rank": 89
+          "rank": 80
         },
         {
           "term": "housework",
@@ -162,23 +162,23 @@
         },
         {
           "term": "house cleaning checklist free",
-          "rank": 64
+          "rank": 54
         },
         {
           "term": "house cleaning app",
-          "rank": 18
+          "rank": 17
         },
         {
           "term": "weekly cleaning schedule",
-          "rank": 55
+          "rank": 56
         },
         {
           "term": "home cleaning schedule free",
-          "rank": 49
+          "rank": 52
         },
         {
           "term": "home chores",
-          "rank": null
+          "rank": 116
         }
       ],
       "compare": {
@@ -188,8 +188,8 @@
           "cleaning schedule"
         ],
         "rating": 4.75,
-        "ratingCount": 754,
-        "daysSinceUpdate": 17,
+        "ratingCount": 760,
+        "daysSinceUpdate": 18,
         "languages": 8.0,
         "sizeMB": 66,
         "updatedWithin14Days": 7
@@ -244,7 +244,7 @@
       "name": "Find My Location : LocateUs",
       "url": "https://apps.apple.com/us/app/find-my-location-locateus/id6739027332",
       "rating": 5,
-      "ratingCount": 5,
+      "ratingCount": 6,
       "version": "1.03",
       "updated": "2026-08-08",
       "firstReleased": "2025-09-12",
@@ -278,7 +278,7 @@
       },
       "android": {
         "rating": 4.4,
-        "reviews": "616",
+        "reviews": "614",
         "installs": "10K+"
       }
     },
