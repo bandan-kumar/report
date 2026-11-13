@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-11-12",
+  "fetched": "2026-11-13",
   "country": "us",
   "apps": {
     "dietplan": {
@@ -42,8 +42,8 @@
         ]
       },
       "android": {
-        "rating": 4.1,
-        "reviews": "858",
+        "rating": 4.2,
+        "reviews": "859",
         "installs": "100K+"
       },
       "keywords": [
@@ -61,11 +61,11 @@
         },
         {
           "term": "weight loss diet",
-          "rank": 35
+          "rank": 34
         },
         {
           "term": "weight loss plan",
-          "rank": 65
+          "rank": 60
         },
         {
           "term": "diet plan weight loss",
@@ -73,11 +73,11 @@
         },
         {
           "term": "meal planner for weight loss",
-          "rank": 29
+          "rank": 27
         },
         {
           "term": "healthy meal planner",
-          "rank": 66
+          "rank": 62
         },
         {
           "term": "weight loss planner",
@@ -85,7 +85,7 @@
         },
         {
           "term": "meal planner",
-          "rank": 150
+          "rank": 118
         }
       ],
       "compare": {
@@ -96,8 +96,8 @@
           "weight loss diet"
         ],
         "rating": 4.73,
-        "ratingCount": 12545,
-        "daysSinceUpdate": 5,
+        "ratingCount": 13562,
+        "daysSinceUpdate": 6,
         "languages": 1.0,
         "sizeMB": 135,
         "updatedWithin14Days": 18
@@ -162,7 +162,7 @@
         },
         {
           "term": "house cleaning checklist free",
-          "rank": 122
+          "rank": 118
         },
         {
           "term": "house cleaning app",
@@ -174,11 +174,11 @@
         },
         {
           "term": "home cleaning schedule free",
-          "rank": 156
+          "rank": 149
         },
         {
           "term": "home chores",
-          "rank": 188
+          "rank": null
         }
       ],
       "compare": {
@@ -189,10 +189,10 @@
         ],
         "rating": 4.77,
         "ratingCount": 772,
-        "daysSinceUpdate": 16,
+        "daysSinceUpdate": 17,
         "languages": 8.0,
         "sizeMB": 66,
-        "updatedWithin14Days": 9
+        "updatedWithin14Days": 8
       }
     },
     "caloric": {
@@ -278,7 +278,7 @@
       },
       "android": {
         "rating": 4.4,
-        "reviews": "615",
+        "reviews": "619",
         "installs": "10K+"
       }
     },
