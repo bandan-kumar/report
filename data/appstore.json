@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-11-13",
+  "fetched": "2026-11-14",
   "country": "us",
   "apps": {
     "dietplan": {
@@ -7,7 +7,7 @@
       "name": "Diet Plan: Daily Meal Planner",
       "url": "https://apps.apple.com/us/app/diet-plan-daily-meal-planner/id719586528",
       "rating": 4.7,
-      "ratingCount": 1924,
+      "ratingCount": 1923,
       "version": "5.4",
       "updated": "2026-08-19",
       "firstReleased": "2013-10-25",
@@ -53,7 +53,7 @@
         },
         {
           "term": "7 day diet plan",
-          "rank": 13
+          "rank": 15
         },
         {
           "term": "diet planner",
@@ -61,11 +61,11 @@
         },
         {
           "term": "weight loss diet",
-          "rank": 34
+          "rank": 36
         },
         {
           "term": "weight loss plan",
-          "rank": 60
+          "rank": 62
         },
         {
           "term": "diet plan weight loss",
@@ -73,11 +73,11 @@
         },
         {
           "term": "meal planner for weight loss",
-          "rank": 27
+          "rank": 30
         },
         {
           "term": "healthy meal planner",
-          "rank": 62
+          "rank": 130
         },
         {
           "term": "weight loss planner",
@@ -85,7 +85,7 @@
         },
         {
           "term": "meal planner",
-          "rank": 118
+          "rank": 125
         }
       ],
       "compare": {
@@ -96,8 +96,8 @@
           "weight loss diet"
         ],
         "rating": 4.73,
-        "ratingCount": 13562,
-        "daysSinceUpdate": 6,
+        "ratingCount": 12545,
+        "daysSinceUpdate": 7,
         "languages": 1.0,
         "sizeMB": 135,
         "updatedWithin14Days": 18
@@ -142,19 +142,19 @@
       "keywords": [
         {
           "term": "house cleaning schedule",
-          "rank": 19
+          "rank": 21
         },
         {
           "term": "cleaning schedule",
-          "rank": 31
+          "rank": 28
         },
         {
           "term": "cleaning schedule app",
-          "rank": 34
+          "rank": 33
         },
         {
           "term": "house cleaning",
-          "rank": 109
+          "rank": 73
         },
         {
           "term": "housework",
@@ -162,7 +162,7 @@
         },
         {
           "term": "house cleaning checklist free",
-          "rank": 118
+          "rank": 64
         },
         {
           "term": "house cleaning app",
@@ -170,7 +170,7 @@
         },
         {
           "term": "weekly cleaning schedule",
-          "rank": 134
+          "rank": 78
         },
         {
           "term": "home cleaning schedule free",
@@ -178,7 +178,7 @@
         },
         {
           "term": "home chores",
-          "rank": null
+          "rank": 118
         }
       ],
       "compare": {
@@ -188,8 +188,8 @@
           "cleaning schedule"
         ],
         "rating": 4.77,
-        "ratingCount": 772,
-        "daysSinceUpdate": 17,
+        "ratingCount": 778,
+        "daysSinceUpdate": 18,
         "languages": 8.0,
         "sizeMB": 66,
         "updatedWithin14Days": 8
@@ -199,8 +199,8 @@
       "id": 6499521146,
       "name": "Caloric: AI Calorie Counter",
       "url": "https://apps.apple.com/us/app/caloric-ai-calorie-counter/id6499521146",
-      "rating": 4.51,
-      "ratingCount": 177,
+      "rating": 4.52,
+      "ratingCount": 178,
       "version": "1.7.1",
       "updated": "2026-09-25",
       "firstReleased": "2024-10-16",
