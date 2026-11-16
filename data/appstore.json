@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-11-15",
+  "fetched": "2026-11-16",
   "country": "us",
   "apps": {
     "dietplan": {
@@ -43,7 +43,7 @@
       },
       "android": {
         "rating": 4.2,
-        "reviews": "859",
+        "reviews": "858",
         "installs": "100K+"
       },
       "keywords": [
@@ -61,7 +61,7 @@
         },
         {
           "term": "weight loss diet",
-          "rank": 24
+          "rank": 25
         },
         {
           "term": "weight loss plan",
@@ -85,22 +85,22 @@
         },
         {
           "term": "meal planner",
-          "rank": 121
+          "rank": 86
         }
       ],
       "compare": {
-        "n": 30,
+        "n": 31,
         "phrases": [
           "diet plan",
           "meal planner",
           "weight loss diet"
         ],
         "rating": 4.72,
-        "ratingCount": 13896,
-        "daysSinceUpdate": 8,
-        "languages": 1.0,
-        "sizeMB": 151,
-        "updatedWithin14Days": 19
+        "ratingCount": 14915,
+        "daysSinceUpdate": 9,
+        "languages": 1,
+        "sizeMB": 156,
+        "updatedWithin14Days": 18
       }
     },
     "upkee": {
@@ -150,7 +150,7 @@
         },
         {
           "term": "cleaning schedule app",
-          "rank": 42
+          "rank": 32
         },
         {
           "term": "house cleaning",
@@ -174,7 +174,7 @@
         },
         {
           "term": "home cleaning schedule free",
-          "rank": 54
+          "rank": 55
         },
         {
           "term": "home chores",
@@ -189,7 +189,7 @@
         ],
         "rating": 4.76,
         "ratingCount": 1176,
-        "daysSinceUpdate": 23,
+        "daysSinceUpdate": 24,
         "languages": 7.0,
         "sizeMB": 66,
         "updatedWithin14Days": 6
