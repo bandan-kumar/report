@@ -1,5 +1,5 @@
 {
-  "fetched": "2026-11-16",
+  "fetched": "2026-11-17",
   "country": "us",
   "apps": {
     "dietplan": {
@@ -7,7 +7,7 @@
       "name": "Diet Plan: Daily Meal Planner",
       "url": "https://apps.apple.com/us/app/diet-plan-daily-meal-planner/id719586528",
       "rating": 4.7,
-      "ratingCount": 1923,
+      "ratingCount": 1924,
       "version": "5.4",
       "updated": "2026-08-19",
       "firstReleased": "2013-10-25",
@@ -43,7 +43,7 @@
       },
       "android": {
         "rating": 4.2,
-        "reviews": "858",
+        "reviews": "859",
         "installs": "100K+"
       },
       "keywords": [
@@ -53,54 +53,54 @@
         },
         {
           "term": "7 day diet plan",
-          "rank": 9
-        },
-        {
-          "term": "diet planner",
-          "rank": 11
-        },
-        {
-          "term": "weight loss diet",
-          "rank": 25
-        },
-        {
-          "term": "weight loss plan",
-          "rank": 43
-        },
-        {
-          "term": "diet plan weight loss",
           "rank": 15
         },
         {
+          "term": "diet planner",
+          "rank": 15
+        },
+        {
+          "term": "weight loss diet",
+          "rank": 32
+        },
+        {
+          "term": "weight loss plan",
+          "rank": 65
+        },
+        {
+          "term": "diet plan weight loss",
+          "rank": 17
+        },
+        {
           "term": "meal planner for weight loss",
-          "rank": 22
-        },
-        {
-          "term": "healthy meal planner",
-          "rank": 27
-        },
-        {
-          "term": "weight loss planner",
           "rank": 34
         },
         {
+          "term": "healthy meal planner",
+          "rank": 67
+        },
+        {
+          "term": "weight loss planner",
+          "rank": 49
+        },
+        {
           "term": "meal planner",
-          "rank": 86
+          "rank": null
         }
       ],
       "compare": {
-        "n": 31,
+        "n": 30,
         "phrases": [
           "diet plan",
           "meal planner",
           "weight loss diet"
         ],
-        "rating": 4.72,
-        "ratingCount": 14915,
+        "rating": 4.73,
+        "ratingCount": 17745,
         "daysSinceUpdate": 9,
-        "languages": 1,
-        "sizeMB": 156,
-        "updatedWithin14Days": 18
+        "languages": 1.0,
+        "sizeMB": 151,
+        "updatedWithin14Days": 17
       }
     },
     "upkee": {
@@ -142,43 +142,43 @@
       "keywords": [
         {
           "term": "house cleaning schedule",
-          "rank": 18
+          "rank": 19
         },
         {
           "term": "cleaning schedule",
-          "rank": 28
+          "rank": 27
         },
         {
           "term": "cleaning schedule app",
-          "rank": 32
-        },
-        {
-          "term": "house cleaning",
-          "rank": 68
-        },
-        {
-          "term": "housework",
-          "rank": null
-        },
-        {
-          "term": "house cleaning checklist free",
-          "rank": 65
-        },
-        {
-          "term": "house cleaning app",
           "rank": 20
         },
         {
-          "term": "weekly cleaning schedule",
-          "rank": 74
+          "term": "house cleaning",
+          "rank": 67
         },
         {
-          "term": "home cleaning schedule free",
+          "term": "housework",
+          "rank": 172
+        },
+        {
+          "term": "house cleaning checklist free",
           "rank": 55
         },
         {
+          "term": "house cleaning app",
+          "rank": 22
+        },
+        {
+          "term": "weekly cleaning schedule",
+          "rank": 63
+        },
+        {
+          "term": "home cleaning schedule free",
+          "rank": 56
+        },
+        {
           "term": "home chores",
-          "rank": null
+          "rank": 116
         }
       ],
       "compare": {
@@ -187,12 +187,12 @@
           "house cleaning schedule",
           "cleaning schedule"
         ],
-        "rating": 4.76,
-        "ratingCount": 1176,
-        "daysSinceUpdate": 24,
-        "languages": 7.0,
-        "sizeMB": 66,
-        "updatedWithin14Days": 6
+        "rating": 4.74,
+        "ratingCount": 1177,
+        "daysSinceUpdate": 28,
+        "languages": 8.0,
+        "sizeMB": 73,
+        "updatedWithin14Days": 5
       }
     },
     "caloric": {
@@ -287,7 +287,7 @@
       "name": "Keto Diet App: Keto Manager",
       "url": "https://apps.apple.com/us/app/keto-diet-app-keto-manager/id1475764462",
       "rating": 4.67,
-      "ratingCount": 9401,
+      "ratingCount": 9402,
       "version": "5.1.6",
       "updated": "2026-08-18",
       "firstReleased": "2019-11-08",
